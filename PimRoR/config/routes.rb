@@ -1,12 +1,10 @@
 Rails.application.routes.draw do
 
-  get 'users/new'
+  get '/users'  => 'users#index'
+  get '/users/new', to: 'users#new', as: 'new_user_path'
+  get '/signup',  to: 'users#new', as: 'signup'
 
-  root 'helloworld#new'
 
-  get 'helloworld/new'
-
-  get 'helloworld/create'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -61,5 +59,5 @@ Rails.application.routes.draw do
   #     # Directs /admin/products/* to Admin::ProductsController
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
-  #   end 
+  #   end
 end
