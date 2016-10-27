@@ -1,8 +1,16 @@
 Rails.application.routes.draw do
 
-  get '/users'  => 'users#index'
+  resources :users
+  get '/users', to: 'users#index'
+  get '/users/3', to: 'users#show', as: 'user_path'
   get '/users/new', to: 'users#new', as: 'new_user_path'
-  get '/signup',  to: 'users#new', as: 'signup'
+  #post '/users', to: 'users#create' as: 'users_path'
+  get 'users/1/edit', to: 'users#edit', as: 'edit_user_path'
+  patch 'users/1', to: 'users#update', as: 'update_user'
+  delete 'users/1', to: 'users#destroy', as: 'destroy_user'
+
+
+
 
 
 
