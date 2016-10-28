@@ -1,10 +1,20 @@
 Rails.application.routes.draw do
 
-  root 'helloworld#new'
+  resources :users
 
-  get 'helloworld/new'
+  get '/users', to: 'users#index'
+  get '/users/3', to: 'users#show', as: 'user_path'
+  get '/users/new', to: 'users#new', as: 'new_user_path'
+  post '/users/create', to: 'users#create', as: 'create_user'
+  #post '/users', to: 'users#create' as: 'users_path'
+  get 'users/1/edit', to: 'users#edit', as: 'edit_user_path'
+  patch 'users/1', to: 'users#update', as: 'update_user'
+  delete 'users/1', to: 'users#destroy', as: 'destroy_user'
 
-  get 'helloworld/create'
+
+
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -59,5 +69,5 @@ Rails.application.routes.draw do
   #     # Directs /admin/products/* to Admin::ProductsController
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
-  #   end 
+  #   end
 end
