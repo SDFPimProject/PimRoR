@@ -15,3 +15,4 @@ user_list = [
 user_list.each do |user|
     User.create(first_name: user ,email: user + "@pimsuite.de", password: "Secure!12345678")
 end
+

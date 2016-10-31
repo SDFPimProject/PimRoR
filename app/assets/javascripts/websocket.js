@@ -18,11 +18,14 @@
             dispatcher.subscribe(user.id).bind('new_notification', function(data) {
                 toastr[data.type](data.message);
             });
+            dispatcher.subscribe(user.id).bind('new_message', function (data) {
+                Chat.getInstance().webSocketNewMessage(data.conversation_id,
+                    data.message_id,
+                    data.send_from,
+                    data.html);
+            });
+            dispatcher.subscribe(user.id).bind('new_conversation', function (data) {
+                Chat.getInstance().webSocketConversation(data.html);
+            });
         }
-        //Channel for All, alle Client get an Inforamtions
-        dispatcher.subscribe('all').bind('new_notification', function(data) {
-            toastr[data.type](data.message);
-        });
-    };
-
-
+};

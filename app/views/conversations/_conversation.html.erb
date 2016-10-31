@@ -1,0 +1,13 @@
+  <% if conversation.sender_id == current_user.id %>
+      <% recipient = User.find(conversation.recipient_id) %>
+  <% else %>
+      <% recipient = User.find(conversation.sender_id) %>
+  <% end %>
+  <a href="#" class="list-group-item open-conversation"
+     data-sid="<%= current_user.id %>" data-rip="<%= recipient.id %>">
+    <% if conversation.count_unread > 0 %>
+        <span class="badge"><%= conversation.count_unread %></span>
+    <% end %>
+    <h4 class="list-group-item-heading"> <%= recipient.email %></h4>
+    <p class="list-group-item-text">Nachricht: <%= conversation.last_message %></p>
+  </a>

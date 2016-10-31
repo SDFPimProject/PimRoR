@@ -12,4 +12,10 @@ Rails.application.routes.draw do
     put 'users' => 'devise/registrations#update', :as => 'user_registration'
   end
 
+
+  resources :conversations do
+    resources :messages
+  end
+  get 'conservations_list', to: 'conversations#get_conservation_list'
+  post 'messages_read', to: "messages#message_read"
 end
