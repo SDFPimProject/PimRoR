@@ -3,7 +3,9 @@
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <% unless request.path == "/users/sign_in" %>
-          <li><%= link_to "Edit Profile", '/users/edit' %></li>
+            <li><%= link_to "Home", '/' %></li>
+            <li><%= link_to "Messenger", '/conversations' %></li>
+            <li><%= link_to "Edit Profile", '/users/edit' %></li>
           <li><%= link_to "Logout", '/users/sign_out', method: :delete %></li>
         <% end %>
       </ul>

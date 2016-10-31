@@ -29,15 +29,15 @@ ActiveRecord::Schema.define(version: 20161103092825) do
   create_table "messages", force: :cascade do |t|
     t.text     "body"
     t.integer  "conversation_id"
-    t.integer  "user_id"
-    t.boolean  "send",            default: false
-    t.boolean  "read",            default: false
+    t.integer  "send_from_id"
+    t.boolean  "is_receive",      default: false
+    t.boolean  "is_read",         default: false
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
   end
 
   add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
-  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
+  add_index "messages", ["send_from_id"], name: "index_messages_on_send_from_id", using: :btree
 
   create_table "projects", force: :cascade do |t|
     t.string   "name"
@@ -64,10 +64,10 @@ ActiveRecord::Schema.define(version: 20161103092825) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.string   "role"
     t.string   "first_name",             default: "", null: false
     t.string   "last_name",              default: "", null: false
     t.string   "connection_id",          default: "", null: false
+    t.string   "role"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
