@@ -28,4 +28,10 @@
                 Chat.getInstance().webSocketConversation(data.html);
             });
         }
-};
+        //Channel for All, alle Client get an Inforamtions
+        dispatcher.subscribe('all').bind('new_notification', function(data) {
+            toastr[data.type](data.message);
+        });
+    };
+
+
