@@ -1,0 +1,10 @@
+User.create! name: "robert", email: "a@b.de", password: "12345678", password_confirmation: "12345678"
+user = User.first
+Role.create! name: "admin"
+role = Role.first
+user.Roles << role
+
+
+user = User.first
+role = Role.first
+user.Role << role

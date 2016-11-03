@@ -1,0 +1,12 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <% unless request.path == "/users/sign_in" %>
+          <li><%= link_to "Edit Profile", '/users/edit' %></li>
+          <li><%= link_to "Logout", '/users/sign_out', method: :delete %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</header>
