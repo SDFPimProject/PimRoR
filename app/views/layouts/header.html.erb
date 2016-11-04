@@ -3,7 +3,9 @@
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <% unless request.path == "/users/sign_in" %>
-          <li><%= link_to "create user", '/users/create' %></li>
+          <% if can? :manage, @users %>
+            <li><%= link_to "Add User", new_user_path %></li>
+          <% end %>
           <li><%= link_to "Edit Profile", '/users/edit' %></li>
           <li><%= link_to "Logout", '/users/sign_out', method: :delete %></li>
         <% end %>
