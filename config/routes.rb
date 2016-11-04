@@ -13,6 +13,6 @@ Rails.application.routes.draw do
     get 'users/create' => 'users/registrations#new' #, :as => 'new_user_registration'
   end
 
-  resources :user, :controller => "user"
+  resources :user, :controller => "users/users"
 
 end

@@ -1,4 +1,4 @@
-class Users::UserController < ApplicationController
+class Users::UsersController < ApplicationController
    load_and_authorize_resource
 
 #   def index
@@ -10,6 +10,7 @@ class Users::UserController < ApplicationController
   end
 
   def create
+    params.permit!
     @user = User.new(params[:user])
     if @user.save
       flash[:notice] = "Successfully created User." 
@@ -17,6 +18,10 @@ class Users::UserController < ApplicationController
     else
       render :action => 'new'
     end
+  end
+
+  def user_params
+    params.require(:user).permit(:email, :role, :password, :password_confirmation)
   end
 
 #   def edit
