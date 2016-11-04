@@ -7,8 +7,8 @@ class OnlineController < WebsocketRails::BaseController
     if (user.connection_id == 'LOGIN') || (user.connection_id == '' && (Time.now - user.updated_at) > 3)
       #Wenn Ja Notification zum Client
       notification_to_user(user.id,{
-          :message => "Hey, " + user.first_name + " ! Willkommen bei PIMSuite.",
-          :type => 'success'
+          :message => "Hey, " + user.first_name + "!\nWillkommen bei PIMSuite.",
+          :type => 'info'
       })
     end
     user.connection_id=client_id

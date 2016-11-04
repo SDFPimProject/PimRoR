@@ -10,20 +10,19 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-
-
-
-
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
-//= require turbolinks
-//
-//= require messenger
-//= require messenger-theme-flat
+
 //= require websocket_rails/main
+//= require toastr
 //= require_tree .
 
-Messenger.options = {
-    extraClasses: 'messenger-fixed messenger-on-bottom',
-    theme: 'flat'
-};
+//= require turbolinks
+
+//Only one global Document Ready Function
+$(document).ready(function() {
+    // Websockets
+    bindWebSockets(dispatcher);
+});
+

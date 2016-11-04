@@ -19,6 +19,8 @@ gem 'bootstrap-sass', '3.3.7'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+#User jquery-turbolinks to write JS-Code in a normal way
+gem 'jquery-turbolinks'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -46,8 +48,8 @@ gem 'cancancan', '~> 1.10'
 gem 'websocket-rails'
 gem 'faye-websocket', '0.10.0' # --> https://github.com/websocket-rails/websocket-rails/issues/424
 
-#Simple messanger https://github.com/benjis/messengerjs-rails
-gem 'messengerjs-rails', '~> 1.4.1'
+#Simple Messaging System
+gem 'toastr-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
