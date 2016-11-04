@@ -8,6 +8,8 @@
     <%= f.email_field :email, autofocus: true %>
   </div>
 
+  <%= f.collection_select(:role, User::ROLES, :to_s, lambda{|i| i.to_s.humanize}) %>
+
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
