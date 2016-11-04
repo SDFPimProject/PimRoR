@@ -1,14 +1,14 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, 
+  devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
          #:registerable
 
   ROLES = %i[admin moderator author banned]
 
-  validates :password, presence: true, length: {minimum: 6, maximum: 120}, on: :create
-  validates :password, length: {minimum: 6, maximum: 120}, on: :update , allow_blank: true
+  #validates :password, presence: true, length: {minimum: 6, maximum: 120}, on: :create
+  #validates :password, length: {minimum: 6, maximum: 120}, on: :update , allow_blank: true
 
   scope :online, -> (user) do
     where("user.connection_id <> ''")
