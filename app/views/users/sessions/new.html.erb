@@ -1,26 +1,36 @@
-<h2>Log in</h2>
+<div class="content">
+  <div class="login-box">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <h2>Pimsuite</h2>
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="login-field">
+          <%= f.email_field :email, autofocus: true, placeholder: "email" %>
+        </div>
+        <div class="login-field">
+          <%= f.password_field :password, autocomplete: "off", placeholder: "password" %>
+        </div>
+
+        <div class="remember-login-row">
+          <% if devise_mapping.rememberable? -%>
+              <div class="remember-me">
+                <div style="display: flex">
+                  <div style="width: 30px">
+                    <%= f.check_box :remember_me %>
+                  </div>
+                  <div>
+                    <%= f.label :"Remember login" %>
+                  </div>
+                </div>
+              </div>
+          <% end -%>
+
+          <div class="login-button">
+            <%= f.submit "Log in" %>
+          </div>
+
+        </div>
+    <% end %>
+    <%= render "users/shared/links" %>
   </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+</div>
