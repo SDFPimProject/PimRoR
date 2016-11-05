@@ -6,6 +6,9 @@
             <li><%= link_to "Home", '/' %></li>
             <li><%= link_to "Messenger", '/conversations' %></li>
             <li><%= link_to "Edit Profile", '/users/edit' %></li>
+          <% if can? :manage, @users %>
+            <li><%= link_to "Add User", new_user_path %></li>
+          <% end %>
           <li><%= link_to "Logout", '/users/sign_out', method: :delete %></li>
         <% end %>
       </ul>
