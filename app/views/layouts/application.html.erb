@@ -2,7 +2,7 @@
 <html>
 <head>
   <title><%= yield(:title) %> | PimSuite+</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
@@ -10,14 +10,14 @@
   // Connect to websocket
   var user = {};
   <% if Rails.env.production? %>
-    var url = 'pimsuite.herokuapp.com';
+  var url = 'pimsuite.herokuapp.com';
   <% else %>
-    var url = 'localhost:3000';
+  var url = 'localhost:3000';
   <% end %>
   <% if current_user %>
-      user.id = <%= current_user.id %>;
+  user.id = <%= current_user.id %>;
   <% end %>
-  var dispatcher = new WebSocketRails( url + '/websocket');
+  var dispatcher = new WebSocketRails(url + '/websocket');
 
   //Messages
   toastr.options = {
@@ -39,22 +39,22 @@
   }
 </script>
 <body>
-  <% unless flash.empty? %>
-      <script type="text/javascript">
-        <% flash.each do |f| %>
-        <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info') %>
-        toastr['<%= type %>']('<%= f[1] %>');
-        <% end %>
-      </script>
-  <% end %>
-    <%= render template: 'layouts/header' %>
+<% unless flash.empty? %>
+    <script type="text/javascript">
+      <% flash.each do |f| %>
+      <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info') %>
+      toastr['<%= type %>']('<%= f[1] %>');
+      <% end %>
+    </script>
+<% end %>
+<%= render template: 'layouts/header' %>
 
-    <main class="container">
-      <%= yield %>
+<main>
+  <%= yield %>
 
-      <%= debug(params) if Rails.env.development? %>
-    </main>
+  <%= debug(params) if Rails.env.development? %>
+</main>
 
-    <%= render template: 'layouts/footer' %>
+<%= render template: 'layouts/footer' %>
 </body>
 </html>
