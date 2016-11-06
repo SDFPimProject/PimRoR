@@ -1,22 +1,20 @@
-<h2>Sign up</h2>
-
-<%= form_for(@user, url: user_index_path) do |f| %>
-  <div class="field">
+<%= form_for(@user, url: user_path, html: { method: :put }) do |f| %>
+    <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email %>
+    <%= f.email_field :email, autofocus: true %>
   </div>
-
+  
   <div class="field">
     <%= f.label :email_confirmation %><br />
     <%= f.email_field :email_confirmation %>
   </div>
 
-   <div class="field">
+  <div class="field">
     <%= f.label :first_name %><br />
     <%= f.text_field :first_name %>
   </div>
   
-    <div class="field">
+  <div class="field">
     <%= f.label :last_name %><br />
     <%= f.text_field :last_name %>
   </div>
@@ -34,6 +32,9 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Save" %>
+    <%= link_to "Cancel", :back %>
   </div>
+
+
 <% end %>

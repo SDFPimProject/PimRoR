@@ -19,8 +19,8 @@
               <div class="nav-item"><i class="material-icons">&#xE8B8;</i></div>
           <% end %>
           <% if can? :manage, @users %>
-              <%= link_to new_user_path do %>
-                  <div class="nav-item"><i class="material-icons">&#xE146;</i></div>
+              <%= link_to user_index_path do %>
+                  <div class="nav-item"><i class="material-icons">&#xE8A6;</i></div>
               <% end %>
           <% end %>
         </div>

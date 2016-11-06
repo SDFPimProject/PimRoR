@@ -59,7 +59,11 @@ student_list = [
 ]
 
 user_list.each do |user|
-    User.create(first_name: user ,email: user + "@pimsuite.de", password: "Secure!12345678")
+    User.create(first_name: user,last_name:"Doe", email: user + "@pimsuite.de", password: "Secure!12345678")
+end
+
+student_list.each do |student|
+    User.create(first_name: student ,email: student + "@htw-berlin.de", password: "123456", role: "author")
 end
 
 student_list.each do |student|

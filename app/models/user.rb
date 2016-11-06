@@ -5,10 +5,22 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   #:registerable
 
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+
   ROLES = %i[admin moderator author banned]
 
-  validates :password, presence: true, length: {minimum: 6, maximum: 120}, on: :create
-  validates :password, length: {minimum: 6, maximum: 120}, on: :update , allow_blank: true
+  validates :password, length: {minimum: 8, maximum: 120}, on: :update , allow_blank: true
+  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX,
+    message: "Wrong Email format" }, on: :update , allow_blank: true
+  validates :first_name, length: { minimum: 2, maximum: 50 }, presence: true,  on: :update
+  validates :last_name, length: { minimum: 2, maximum: 50 }, presence: true,  on: :update
+
+  validates :password, presence: true, length: {minimum: 8, maximum: 120}, on: :create
+  validates :email, confirmation: true, format: { with: VALID_EMAIL_REGEX,
+    message: "Wrong Email format" }, on: :create
+  validates :email_confirmation, presence: true, on: :create
+  validates :first_name, length: { minimum: 2, maximum: 50 }, presence: true,  on: :create
+  validates :last_name, length: { minimum: 2, maximum: 50 }, presence: true,  on: :create
 
   scope :online, -> (user) do
     where("user.connection_id <> ''")
