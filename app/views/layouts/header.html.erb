@@ -1,17 +1,34 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
-        <% unless request.path == "/users/sign_in" %>
-            <li><%= link_to "Home", '/' %></li>
-            <li><%= link_to "Messenger", '/conversations' %></li>
-            <li><%= link_to "Edit Profile", '/users/edit' %></li>
-          <% if can? :manage, @users %>
-            <li><%= link_to "Add User", new_user_path %></li>
+<% unless request.path == "/users/sign_in" %>
+    <header>
+      <div class="logo">
+        <img src="http://orig06.deviantart.net/9d4e/f/2010/357/6/3/white_wolf_icon_by_bronzehalo-d2yxind.gif"/>
+      </div>
+      <div class="custom-nav">
+
+        <div class="links">
+          <%= link_to '/' do %>
+              <div class="nav-item"><i class="material-icons md-48">&#xE88A;</i></div>
           <% end %>
-          <li><%= link_to "Logout", '/users/sign_out', method: :delete %></li>
+          <%= link_to '/conversations' do %>
+              <div class="nav-item"><i class="material-icons">&#xE0B7;</i></div>
+          <% end %>
+          <%= link_to '/' do %>
+              <div class="nav-item"><i class="material-icons">&#xE916;</i></div>
+          <% end %>
+          <%= link_to '/users/edit' do %>
+              <div class="nav-item"><i class="material-icons">&#xE8B8;</i></div>
+          <% end %>
+          <% if can? :manage, @users %>
+              <%= link_to new_user_path do %>
+                  <div class="nav-item">Add User</div>
+              <% end %>
+          <% end %>
+        </div>
+      </div>
+      <div class="user-box">
+        <%= link_to '/users/sign_out', method: :delete do %>
+            <div><i class="material-icons">&#xE879;</i></div>
         <% end %>
-      </ul>
-    </nav>
-  </div>
-</header>
+      </div>
+    </header>
+<% end %>
