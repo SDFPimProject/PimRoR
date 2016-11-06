@@ -1,3 +1,4 @@
+@import "colors";
 $margin: 20px;
 
 .content {
@@ -10,20 +11,17 @@ $margin: 20px;
 }
 
 .login-box {
-  background-color: #f5f5f5;
-  border: thin solid #f0f0f0;
+  background-color: $primary-color;
+  border: thin solid $primary-color-dark;
   border-radius: 5px;
   margin: 0 auto;
   display: flex;
   flex-flow: column;
   width: 400px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: $box-shadow;
   a {
     font-size: 8px;
     align-self: center;
-    :hover, :visited, :active {
-      color: pink;
-    }
   }
 }
 
@@ -35,7 +33,7 @@ $margin: 20px;
     width: 100%;
     border: 0;
     box-sizing: border-box;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    box-shadow: $box-shadow;
   }
 }
 
@@ -51,24 +49,4 @@ $margin: 20px;
   display: flex;
   align-self: center;
   white-space: nowrap;
-}
-
-.login-button {
-  flex-grow: 2;
-  display: flex;
-  align-self: right;
-  input {
-    height: 100%;
-    width: 100%;
-    border: 0;
-    cursor: pointer;
-    background-color: #eaeaea;
-    padding: 12px;
-    border-radius: 3px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-    &:hover {
-      box-shadow: 0 4px 7px rgba(0,0,0,0.25), 0 3px 3px rgba(0,0,0,0.22);
-    }
-  }
 }

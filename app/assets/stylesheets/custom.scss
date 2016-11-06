@@ -1,6 +1,36 @@
 /* universal */
+@import "colors";
 main{
   padding-top: 80px;
+}
+
+.main-container {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
+  flex-grow: 2;
+  display: flex;
+  align-self: right;
+  input {
+    height: 100%;
+    width: 100%;
+    border: 0;
+    cursor: pointer;
+    background-color: $primary-accent-color;
+    color: $primary-color-dark-text;
+    padding: 12px;
+    border-radius: 3px;
+    box-shadow: $box-shadow;
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    &:hover {
+      box-shadow: $box-shadow-hover;
+    }
+  }
 }
 
 section {
@@ -40,3 +70,12 @@ p {
   }
 }
 
+.debug_dump {
+  background-color: $primary-color;
+}
+
+.toast {
+  background-color: $primary-accent-color !important;
+  box-shadow: $box-shadow-hover !important;
+  color: $primary-color-text !important;
+}

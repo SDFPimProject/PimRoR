@@ -1,10 +1,37 @@
-<% provide(:title, "Welcome") %>
-<h1>Hello World</h1>
-<p>
-  I'm alive!!!! <br>
-  The time is now: <%= Time.now %>
-  Test
-</p>
-<p>
-  <a id="push_notify_all" class="btn btn-default btn-lg">PUSH TO ALL</a>
-</p>
+<div class="dashboard">
+
+  <div class="content-box">
+    <div class="box-header">
+      <i class="material-icons md-48">&#xE88A;</i>
+    </div>
+    <div class="box-content">
+      <h1>Hello World</h1>
+    </div>
+  </div>
+
+  <div class="content-box">
+    <div class="box-header">
+      <i class="material-icons">&#xE0B7;</i>
+      <div style="padding: 10px">Messages</div>
+    </div>
+    <div class="box-content">
+      <div class="button">
+        <input id="push_notify_all" type="button" value="PUSH TO ALL">
+      </div>
+      <a class="button"></a>
+
+    </div>
+  </div>
+
+  <div class="content-box">
+    <div class="box-header">
+      <i class="material-icons">&#xE916;</i>
+    </div>
+    <div class="box-content">
+      I'm alive!!!! <br>
+      The time is now: <%= Time.now %>
+      Test
+    </div>
+  </div>
+
+</div>
