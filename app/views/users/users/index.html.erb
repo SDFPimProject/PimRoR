@@ -1,0 +1,17 @@
+  <%= link_to new_user_path do %>
+    <div class="nav-item"><i class="material-icons">&#xE148;</i></div>
+  <% end %>
+
+<table class="table table-condensed">
+  <tr>
+    <th>Vorname</th>
+    <th>Nachname</th>
+    <th>Email</th>
+    <th></th>
+  </tr>
+
+<% if @users.any? %>
+    <%= render @users %>
+<% end %>
+
+</table>
