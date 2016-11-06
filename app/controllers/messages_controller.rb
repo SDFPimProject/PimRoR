@@ -6,12 +6,15 @@ class MessagesController < ApplicationController
     @message.send_from_id = current_user.id
     @message.save!
 
-    WebsocketRails[@reciever.id].trigger('new_message', {
-        :conversation_id => @conversation.id,
-        :message_id => @message.id,
-        :send_from => current_user,
-        :html => render_to_string(:template => 'messages/_message.html.erb', :locals => { :message => @message, :current_user => @reciever }, layout: false)
-    })
+    Fiber.new{
+      WebsocketRails[@reciever.id].trigger('new_message', {
+          :conversation_id => @conversation.id,
+          :message_id => @message.id,
+          :send_from => current_user,
+          :html => render_to_string(:template => 'messages/_message.html.erb', :locals => { :message => @message, :current_user => @reciever }, layout: false)
+      })
+    }.resume
+
 
     render :template => 'messages/_message.html.erb', :locals => { :message => @message, :current_user => current_user }, layout: false
   end
