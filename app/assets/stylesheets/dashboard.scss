@@ -1,0 +1,44 @@
+@import "colors";
+.dashboard {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  max-width: 600px;
+
+  .material-icons {
+    color: $primary-color-text !important;
+    font-size: 32px !important;
+  }
+}
+
+.content-box {
+  background-color: $primary-color;
+  border: thin solid $primary-color-dark;
+  border-radius: 5px;
+  box-shadow: $box-shadow;
+  margin: 15px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  min-height: 150px;
+}
+
+.box-header {
+  display: flex;
+  flex-flow: row;
+  font-size: large;
+  align-items: center;
+  height: 20px;
+  flex-grow: 1;
+  width: 96.5%;
+  margin: 5px;
+  padding: 5px;
+  align-self: flex-start;
+  border-bottom: thin solid $primary-color-dark;
+}
+
+.box-content {
+  align-self: center;
+  flex-grow: 5;
+  margin: 5px;
+}
