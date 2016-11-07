@@ -1,8 +1,6 @@
 <div class="chat_box">
   <div class="chat_box_head">
-    <div class="chat_box_title">
-      <h3><%= @reciever.email %> </h3>
-    </div>
+      <%= @reciever.email %>
   </div>
   <div class="chat_box_content">
     <% if @messages.any? %>
@@ -10,7 +8,9 @@
     <% end %>
   </div>
   <div class="chat_box_input">
-    <textarea class="chat_box_textarea" placeholder="Einagbe..."></textarea>
-    <a class="chat_box_submit btn btn-primary btn-block">Send</a>
+    <input class="chat_box_textarea" placeholder="message..." type="text"/>
+    <div class="button chat_box_submit">
+      <input type="button" value="SEND">
+    </div>
   </div>
 </div>

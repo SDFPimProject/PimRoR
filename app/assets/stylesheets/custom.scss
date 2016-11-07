@@ -1,7 +1,17 @@
 /* universal */
 @import "colors";
 main{
+}
 
+.background-image {
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: url("grey.jpg");
+  background-size: cover;
 }
 
 .main-container {
@@ -14,6 +24,28 @@ main{
   justify-content: flex-start;
   align-items: center;
   background-color: rgba(0,0,0,0.2);
+}
+
+.left-side-wrapper {
+  background-color: $primary-color;
+  box-shadow: $box-shadow;
+  margin: 5px;
+  padding: 10px;
+  flex-grow: 1;
+  display: flex;
+  overflow-y: scroll;
+  flex-flow: column;
+}
+
+.right-side-wrapper {
+  display: flex;
+  width: 100%;
+  flex-grow: 20;
+  overflow-x: hidden;
+  background-color: $primary-color;
+  box-shadow: $box-shadow;
+  margin: 5px;
+  padding: 10px;
 }
 
 .button {
