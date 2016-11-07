@@ -1,13 +1,14 @@
-  <% if conversation.sender_id == current_user.id %>
-      <% recipient = User.find(conversation.recipient_id) %>
-  <% else %>
-      <% recipient = User.find(conversation.sender_id) %>
-  <% end %>
-  <a href="#" class="list-group-item open-conversation"
-     data-sid="<%= current_user.id %>" data-rip="<%= recipient.id %>">
+<% if conversation.sender_id == current_user.id %>
+    <% recipient = User.find(conversation.recipient_id) %>
+<% else %>
+    <% recipient = User.find(conversation.sender_id) %>
+<% end %>
+<div class="list-item open-conversation" data-sid="<%= current_user.id %>" data-rip="<%= recipient.id %>">
+  <div class="list-item-heading">
+    <%= recipient.email %>
     <% if conversation.count_unread > 0 %>
-        <span class="badge"><%= conversation.count_unread %></span>
+        <div class="message-count"><%= conversation.count_unread %></div>
     <% end %>
-    <h4 class="list-group-item-heading"> <%= recipient.email %></h4>
-    <p class="list-group-item-text">Nachricht: <%= conversation.last_message %></p>
-  </a>
+  </div>
+  <div class="list-item-content"><%= conversation.last_message %></div>
+</div>

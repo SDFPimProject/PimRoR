@@ -1,24 +1,30 @@
-<% provide(:title, "Messanger") %>
-<h1>Messanger</h1>
-<div class="row">
-  <div class="col-xs-4">
-    <h3>Mailbox</h3>
-    <ul class="list-group conversation_list">
+<div class="messages">
+  <div class="left-side-wrapper">
+    <div class="list-box">
+      <div class="box-title">
+        Mailbox
+      </div>
       <% if @conversations.any? %>
           <%= render @conversations %>
       <% end %>
-    </ul>
-    <h3>All Users</h3>
-    <ul class="list-group">
+    </div>
+
+    <div class="list-box">
+      <div class="box-title">
+        All Users
+      </div>
       <% @users.each do |user| %>
           <% if user.id != current_user.id %>
-                <%= link_to user.email, "#", class: "list-group-item open-conversation",
-                            "data-sid" => current_user.id, "data-rip" => user.id %>
+              <div class="list-item">
+                <div class="list-item-content open-conversation" data-sid="<%= current_user.id %>" data-rip="<%= user.id %>">
+                  <%= user.email %>
+                </div>
+              </div>
           <% end %>
       <% end %>
-    </ul>
+    </div>
   </div>
-  <div class="chat_box_wrapper col-xs-8">
+  <div class="chat_box_wrapper right-side-wrapper">
 
   </div>
 </div>
