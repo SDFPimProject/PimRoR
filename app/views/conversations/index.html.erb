@@ -4,9 +4,11 @@
       <div class="box-title">
         Mailbox
       </div>
-      <% if @conversations.any? %>
-          <%= render @conversations %>
-      <% end %>
+      <div class="conversation_list">
+        <% if @conversations.any? %>
+            <%= render @conversations %>
+        <% end %>
+      </div>
     </div>
 
     <div class="list-box">
