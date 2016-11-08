@@ -10,7 +10,8 @@ main{
   position: fixed;
   top: 0;
   left: 0;
-  background: image-url("grey.jpg");
+  background-color: $main-background;
+  //background: url("grey.jpg");
   background-size: cover;
 }
 
@@ -23,7 +24,7 @@ main{
   flex-flow: column;
   justify-content: flex-start;
   align-items: center;
-  background-color: rgba(0,0,0,0.2);
+  background-color: $main-background;
 }
 
 .left-side-wrapper {
