@@ -8,6 +8,23 @@
 
 
 # Dummy User
+team_list = [
+    "Robert", "Sebastian", "Aijana", "Kirill", "Olga", "Felix", "Martin"
+]
+
+project_list = [
+    "Robert", "Sebastian", "Aijana", "Kirill", "Olga", "Felix", "Martin"
+]
+
+team_list.each do |team|
+    Team.create(name: team)
+end
+
+project_list.each do |project|
+    Project.create(name: project)
+end
+
+
 user_list = [
     "Robert", "Sebastian", "Aijana", "Kirill", "Olga", "Felix", "Martin"
 ]
@@ -59,14 +76,14 @@ student_list = [
 ]
 
 user_list.each do |user|
-    User.create(first_name: user,last_name:"Doe", email: user + "@pimsuite.de", password: "Secure!12345678")
+    u = User.create(first_name: user, last_name:"Doe", email: user + "@pimsuite.de", email_confirmation: user + "@pimsuite.de", password: "Secure!12345678", role: "admin")
+    u.projects << Project.find_by_name(u.first_name)
+    u.teams << Team.find_by_name(u.first_name)
+    u.save!
 end
 
 student_list.each do |student|
     User.create(first_name: student ,email: student + "@htw-berlin.de", password: "123456", role: "author")
 end
 
-student_list.each do |student|
-    User.create(first_name: student ,email: student + "@htw-berlin.de", password: "123456", role: "author")
-end
 

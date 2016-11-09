@@ -1,4 +1,10 @@
 class User < ActiveRecord::Base
+  has_many :users_teams
+  has_many :teams, through: :users_teams
+
+  has_many :users_projects
+  has_many :projects, through: :users_projects
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable,
@@ -33,4 +39,12 @@ class User < ActiveRecord::Base
   has_many :conversations, :foreign_key => :sender_id
   has_many :conversations, :foreign_key => :recipient_id
   has_many :messages, :foreign_key => :send_from_id
+
+
+  before_validation :downcase_email
+
+  def downcase_email
+    email_confirmation.try(:downcase!)
+    email.try(:downcase!)
+  end
 end
