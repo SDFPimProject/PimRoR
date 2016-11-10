@@ -21,6 +21,14 @@ class TeamsController < ApplicationController
   def edit
   end
 
+  # POST /teams/1/user/1/remove
+  def removeUser 
+    @team = Team.find(params[:teamid])
+    @user = User.find(params[:userid])
+    @team.users.destroy(@user)
+    redirect_to(@team)
+  end
+
   # POST /teams
   # POST /teams.json
   def create
@@ -70,5 +78,9 @@ class TeamsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def team_params
       params.require(:team).permit(:name)
+    end
+
+    def team_user_params
+      params.permit(:teamid, :userid)
     end
 end

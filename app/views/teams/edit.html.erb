@@ -1,6 +1,20 @@
 <h1>Editing Team</h1>
 
-<%= render 'form' %>
+<%= form_for(@team, url: team_path, html: { method: :put }) do |f| %>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+<% end %>
+
+<div>
+    <%= Team.human_attribute_name("users") %><br />
+    <% @team.users.each do |user| %>
+        <%= user.email %>
+        <td><%= link_to 'Remove',  team_remove_user_path(@team, user),  method: :post %></td>
+    <% end %>
+</div>
+
 
 <%= link_to 'Show', @team %> |
 <%= link_to 'Back', teams_path %>
