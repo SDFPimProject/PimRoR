@@ -21,6 +21,15 @@
     <%= f.text_field :last_name %>
   </div>
 
+   <div class="field">
+    <%= f.label :street_and_nr %><br />
+    <%= f.text_field :street_and_nr, :placeholder => "Weg 15" %><br />
+     <%= f.label :zip_code %><br />
+    <%= f.number_field :zip_code %><br />
+    <%= f.label :state %><br />
+    <%= f.text_field :state %>
+  </div>
+
   <%= f.collection_select(:role, User::ROLES, :to_s, lambda{|i| i.to_s.humanize}) %>
 
   <div class="field">
