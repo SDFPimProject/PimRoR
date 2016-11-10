@@ -6,7 +6,6 @@
             <div class="login-field">
               <%= f.text_field :first_name, placeholder: "first name" %>
             </div>
-
             <div class="login-field">
               <%= f.text_field :last_name, placeholder: "last name" %>
             </div>
@@ -15,7 +14,6 @@
             <div class="login-field">
               <%= f.email_field :email, placeholder: "email" %>
             </div>
-
             <div class="login-field">
               <%= f.email_field :email_confirmation, placeholder: "email confirmation" %>
             </div>
@@ -24,10 +22,21 @@
           <div class="login-field">
             <%= f.password_field :password, autocomplete: "off", placeholder: "password" %>
           </div>
-
           <div class="login-field">
             <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "password confirmation" %>
           </div>
+        </div>
+        <div class="box-content row">
+          <%= f.label :street_and_nr %><br>
+          <%= f.text_field :street_and_nr, :placeholder => "Weg 15" %>
+        </div>
+        <div class="box-content row">
+          <%= f.label :zip_code %><br />
+          <%= f.number_field :zip_code %>
+        </div>
+        <div class="box-content row">
+          <%= f.label :state %><br />
+          <%= f.text_field :state %>
         </div>
         <div class="box-content row">
           <div class="login-field">

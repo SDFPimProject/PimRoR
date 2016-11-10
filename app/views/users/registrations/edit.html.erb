@@ -1,3 +1,4 @@
+<<<<<<< fbfd7690b94590264e659c3f20c6985fda865aa2
 <div class="dashboard">
   <div class="content-box">
     <div class="box-header"> <%= resource_name.to_s.humanize %></div>
@@ -22,6 +23,20 @@
           <div class="login-field">
             <%= f.label :last_name %>:
             <%= resource.last_name %>
+          </div>
+          <div class="field">
+            <%= f.label :street_and_nr %><br />
+            <%= resource.street_and_nr %><br />
+          </div>
+
+          <div class="field">
+            <%= f.label :zip_code %><br />
+            <%= resource.zip_code %><br />
+          </div>
+
+          <div class="field">
+            <%= f.label :state %><br />
+            <%= resource.state %><br />
           </div>
         </div>
 
@@ -55,7 +70,6 @@
               </div>
           <% end %>
         </div>
-    <% end %>
   </div>
 </div>
 
