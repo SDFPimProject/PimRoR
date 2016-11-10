@@ -23,4 +23,6 @@ Rails.application.routes.draw do
 
   get 'conservations_list', to: 'conversations#get_conservation_list'
   post 'messages_read', to: "messages#message_read"
+
+  post 'teams/:teamid/user/:userid/remove' => 'teams#removeUser', :as => 'team_remove_user'
 end

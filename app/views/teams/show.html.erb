@@ -1,4 +1,17 @@
 <p id="notice"><%= notice %></p>
 
+<div>
+    <%= Team.human_attribute_name("name") %><br />
+    <%= @team.name %>
+</div>
+
+<div>
+    <%= Team.human_attribute_name("users") %><br />
+    <% @team.users.each do |user| %>
+        <%= user.email %>
+        <td><%= link_to 'Edit', edit_user_path(user.id) %></td>
+    <% end %>
+</div>
+
 <%= link_to 'Edit', edit_team_path(@team) %> |
 <%= link_to 'Back', teams_path %>
