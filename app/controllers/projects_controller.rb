@@ -21,6 +21,14 @@ class ProjectsController < ApplicationController
   def edit
   end
 
+  # POST /projects/1/user/1/remove
+  def removeUser 
+    @project = Project.find(params[:projectid])
+    @user = User.find(params[:userid])
+    @project.users.destroy(@user)
+    redirect_to(@project)
+  end
+
   # POST /projects
   # POST /projects.json
   def create
@@ -70,5 +78,9 @@ class ProjectsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
       params.require(:project).permit(:name)
+    end
+
+    def team_user_params
+      params.permit(:projectid, :userid)
     end
 end

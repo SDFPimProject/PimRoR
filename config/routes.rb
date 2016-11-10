@@ -25,4 +25,5 @@ Rails.application.routes.draw do
   post 'messages_read', to: "messages#message_read"
 
   post 'teams/:teamid/user/:userid/remove' => 'teams#removeUser', :as => 'team_remove_user'
+  post 'projects/:projectid/user/:userid/remove' => 'projects#removeUser', :as => 'project_remove_user'
 end

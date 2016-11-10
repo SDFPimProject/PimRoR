@@ -1,4 +1,17 @@
 <p id="notice"><%= notice %></p>
 
+<div>
+    <%= Project.human_attribute_name("name") %><br />
+    <%= @project.name %>
+</div>
+
+<div>
+    <%= Project.human_attribute_name("users") %><br />
+    <% @project.users.each do |user| %>
+        <%= user.email %>
+        <td><%= link_to 'Edit', edit_user_path(user.id) %></td>
+    <% end %>
+</div>
+
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
