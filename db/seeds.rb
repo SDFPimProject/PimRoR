@@ -7,10 +7,14 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-# Dummy User
-user_list = [
-    "Robert", "Sebastian", "Aijana", "Kirill", "Olga", "Felix", "Martin"
-]
+User.create(first_name: "Robert", last_name: "Doe", email: "robert@pimsuite.de",  email_confirmation: "robert@pimsuite.de",  password: "12345678", role: "admin")
+User.create(first_name: "Sebastian", last_name: "Doe", email: "rebastian@pimsuite.de",  email_confirmation: "sebastian@pimsuite.de",  password: "12345678", role: "admin")
+User.create(first_name: "Aijana", last_name: "Doe", email: "aijana@pimsuite.de",  email_confirmation: "aijana@pimsuite.de",  password: "12345678", role: "admin")
+User.create(first_name: "Kirill", last_name: "Doe", email: "kirill@pimsuite.de",  email_confirmation: "kirill@pimsuite.de",  password: "12345678", role: "admin")
+User.create(first_name: "Olga", last_name: "Doe", email: "olga@pimsuite.de",  email_confirmation: "olga@pimsuite.de",  password: "12345678", role: "admin")
+User.create(first_name: "Martin", last_name: "Doe", email: "martin@pimsuite.de",  email_confirmation: "martin@pimsuite.de",  password: "12345678", role: "admin")
+User.create(first_name: "admin", last_name: "admin", email: "admin@pimsuite.de",  email_confirmation: "admin@pimsuite.de",  password: "12345678", role: "admin")
+
 student_list = [
     "Albrecht.Fortenbacher",
     "s0552880",
@@ -58,15 +62,7 @@ student_list = [
     "s0539504"
 ]
 
-user_list.each do |user|
-    User.create(first_name: user,last_name:"Doe", email: user + "@pimsuite.de", password: "Secure!12345678")
-end
-
 student_list.each do |student|
-    User.create(first_name: student ,email: student + "@htw-berlin.de", password: "123456", role: "author")
-end
-
-student_list.each do |student|
-    User.create(first_name: student ,email: student + "@htw-berlin.de", password: "123456", role: "author")
+    User.create(first_name: student, last_name: "Doe", email: student + "@htw-berlin.de", email_confirmation: student + "@htw-berlin.de", password: "12345678", role: "author")
 end
 
