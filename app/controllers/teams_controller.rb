@@ -10,6 +10,7 @@ class TeamsController < ApplicationController
   # GET /teams/1
   # GET /teams/1.json
   def show
+    @team_users = @team.users.page(params[:teamUserPage])
   end
 
   # GET /teams/new

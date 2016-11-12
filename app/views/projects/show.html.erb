@@ -7,10 +7,11 @@
 
 <div>
     <%= Project.human_attribute_name("users") %><br />
-    <% @project.users.each do |user| %>
-        <%= user.email %>
-        <td><%= link_to 'Edit', edit_user_path(user.id) %></td>
+    <% @project_users.each do |user| %>
+        <p><%= user.email %>
+        <%= link_to 'Edit', edit_user_path(user.id) %></p>
     <% end %>
+    <%= will_paginate @project_users, :param_name => 'projectUserPage' %>
 </div>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
