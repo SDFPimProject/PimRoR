@@ -10,8 +10,16 @@
 <div>
     <%= Team.human_attribute_name("users") %><br />
     <% @team.users.each do |user| %>
-        <%= user.email %>
-        <td><%= link_to 'Remove',  team_remove_user_path(@team, user),  method: :post %></td>
+        <p><%= user.email %>
+        <%= link_to 'Remove',  team_remove_user_path(@team, user),  method: :post %></p>
+    <% end %>
+</div>
+
+<div>
+    <%= Team.human_attribute_name("users") %> hinzufügen<br />
+    <% @users.each do |user| %>
+        <p><%= user.email %>
+        <%= link_to 'add',  team_add_user_path(@team, user),  method: :post %></p>
     <% end %>
 </div>
 
