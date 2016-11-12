@@ -19,6 +19,7 @@ class TeamsController < ApplicationController
 
   # GET /teams/1/edit
   def edit
+    @users = User.where.not(id: @team.users)
   end
 
   # POST /teams/1/user/1/remove
@@ -27,6 +28,14 @@ class TeamsController < ApplicationController
     @user = User.find(params[:userid])
     @team.users.destroy(@user)
     redirect_to(@team)
+  end
+
+   # POST /teams/1/user/1/add
+  def addUser 
+    @team = Team.find(params[:teamid])
+    @user = User.find(params[:userid])
+    @team.users << @user
+    redirect_to edit_team_path(@team)
   end
 
   # POST /teams
