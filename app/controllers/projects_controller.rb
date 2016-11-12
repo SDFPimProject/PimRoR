@@ -19,6 +19,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1/edit
   def edit
+    @users = User.where.not(id: @project.users)
   end
 
   # POST /projects/1/user/1/remove
@@ -26,7 +27,15 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:projectid])
     @user = User.find(params[:userid])
     @project.users.destroy(@user)
-    redirect_to(@project)
+    redirect_to edit_project_path(@project)
+  end
+
+   # POST /projects/1/user/1/add
+  def addUser 
+    @project = Project.find(params[:projectid])
+    @user = User.find(params[:userid])
+    @project.users << @user
+    redirect_to edit_project_path(@project)
   end
 
   # POST /projects
