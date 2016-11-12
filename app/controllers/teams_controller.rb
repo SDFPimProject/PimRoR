@@ -27,7 +27,7 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:teamid])
     @user = User.find(params[:userid])
     @team.users.destroy(@user)
-    redirect_to(@team)
+    redirect_to edit_team_path(@team)
   end
 
    # POST /teams/1/user/1/add
