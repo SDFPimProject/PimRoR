@@ -3,7 +3,7 @@ class Users::UsersController < ApplicationController
    layout "users"
 
   def index
-     @users = User.all
+     @users = User.all.page(params[:page])
   end
 
   def new
