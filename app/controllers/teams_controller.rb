@@ -19,7 +19,8 @@ class TeamsController < ApplicationController
 
   # GET /teams/1/edit
   def edit
-    @users = User.where.not(id: @team.users)
+    @users = User.where.not(id: @team.users).page(params[:userPage])
+    @team_users = @team.users.page(params[:teamUserPage])
   end
 
   # POST /teams/1/user/1/remove
