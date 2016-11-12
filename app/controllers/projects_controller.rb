@@ -19,7 +19,8 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1/edit
   def edit
-    @users = User.where.not(id: @project.users)
+    @users = User.where.not(id: @project.users).page(params[:userPage])
+    @project_users = @project.users.page(params[:projectUserPage])
   end
 
   # POST /projects/1/user/1/remove

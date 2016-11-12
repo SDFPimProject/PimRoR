@@ -9,10 +9,11 @@
 
 <div>
     <%= Team.human_attribute_name("users") %><br />
-    <% @team.users.each do |user| %>
+    <% @team_users.each do |user| %>
         <p><%= user.email %>
         <%= link_to 'Remove',  team_remove_user_path(@team, user),  method: :post %></p>
     <% end %>
+    <%= will_paginate @team_users, :param_name => 'teamUserPage' %>
 </div>
 
 <div>
@@ -21,6 +22,7 @@
         <p><%= user.email %>
         <%= link_to 'add',  team_add_user_path(@team, user),  method: :post %></p>
     <% end %>
+    <%= will_paginate @users, :param_name => 'userPage' %>
 </div>
 
 

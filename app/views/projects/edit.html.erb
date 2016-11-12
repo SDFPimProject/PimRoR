@@ -9,10 +9,11 @@
 
 <div>
     <%= Project.human_attribute_name("users") %><br />
-    <% @project.users.each do |user| %>
+    <% @project_users.each do |user| %>
         <p><%= user.email %>
         <%= link_to 'Remove',  project_remove_user_path(@project, user),  method: :post %></p>
     <% end %>
+    <%= will_paginate @project_users, :param_name => 'projectUserPage' %>
 </div>
 
 <div>
@@ -21,6 +22,7 @@
         <p><%= user.email %>
         <%= link_to 'add',  project_add_user_path(@project, user),  method: :post %></p>
     <% end %>
+    <%= will_paginate @users, :param_name => 'userPage' %>
 </div>
 
 <%= link_to 'Show', @project %> |
