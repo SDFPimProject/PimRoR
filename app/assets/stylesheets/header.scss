@@ -1,22 +1,28 @@
 @import "colors";
 
+$nav-item-height: 70px;
+
 header {
-  background-color: $primary-color;
-  padding: 10px;
-  box-shadow: $box-shadow;
-  position: fixed;
-  right: 0;
-  left: 0;
   display: flex;
   flex-flow: row;
   justify-content: center;
 }
 
+.header {
+  display: flex;
+  flex-flow: row wrap;
+  background-color: $primary-color;
+  box-shadow: $box-shadow;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 5px;
+  padding: 10px;
+}
+
 .logo {
-  position: absolute;
   left: 20px;
   img {
-    width: 50px;
+    width: $nav-item-height;
     box-shadow: $box-shadow;
   }
 }
@@ -25,22 +31,25 @@ header {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
+  align-self: center;
   a {
     text-decoration: none;
   }
 }
 
 .links {
+  align-self: center;
   display: flex;
   flex-flow: row wrap;
 }
 
 .nav-item {
   display: flex;
+  flex-flow: row nowrap;
   background-color: $primary-accent-color;
   border-radius: 500px;
-  width: 50px;
-  height: 50px;
+  width: $nav-item-height;
+  height: $nav-item-height;
   margin: 0px 10px 0 10px;
   justify-content: center;
   align-items: center;
@@ -52,25 +61,60 @@ header {
   }
 }
 
+.nav-item-text {
+  display: flex;
+  align-self: center;
+  margin-left: -15px;
+  padding-right: 8px;
+  align-items: center;
+  height: $nav-item-height/2;
+  background-color: $primary-accent-color;
+  border-radius: 0 3px 3px 0;
+}
+
 .material-icons {
   color: $primary-color-dark-text;
-  font-size: 24px !important;
+  font-size: 36px !important;
 }
 
 .user-box {
   display: flex;
+  flex-flow: row;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  background-color: $primary-accent-color;
-  box-shadow: $box-shadow;
-  border-radius: 3px;
   right: 20px;
-  width: 30px;
-  height: 50px;
+  height: $nav-item-height;
+  transition: all 0.3s;
+
+}
+
+.user-logout {
+  display: flex;
+  justify-content: flex-end;
+  flex-flow: row nowrap;
+  top: 80px;
+  right: 10px;
+  padding: 4px;
+  background-color: $primary-accent-color;
   transition: all 0.3s;
   &:hover {
     box-shadow: $box-shadow-hover;
     cursor: pointer;
+  }
+}
+
+.user_content {
+  border-radius: 3px;
+  display: flex;
+  flex-flow: row;
+  padding: 16px 24px;
+  background-color: $primary-accent-color;
+  margin-right: 10px;
+  &:hover {
+    box-shadow: $box-shadow-hover;
+    cursor: pointer;
+  }
+  div{
+    padding-left: 10px;
   }
 }

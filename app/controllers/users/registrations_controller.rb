@@ -1,4 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+  layout "users"
 
     def create
 

@@ -21,14 +21,16 @@ pre {
 }
 
 a {
-  color: #000;
+  cursor: pointer;
+  color: $primary-color-dark-text;
+  text-decoration: none;
 
   &:visited {
-    color: #666;
+    color: $primary-color-dark-text;
   }
 
   &:hover {
-    color: $primary-accent-color;
+    color: $primary-color-dark-text;
   }
 }
 

@@ -1,10 +1,5 @@
 /* universal */
 @import "colors";
-main{
-  a {
-    text-decoration: none;
-  }
-}
 
 .background-image {
   z-index: -1;
@@ -19,7 +14,7 @@ main{
 }
 
 .main-container {
-  padding-top: 100px;
+  padding-top: 10px;
   width: 100%;
   min-height: 90vh;
   overflow-y: scroll;
@@ -31,51 +26,71 @@ main{
 }
 
 .left-side-wrapper {
+  display: flex;
   background-color: $primary-color;
   box-shadow: $box-shadow;
   margin: 5px;
   padding: 10px;
-  flex-grow: 1;
-  display: flex;
   overflow-y: scroll;
   flex-flow: column;
+  flex-grow: 1;
+  flex-basis: 0;
+
+  div {
+    justify-content: flex-start;
+    align-items: center;
+    padding:12px;
+  }
 }
 
 .right-side-wrapper {
   display: flex;
-  width: 100%;
-  flex-grow: 20;
-  overflow-x: hidden;
-  background-color: $primary-color;
-  box-shadow: $box-shadow;
-  margin: 5px;
+  justify-content: center;
+  margin: 25px;
   padding: 10px;
+  flex-grow: 5;
+  flex-basis: 0;
 }
 
-.button {
+.input-button {
   flex-grow: 2;
   display: flex;
   align-self: right;
   input {
     height: 100%;
     width: 100%;
-    border: 0;
     cursor: pointer;
+    border: 0;
     background-color: $primary-accent-color;
     color: $primary-color-dark-text;
     padding: 12px;
     border-radius: 3px;
     box-shadow: $box-shadow;
-    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
     &:hover {
       box-shadow: $box-shadow-hover;
     }
   }
 }
 
+.button {
+  display: flex;
+  background-color: $primary-accent-color;
+  box-shadow: $box-shadow;
+  padding: 16px;
+  border-radius: 3px;
+  transition: all 0.3s;
+  justify-content: center;
+  &:hover {
+    box-shadow: $box-shadow-hover;
+    transition: all 0.3s;
+  }
+}
+
 section {
   overflow: auto;
 }
+
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
@@ -118,4 +133,12 @@ p {
   background-color: $primary-accent-color !important;
   box-shadow: $box-shadow-hover !important;
   color: $primary-color-text !important;
+}
+
+.row {
+  display: flex;
+  flex-flow: row;
+  div {
+    flex-grow: 1;
+  }
 }
