@@ -1,20 +1,27 @@
 <h1>Editing Project</h1>
 
 <%= form_for(@project, url: project_path, html: { method: :put }) do |f| %>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true %>
-  </div>
-<% end %>
+    <div class="field">
+        <%= f.label :name %><br />
+        <%= f.text_field :name, autofocus: true %>
+    </div>
 
-<div>
-    <%= Project.human_attribute_name("users") %><br />
-    <% @project_users.each do |user| %>
-        <p><%= user.email %>
-        <%= link_to 'Remove',  project_remove_user_path(@project, user),  method: :post %></p>
-    <% end %>
-    <%= will_paginate @project_users, :param_name => 'projectUserPage' %>
-</div>
+    <div>
+        <%= Project.human_attribute_name("users") %><br />
+        <% @project_users.each do |a| %>
+            <p>
+                <%= User.find(a.user_id).email %>
+                <%= collection_select(UsersTeam, :user_team_role, UsersTeam::ROLES, :to_s, lambda{|i| i.to_s.humanize}) %>
+                <%= link_to 'Remove',  project_remove_user_path(@project, user),  method: :post %>
+            </p>
+        <% end %>
+        <%= will_paginate @project_users, :param_name => 'projectUserPage' %>
+    </div>
+
+    <div class="actions">
+        <%= f.submit "Save" %>
+    </div>
+<% end %>
 
 <div>
     <%= Project.human_attribute_name("users") %> hinzufügen<br />

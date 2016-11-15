@@ -29,6 +29,6 @@ module PimRoR
     # Remove the Rack::Lock Middleware for Websocket --> https://github.com/websocket-rails/websocket-rails/wiki/Installation-and-Setup
     config.middleware.delete Rack::Lock
 
-    WillPaginate.per_page = 2
+    WillPaginate.per_page = 25 
   end
 end
