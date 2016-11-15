@@ -7,8 +7,6 @@
           <div class="login-field">
             <%= f.email_field :email, autofocus: true, placeholder: "email" %>
           </div>
-
-
           <div class="login-field">
             <%= f.email_field :email_confirmation, placeholder: "email confirmation" %>
           </div>
@@ -22,6 +20,20 @@
           <div class="login-field">
             <%= f.text_field :last_name, placeholder: "last name" %>
           </div>
+        </div>
+
+        <div class="field">
+          <%= f.label :birthday %><br />
+          <%= f.date_field :birthday %>
+        </div>
+
+        <div class="field">
+          <%= f.label :street_and_nr %><br />
+          <%= f.text_field :street_and_nr, :placeholder => "Weg 15" %><br />
+          <%= f.label :zip_code %><br />
+          <%= f.number_field :zip_code %><br />
+          <%= f.label :state %><br />
+          <%= f.text_field :state %>
         </div>
 
         <div class="box-content row">
