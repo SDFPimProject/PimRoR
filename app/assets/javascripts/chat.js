@@ -6,8 +6,10 @@ var Chat = (function() {
         //PRIVAT
         var CLASS_CONVESATIONS_LIST = "conversation_list";
         var CLASS_CHAT_BOX_WRAPPER = "chat_box_wrapper";
+        var ID_CHAT_BOX_MESSAGE = "chat_box_message_";
         var CLASS_CHAT_BOX_CONTENT = "chat_box_content";
         var CLASS_CHAT_BOX_TEXTAREA = "chat_box_textarea";
+        var CLASS_CHAT_BOX_MESSAGE_STATUS = "chat_box_message_status";
         var PATH_CONVERSATIONS = "conversations/";
         var PATH_MESSAGES = "/messages";
         var currentConversation = null;
@@ -17,7 +19,6 @@ var Chat = (function() {
         }
 
         function setConversationList(html) {
-            console.log(html);
             $("." + CLASS_CONVESATIONS_LIST).html(html);
         }
 
@@ -34,9 +35,19 @@ var Chat = (function() {
             chatContent.scrollTop(chatContent[0].scrollHeight);
         }
 
+        function setTextMessageStatus(message_id, html){
+            $('#' + ID_CHAT_BOX_MESSAGE + message_id + " ." + CLASS_CHAT_BOX_MESSAGE_STATUS).html(html);
+        }
+
+
         function setMessageRead(conversation_id){
             $.post('messages_read', {conversation_id: conversation_id}, function () {
                 loadConversationData();
+            });
+        }
+        function setMessageReceive(conversation_id){
+            $.post('message_receive', {conversation_id: conversation_id}, function () {
+
             });
         }
         function loadConversationData() {
@@ -46,7 +57,11 @@ var Chat = (function() {
         function loadChatData(conversation_id){
             $.get(PATH_CONVERSATIONS + conversation_id, function(data){
                 setTextMessage(data);
-                setMessageRead(conversation_id)
+                setMessageRead(conversation_id);
+
+                var textarea = $('.' + CLASS_CHAT_BOX_TEXTAREA);
+                textarea.val('');
+                textarea.focus();
             }, "html");
         }
 
@@ -61,7 +76,6 @@ var Chat = (function() {
                     var textarea = $('.' + CLASS_CHAT_BOX_TEXTAREA);
                     textarea.val('');
                     textarea.focus();
-                    textarea.css('height', '44px');
 
                     appendTextMessage(data);
 
@@ -83,16 +97,24 @@ var Chat = (function() {
                     //Prüfung ob auch aktuelle Konversation
                     if(currentConversation == conversation_id){
                         appendTextMessage(html);
-                        //TODO NACHRICHT als EMFANGEN Markieren
-                        //TODO NACHRICHT als GELESEN Markieren
+                        setMessageRead(conversation_id);
                     }else{
-                        //TODO NACHRICHT als EMFANGEN Markieren
+                        setMessageReceive(conversation_id);
                         loadConversationData();
                         notifyNewMessage(from_user.first_name);
                     }
                 }else{
-                    //TODO NACHRICHT als EMPFANGEN Markieren
+                    setMessageReceive(conversation_id);
                     notifyNewMessage(from_user.first_name);
+                }
+            },
+            webSocketNewMessageStatus: function (conversation_id, message_id, html) {
+                //Prüfung ob überhaupt Chat Box vorhanden oder auf andere Seire
+                if($('.' + CLASS_CHAT_BOX_WRAPPER).length >= 1) {
+                    //Prüfung ob auch aktuelle Konversation
+                    if (currentConversation == conversation_id) {
+                        setTextMessageStatus(message_id, html);
+                    }
                 }
             },
             webSocketConversation: function (html) {
