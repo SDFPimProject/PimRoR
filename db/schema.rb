@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 20161110182025) do
     t.string   "street_and_nr"
     t.string   "state"
     t.integer  "zip_code"
+    t.date     "birthday"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
