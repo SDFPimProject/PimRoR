@@ -145,3 +145,15 @@
 .chat_box_message_content {
   padding: 5px;
 }
+.chat_box_message_status {
+  text-align: right;
+}
+.chat_box_message_status .material-icons {
+  font-size: 24px; //TODO Remove IMPORTANT IN HEADER CSS, at moment no affect
+  //TODO color:
+  color: #2E2F30;
+}
+.chat_box_message_status .chat_box_message_status_read .material-icons {
+  //TODO color:
+  color: #4262ee;
+}
