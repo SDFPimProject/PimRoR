@@ -102,7 +102,7 @@ var Chat = (function() {
                 }
             },
             checkInputKey:function (event, textarea) {
-                if (event.keyCode == 13 && event.shiftKey == 0) {
+                if (event.keyCode == 13 && !event.shiftKey && !event.ctrlKey) {
                     event.preventDefault();
                     sendMessage(textarea.val());
                 }
