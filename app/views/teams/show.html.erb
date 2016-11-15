@@ -8,8 +8,10 @@
 <div>
     <%= Team.human_attribute_name("users") %><br />
     <% @team_users.each do |user| %>
-        <%= user.email %>
-        <td><%= link_to 'Edit', edit_user_path(user.id) %></td>
+        <p>
+            <%= user.email %>
+            <%= user.users_teams.where('team_id = ?', @team.id)[0].user_team_role %>
+        </p>
     <% end %>
     <%= will_paginate @team_users, :param_name => 'teamUserPage' %>
 </div>

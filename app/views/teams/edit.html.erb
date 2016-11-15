@@ -5,16 +5,24 @@
     <%= f.label :name %><br />
     <%= f.text_field :name, autofocus: true %>
   </div>
-<% end %>
 
-<div>
-    <%= Team.human_attribute_name("users") %><br />
-    <% @team_users.each do |user| %>
-        <p><%= user.email %>
-        <%= link_to 'Remove',  team_remove_user_path(@team, user),  method: :post %></p>
-    <% end %>
-    <%= will_paginate @team_users, :param_name => 'teamUserPage' %>
-</div>
+
+    <div>
+        <%= Team.human_attribute_name("users") %><br />
+        <% @team_users.each do |a| %>
+            <p>
+                <%= User.find(a.user_id).email %>
+                <%= collection_select(UsersTeam, :user_team_role, UsersTeam::ROLES, :to_s, lambda{|i| i.to_s.humanize}) %>
+                <%= link_to 'remove',  team_remove_user_path(@team, a.user_id),  method: :post %></p>
+            </p>
+        <% end %>
+        <%= will_paginate @team_users, :param_name => 'teamUserPage' %>
+    </div>
+
+    <div class="actions">
+        <%= f.submit "Save" %>
+    </div>
+<% end %>
 
 <div>
     <%= Team.human_attribute_name("users") %> hinzufügen<br />
@@ -26,5 +34,4 @@
 </div>
 
 
-<%= link_to 'Show', @team %> |
 <%= link_to 'Back', teams_path %>
