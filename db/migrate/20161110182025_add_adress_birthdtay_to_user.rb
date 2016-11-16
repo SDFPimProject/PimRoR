@@ -1,4 +1,4 @@
-class AddAdressBirthdtayToUsers < ActiveRecord::Migration
+class AddAdressBirthdtayToUser < ActiveRecord::Migration
   def change
    add_column :users, :street_and_nr, :string
    add_column :users, :state, :string
