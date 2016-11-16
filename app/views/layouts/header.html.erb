@@ -25,8 +25,7 @@
                   <div class="nav-item-text">Calendar</div>
                 </div>
             <% end %>
-
-            <%= link_to '/users/edit' do %>
+            <%= link_to '/user' do %>
                 <div class="row">
                   <div class="nav-item"><i class="material-icons">&#xE8B8;</i></div>
                   <div class="nav-item-text">Settings</div>
@@ -45,20 +44,8 @@
               <div class="user-logout">
               <div><i class="material-icons">&#xE879;</i></div>
               </div>
-          <% if can? :manage, @users %>
-              <%= link_to user_index_path do %>
-                  <div class="nav-item"><i class="material-icons">&#xE8A6;</i></div>
-              <% end %>
-
-              <%= link_to teams_path do %>
-                  <div class="nav-item"><i class="material-icons">&#xE8A6;</i></div>
-              <% end %>
-
-              <%= link_to projects_path do %>
-                  <div class="nav-item"><i class="material-icons">&#xE8A6;</i></div>
-              <% end %>
-
           <% end %>
+          
         </div>
       </div>
     </header>

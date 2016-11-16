@@ -1,5 +1,4 @@
 class Users::UsersController < ApplicationController
-   load_and_authorize_resource
    layout "users"
 
   def index

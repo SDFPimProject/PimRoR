@@ -1,6 +1,6 @@
 <% content_for :sidebar do %>
     <div class="left-side-wrapper">
-      <% if can? :manage, @users %>
+      <% if can? :manage_users, @users %>
           <div class="list-box">
             <%= link_to user_index_path do %>
                 <div class="button"><i class="material-icons">&#xE896;</i> all user</div>
@@ -12,6 +12,16 @@
                 <div class="button"><i class="material-icons">&#xE145;</i> add user</div>
             <% end %>
           </div>
+      <% end %>
+      <% if can? :manage_teams, @users %>
+             <%= link_to teams_path do %>
+                  <div class="nav-item"><i class="material-icons">&#xE8A6;</i></div>
+              <% end %>
+      <% end %>
+      <% if can? :manage_projetcs, @users %>
+              <%= link_to projects_path do %>
+                  <div class="nav-item"><i class="material-icons">&#xE8A6;</i></div>
+              <% end %>
       <% end %>
 
       <div class="list-box">
