@@ -15,7 +15,7 @@ var Chat = (function() {
         var currentConversation = null;
 
         function notifyNewMessage(name) {
-            toastr['info']("New Message from " + name);
+            toastr['info']("Neue Nachricht von " + name);
         }
 
         function setConversationList(html) {

@@ -1,7 +1,7 @@
 <div id="chat_box_message_<%= message.id %>" class="chat_box_message chat_box_message_<%=  self_or_other(message, current_user) %>">
   <div class="chat_box_message_timer">
     <time datetime="<%= message.created_at %>" title="<%= message.created_at.strftime("%d %b  %Y at %I:%M%p") %>">
-      <%= message_interlocutor(message).email%> - <%= message.created_at.strftime("%H:%M %p") %>
+      <%= message_interlocutor(message).first_name%> - <%= message.created_at.strftime("%H:%M %p") %>
     </time>
   </div>
   <div class="chat_box_message_content">

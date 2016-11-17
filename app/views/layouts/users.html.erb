@@ -3,20 +3,20 @@
       <% if can? :manage, @users %>
           <div class="list-box">
             <%= link_to user_index_path do %>
-                <div class="button"><i class="material-icons">&#xE896;</i> all user</div>
+                <div class="button"><i class="material-icons">&#xE896;</i> Alle Nutzer</div>
             <% end %>
           </div>
 
           <div class="list-box">
             <%= link_to new_user_path do %>
-                <div class="button"><i class="material-icons">&#xE145;</i> add user</div>
+                <div class="button"><i class="material-icons">&#xE145;</i> Neuer Nutzer</div>
             <% end %>
           </div>
       <% end %>
 
       <div class="list-box">
         <%= link_to '/users/edit' do %>
-            <div class="button"><i class="material-icons">&#xE254;</i> edit user</div>
+            <div class="button"><i class="material-icons">&#xE254;</i> Profil bearbeiten</div>
         <% end %>
       </div>
     </div>

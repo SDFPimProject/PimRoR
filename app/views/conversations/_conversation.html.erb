@@ -5,7 +5,7 @@
 <% end %>
 <div class="list-item open-conversation" data-sid="<%= current_user.id %>" data-rip="<%= recipient.id %>">
   <div class="list-item-heading">
-    <%= recipient.email %>
+    <%= recipient.first_name %>
     <% if conversation.count_unread > 0 %>
         <div class="message-count"><%= conversation.count_unread %></div>
     <% end %>

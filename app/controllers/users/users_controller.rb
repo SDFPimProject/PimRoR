@@ -14,7 +14,7 @@ class Users::UsersController < ApplicationController
     params.permit!
     @user = User.new(params[:user])
     if @user.save
-      flash[:notice] = "Successfully created User." 
+      flash[:notice] = "Nutzer erfolgreich angelegt."
       redirect_to root_path
     else
       render :action => 'new'
@@ -35,7 +35,7 @@ class Users::UsersController < ApplicationController
     params[:user].delete(:password) if params[:user][:password].blank?
     params[:user].delete(:password_confirmation) if params[:user][:password].blank? and params[:user][:password_confirmation].blank?
     if @user.update_attributes(params[:user])
-      flash[:notice] = "Successfully updated User."
+      flash[:notice] = "Nutzer erfolgreich aktualisiert."
       redirect_to user_index_path
     else
       render :action => 'edit'
@@ -45,7 +45,7 @@ class Users::UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     if @user.destroy
-      flash[:notice] = "Successfully deleted User."
+      flash[:notice] = "Nutzer erfolgreich gelöscht."
       redirect_to root_path
     end
   end 

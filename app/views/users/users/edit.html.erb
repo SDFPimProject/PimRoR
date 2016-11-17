@@ -1,36 +1,37 @@
+<% provide(:title, "Nutzer bearbeiten") %>
 <div class="dashboard">
   <div class="content-box">
-    <div class="box-header">Edit User</div>
+    <div class="box-header">Nutzer bearbeiten</div>
     <%= form_for(@user, url: user_path, html: {method: :put}) do |f| %>
 
         <div class="box-content row">
           <div class="login-field">
-            <%= f.email_field :email, autofocus: true, placeholder: "email" %>
+            <%= f.email_field :email, autofocus: true, placeholder: "E-Mail" %>
           </div>
 
 
           <div class="login-field">
-            <%= f.email_field :email_confirmation, placeholder: "email confirmation" %>
-          </div>
-        </div>
-
-        <div class="box-content row">
-          <div class="login-field">
-            <%= f.text_field :first_name, placeholder: "first name" %>
-          </div>
-
-          <div class="login-field">
-            <%= f.text_field :last_name, placeholder: "last name" %>
+            <%= f.email_field :email_confirmation, placeholder: "E-Mail bestätigen" %>
           </div>
         </div>
 
         <div class="box-content row">
           <div class="login-field">
-            <%= f.password_field :password, autocomplete: "off", placeholder: "password" %>
+            <%= f.text_field :first_name, placeholder: "Vorname" %>
           </div>
 
           <div class="login-field">
-            <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "password confirmation" %>
+            <%= f.text_field :last_name, placeholder: "Nachname" %>
+          </div>
+        </div>
+
+        <div class="box-content row">
+          <div class="login-field">
+            <%= f.password_field :password, autocomplete: "off", placeholder: "Passwort" %>
+          </div>
+
+          <div class="login-field">
+            <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Passwort bestätigen" %>
           </div>
         </div>
 
@@ -39,9 +40,13 @@
             <%= f.collection_select(:role, User::ROLES, :to_s, lambda { |i| i.to_s.humanize }) %>
           </div>
           <div class="login-field input-button">
-            <%= f.submit "Save" %>
-            <%= link_to "Cancel", :back %>
+            <%= f.submit "Speichern" %>
           </div>
+          <%= link_to :back do %>
+              <div class="login-field button">
+                zurück
+              </div>
+          <% end %>
         </div>
     <% end %>
   </div>

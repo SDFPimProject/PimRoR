@@ -10,9 +10,9 @@ class WelcomeController < ApplicationController
     end
     if unread > 0
       if unread == 1
-        flash[:info] = "You have " + unread.to_s + " unread message!"
+        flash[:info] = "Du hast " + unread.to_s + " ungelesene Nachricht!"
       else
-        flash[:info] = "You have " + unread.to_s + " unread messages!"
+        flash[:info] = "Du hast " + unread.to_s + " ungelsene Nachrichte!"
       end
     end
 
