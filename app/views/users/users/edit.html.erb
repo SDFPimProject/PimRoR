@@ -19,13 +19,29 @@
             <%= f.text_field :last_name, placeholder: "last name" %>
           </div>
         </div>
+         <%= f.collection_select(:role, User::ROLES, :to_s, lambda { |i| i.to_s.humanize }) %><br>
+       
+         <div class="login-field">
+           Projects: 
+            <% @user.projects.each do |project| %>
+                 <%= link_to project.name, edit_project_path(project) %>
+           <% end %>
+           </div>
 
-        <div class="field">
+           <div class="login-field">
+           Teams: 
+            <% @user.teams.each do |team| %>
+               <%= link_to team.name, edit_team_path(team) %>
+           <% end %>
+           </div>
+        
+   
+        <div class="login-field">
           <%= f.label :birthday %><br />
           <%= f.date_field :birthday %>
         </div>
 
-        <div class="field">
+        <div class="login-field">
           <%= f.label :street_and_nr %><br />
           <%= f.text_field :street_and_nr, :placeholder => "Weg 15" %><br />
           <%= f.label :zip_code %><br />

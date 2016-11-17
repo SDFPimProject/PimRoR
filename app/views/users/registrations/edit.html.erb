@@ -12,10 +12,6 @@
           </div>
 
           <div class="login-field">
-            <%= f.label :role %>:
-            <%= resource.role %>
-          </div>
-          <div class="login-field">
             <%= f.label :first_name %>:
             <%= resource.first_name %>
           </div>
@@ -24,21 +20,46 @@
             <%= f.label :last_name %>:
             <%= resource.last_name %>
           </div>
-          <div class="field">
+
+           <div class="login-field">
+            <%= f.label :role %>:
+            <%= resource.role %>
+          </div>
+
+           <div class="login-field">
+           Projects: 
+            <% @user.projects.each do |project| %>
+                <%=  project.name %> 
+           <% end %>
+           </div>
+
+           <div class="login-field">
+           Teams: 
+            <% @user.teams.each do |teams| %>
+                <%=  teams.name %> 
+           <% end %>
+           </div>
+
+
+       
+
+          <div class="login-field">
             <%= f.label :street_and_nr %><br />
             <%= resource.street_and_nr %><br />
           </div>
 
-          <div class="field">
+           <%= f.collection_select(:role, User::ROLES, :to_s, lambda { |i| i.to_s.humanize }) %>
+
+          <div class="login-field">
             <%= f.label :zip_code %><br />
             <%= resource.zip_code %><br />
           </div>
-          <div class="field">
+          <div class="login-field">
             <%= f.label :birthday %><br />
             <%= resource.birthday %>
           </div>
 
-          <div class="field">
+          <div class="login-field">
             <%= f.label :state %><br />
             <%= resource.state %><br />
           </div>
