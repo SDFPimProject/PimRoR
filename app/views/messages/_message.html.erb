@@ -12,4 +12,11 @@
     <%= render :template =>  'messages/_message-status.html.erb', :locals => { :message => message} %>
   </div>
   <% end %>
+  <% if  self_or_other(message, current_user) == 'self' %>
+  <div class="chat_box_message_delete">
+    <button class="btn_message_delete" data-mid="<%= message.id %>">
+      <i class="material-icons">delete</i>
+    </button>
+  </div>
+  <% end %>
 </div>

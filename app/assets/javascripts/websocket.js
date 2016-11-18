@@ -30,6 +30,9 @@
                     data.message_id,
                     data.html);
             });
+            dispatcher.subscribe(user.id).bind('delete_message', function (data) {
+                Chat.getInstance().webSocketRemoveMessage(data.conversation_id, data.message_id);
+            });
             dispatcher.subscribe(user.id).bind('new_conversation', function (data) {
                 Chat.getInstance().webSocketConversation(data.html);
             });
