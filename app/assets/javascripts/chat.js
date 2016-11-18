@@ -34,6 +34,9 @@ var Chat = (function() {
             chatContent.append(html);
             chatContent.scrollTop(chatContent[0].scrollHeight);
         }
+        function removeTextMessge(message_id){
+            $('#' + ID_CHAT_BOX_MESSAGE + message_id).remove();
+        }
 
         function setTextMessageStatus(message_id, html){
             $('#' + ID_CHAT_BOX_MESSAGE + message_id + " ." + CLASS_CHAT_BOX_MESSAGE_STATUS).html(html);
@@ -85,6 +88,16 @@ var Chat = (function() {
             });
         }
 
+        function removeMessage (message_id) {
+            $.post(PATH_CONVERSATIONS + currentConversation + PATH_MESSAGES + "/" + message_id, {_method:'delete'},
+                function (data) {
+                    if(data.ok){
+                        removeTextMessge(message_id);
+                    }
+                }).fail(function (error) {
+            });
+        }
+
         return {
             //PUBLIC
             openChat : function(conversation_id){
@@ -117,6 +130,15 @@ var Chat = (function() {
                     }
                 }
             },
+            webSocketRemoveMessage: function (conversation_id, message_id) {
+                //Prüfung ob überhaupt Chat Box vorhanden oder auf andere Seire
+                if($('.' + CLASS_CHAT_BOX_WRAPPER).length >= 1) {
+                    //Prüfung ob auch aktuelle Konversation
+                    if (currentConversation == conversation_id) {
+                        removeTextMessge(message_id);
+                    }
+                }
+            },
             webSocketConversation: function (html) {
                 //Prüfung ob überhaupt Liste vorhanden oder auf andere Seire
                 if($('.' + CLASS_CONVESATIONS_LIST).length >= 1){
@@ -131,6 +153,9 @@ var Chat = (function() {
             },
             clickSubmit:function () {
                 sendMessage($('.' + CLASS_CHAT_BOX_TEXTAREA).val())
+            },
+            deleteMessage:function (message_id) {
+                removeMessage(message_id);
             }
         };
     }

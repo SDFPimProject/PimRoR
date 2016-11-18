@@ -157,3 +157,11 @@
   //TODO color:
   color: #4262ee;
 }
+.chat_box_message_delete {
+  text-align: right;
+}
+.btn_message_delete .material-icons{
+  font-size: 24px; //TODO Remove IMPORTANT IN HEADER CSS, at moment no affect
+  //TODO color:
+  color: #2E2F30;
+}
