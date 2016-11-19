@@ -35,17 +35,21 @@
           </div>
         </div>
         <div class="user-box">
-          <%= link_to '/users/edit' do %>
-              <div class="user_content">
-                <div class="user-name"><%= current_user.first_name %> <br> <%= current_user.last_name %></div>
-                <div class="user-icon"><i class="material-icons">&#xE8A6;</i></div>
-              </div>
-          <% end %>
-          <%= link_to '/users/sign_out', method: :delete do %>
-              <div class="user-logout">
-              <div><i class="material-icons">&#xE879;</i></div>
-              </div>
-          <% end %>
+          <div class="user_content">
+            <%= link_to '/users/edit' do %>
+                <div class="row">
+                  <div class="user-name"><%= current_user.first_name %> <br> <%= current_user.last_name %></div>
+                  <div class="user-icon"><i class="material-icons">&#xE8A6;</i></div>
+                </div>
+            <% end %>
+            <div>
+              <%= link_to '/users/sign_out', method: :delete do %>
+                  <div class="user-logout">
+                    <div> logout </div>
+                  </div>
+              <% end %>
+            </div>
+          </div>
         </div>
       </div>
     </header>
