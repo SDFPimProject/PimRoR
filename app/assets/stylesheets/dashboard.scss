@@ -4,10 +4,11 @@
   flex-flow: column;
   width: 100%;
   max-width: 800px;
-  .material-icons {
-    color: $primary-color-text !important;
-    font-size: 32px !important;
-  }
+}
+
+.dashboard .material-icons{
+  color: $primary-color-text;
+  font-size: 32px;
 }
 
 .content-box {

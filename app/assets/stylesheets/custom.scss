@@ -129,12 +129,6 @@ p {
   background-color: $primary-color;
 }
 
-.toast {
-  background-color: $primary-accent-color !important;
-  box-shadow: $box-shadow-hover !important;
-  color: $primary-color-text !important;
-}
-
 .row {
   display: flex;
   flex-flow: row;
