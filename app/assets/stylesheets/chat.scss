@@ -3,7 +3,6 @@
 .messages {
   display: flex;
   flex-flow: row nowrap;
-  max-width: 90%;
   width: 100%;
   height: 85vh;
 }
@@ -160,7 +159,7 @@
 .chat_box_message_delete {
   text-align: right;
 }
-.btn_message_delete .material-icons{
+.btn_message_delete .material-icons {
   font-size: 24px; //TODO Remove IMPORTANT IN HEADER CSS, at moment no affect
   //TODO color:
   color: #2E2F30;

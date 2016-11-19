@@ -1,6 +1,6 @@
 @import "colors";
 
-$nav-item-height: 70px;
+$nav-item-height: 60px;
 
 header {
   display: flex;
@@ -21,6 +21,8 @@ header {
 
 .logo {
   left: 20px;
+  flex-grow: 1;
+  flex-basis: 0;
   img {
     width: $nav-item-height;
     box-shadow: $box-shadow;
@@ -28,6 +30,8 @@ header {
 }
 
 .custom-nav {
+  flex-grow: 2;
+  flex-basis: 0;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
@@ -74,47 +78,65 @@ header {
 
 .material-icons {
   color: $primary-color-dark-text;
-  font-size: 36px !important;
+  font-size: 30px !important;
 }
 
 .user-box {
   display: flex;
   flex-flow: row;
-  align-items: center;
-  justify-content: center;
-  right: 20px;
+  position: relative;
+  justify-content: flex-end;
   height: $nav-item-height;
+  background-color: $primary-color-dark-text;
   transition: all 0.3s;
-
+  flex-grow: 1;
+  flex-basis: 0;
 }
 
 .user-logout {
   display: flex;
-  justify-content: flex-end;
+  height: 0;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
   flex-flow: row nowrap;
-  top: 80px;
-  right: 10px;
-  padding: 4px;
-  background-color: $primary-accent-color;
+  padding: 0;
+  color: $primary-color-text;
+  background-color: $primary-color-dark-text;
   transition: all 0.3s;
-  &:hover {
-    box-shadow: $box-shadow-hover;
-    cursor: pointer;
+  .material-icons {
+    color: $primary-color-text;
+    font-size: 24px !important;
+  }
+  &:hover{
+    color: $primary-accent-color;
   }
 }
 
 .user_content {
+  margin-top: 5px;
+  align-self: center;
   border-radius: 3px;
   display: flex;
-  flex-flow: row;
-  padding: 16px 24px;
-  background-color: $primary-accent-color;
-  margin-right: 10px;
+  flex-flow: column;
+  background-color: $primary-color-dark-text;
+  box-shadow: $box-shadow;
+  transition: all 0.3s;
   &:hover {
     box-shadow: $box-shadow-hover;
     cursor: pointer;
+    margin-top: 48px;
+    transition: all 0.3s;
   }
-  div{
-    padding-left: 10px;
+  .row{
+    background-color: $primary-accent-color;
+    padding: 16px 32px;
   }
+}
+
+.user_content:hover .user-logout{
+  display: flex;
+  height: 35px;
+  transition: all 0.3s;
+  padding: 4px;
 }
