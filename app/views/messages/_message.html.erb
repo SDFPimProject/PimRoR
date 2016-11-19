@@ -1,22 +1,20 @@
-<div id="chat_box_message_<%= message.id %>" class="chat_box_message chat_box_message_<%=  self_or_other(message, current_user) %>">
+<div id="chat_box_message_<%= message.id %>" class="chat_box_message chat_box_message_<%= self_or_other(message, current_user) %>">
   <div class="chat_box_message_timer">
     <time datetime="<%= message.created_at %>" title="<%= message.created_at.strftime("%d %b  %Y at %I:%M%p") %>">
-      <%= message_interlocutor(message).first_name%> - <%= message.created_at.strftime("%H:%M %p") %>
+      <%= message_interlocutor(message).first_name %> - <%= message.created_at.strftime("%H:%M %p") %>
     </time>
+    <% if self_or_other(message, current_user) == 'self' %>
+        <div class="chat_box_message_status">
+          <%= render :template => 'messages/_message-status.html.erb', :locals => {:message => message} %>
+          <div class="button">
+            <div class="btn_message_delete" data-mid="<%= message.id %>">
+              <i class="material-icons">delete</i>
+            </div>
+          </div>
+        </div>
+    <% end %>
   </div>
   <div class="chat_box_message_content">
     <%= message.body %>
   </div>
-  <% if  self_or_other(message, current_user) == 'self' %>
-  <div class="chat_box_message_status">
-    <%= render :template =>  'messages/_message-status.html.erb', :locals => { :message => message} %>
-  </div>
-  <% end %>
-  <% if  self_or_other(message, current_user) == 'self' %>
-  <div class="chat_box_message_delete">
-    <button class="btn_message_delete" data-mid="<%= message.id %>">
-      <i class="material-icons">delete</i>
-    </button>
-  </div>
-  <% end %>
 </div>

@@ -77,10 +77,11 @@
   display: flex;
   background-color: $primary-accent-color;
   box-shadow: $box-shadow;
-  padding: 16px;
+  padding: 8px;
   border-radius: 3px;
   transition: all 0.3s;
   justify-content: center;
+  cursor: pointer;
   &:hover {
     box-shadow: $box-shadow-hover;
     transition: all 0.3s;
