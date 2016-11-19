@@ -125,6 +125,9 @@
 }
 
 .chat_box_message_timer {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
   padding: 3px;
   border-bottom: thin solid $primary-color-dark;
 }
@@ -145,22 +148,22 @@
   padding: 5px;
 }
 .chat_box_message_status {
+  display: flex;
+  flex-flow: row;
   text-align: right;
+  .button{
+    padding: 0;
+  }
 }
 .chat_box_message_status .material-icons {
-  font-size: 24px; //TODO Remove IMPORTANT IN HEADER CSS, at moment no affect
-  //TODO color:
-  color: #2E2F30;
+  font-size: 16px;
+  padding: 4px;
+  color: $primary-color-text;
 }
 .chat_box_message_status .chat_box_message_status_read .material-icons {
-  //TODO color:
   color: #4262ee;
 }
-.chat_box_message_delete {
+.btn_message_delete .material-icons{
+  color: $primary-color-dark-text;
   text-align: right;
-}
-.btn_message_delete .material-icons {
-  font-size: 24px; //TODO Remove IMPORTANT IN HEADER CSS, at moment no affect
-  //TODO color:
-  color: #2E2F30;
 }
