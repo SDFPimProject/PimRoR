@@ -9,12 +9,26 @@
   top: 0;
   left: 0;
   background-color: $main-background;
-  //background: url("grey.jpg");
   background-size: cover;
 }
 
+.content-wrapper {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+}
+
+.content-box{
+  background-color: $primary-color;
+  box-shadow: $box-shadow;
+  margin: 0 15px 0 0;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  min-height: 200px;
+}
+
 .main-container {
-  padding-top: 10px;
   width: 100%;
   min-height: 90vh;
   overflow-y: scroll;
@@ -22,7 +36,6 @@
   flex-flow: column;
   justify-content: flex-start;
   align-items: center;
-  background-color: $main-background;
 }
 
 .left-side-wrapper {
@@ -46,8 +59,7 @@
 .right-side-wrapper {
   display: flex;
   justify-content: center;
-  margin: 25px;
-  padding: 10px;
+  margin: 5px;
   flex-grow: 5;
   flex-basis: 0;
 }

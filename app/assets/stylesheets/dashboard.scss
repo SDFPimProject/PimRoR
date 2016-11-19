@@ -11,7 +11,7 @@
   font-size: 32px;
 }
 
-.content-box {
+.dashboard-content-box {
   background-color: $primary-color;
   box-shadow: $box-shadow;
   margin: 15px;
@@ -36,6 +36,7 @@
 }
 
 .box-content {
+  justify-content: space-between;
   align-self: center;
   flex-grow: 5;
 }

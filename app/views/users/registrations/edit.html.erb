@@ -1,6 +1,5 @@
 <% provide(:title, "Profil") %>
-
-<div class="dashboard">
+<div class="content-wrapper">
   <div class="content-box">
     <div class="box-header">
       Profil
@@ -15,7 +14,7 @@
           </div>
 
           <div class="login-field">
-            <%= f.label "Role"%>:
+            <%= f.label "Role" %>:
             <%= resource.role %>
           </div>
           <div class="login-field">
@@ -53,11 +52,16 @@
           <div class="login-field input-button">
             <%= f.submit "Aktualisieren" %>
           </div>
-          <%= link_to :back do %>
-              <div class="login-field button">
-                zurück
-              </div>
-          <% end %>
+          <div>
+
+          </div>
+          <div>
+            <%= link_to :back do %>
+                <div class="login-field button">
+                  zurück
+                </div>
+            <% end %>
+          </div>
         </div>
     <% end %>
   </div>
