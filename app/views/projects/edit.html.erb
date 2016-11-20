@@ -1,5 +1,9 @@
 <h1>Editing Project</h1>
 
+<% @project.errors.each do |error| %>
+    <%= error %> 
+<% end %>
+
 <%= form_for(@project, url: project_path, html: { method: :put }) do |f| %>
     <div class="field">
         <%= f.label :name %><br />

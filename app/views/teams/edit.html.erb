@@ -1,5 +1,10 @@
 <h1>Editing Team</h1>
 
+<% @team.errors.each do |error| %>
+    <%= error %> 
+<% end %>
+
+
 <%= form_for(@team) do |f| %>
   <div class="field">
     <%= f.label :name %><br />
