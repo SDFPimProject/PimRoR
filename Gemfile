@@ -40,6 +40,8 @@ gem 'cancancan', '~> 1.10'
 
 gem 'will_paginate', '~> 3.1.0'
 
+gem 'date_validator'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

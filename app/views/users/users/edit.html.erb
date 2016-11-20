@@ -2,6 +2,11 @@
   <div class="content-box">
     <div class="box-header">Edit User</div>
     <%= form_for(@user, url: user_path, html: {method: :put}) do |f| %>
+        <% @user.errors.each do |error| %>
+          <%= error %> 
+        <% end %>
+
+
 
         <div class="box-content row">
           <div class="login-field">

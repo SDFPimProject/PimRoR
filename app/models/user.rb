@@ -28,6 +28,9 @@ class User < ActiveRecord::Base
   validates :first_name, length: { minimum: 2, maximum: 50 }, presence: true,  on: :create
   validates :last_name, length: { minimum: 2, maximum: 50 }, presence: true,  on: :create
 
+  validates :birthday, date: { before_or_equal_to: Time.now, message: 'Geburtsdatum muss in der Vergangenheit liegen.' }
+  
+
   scope :online, -> (user) do
     where("user.connection_id <> ''")
   end
