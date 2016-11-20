@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   load_and_authorize_resource
+  layout "settingsmenu"
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   # GET /projects

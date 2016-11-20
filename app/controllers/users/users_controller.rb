@@ -1,5 +1,5 @@
 class Users::UsersController < ApplicationController
-  layout "users"
+  layout "settingsmenu"
 
   def index
      if(can? :show, User)

@@ -1,5 +1,6 @@
 class TeamsController < ApplicationController
   load_and_authorize_resource
+  layout "settingsmenu"
   before_action :set_team, only: [:show, :edit, :update, :destroy]
 
   # GET /teams
