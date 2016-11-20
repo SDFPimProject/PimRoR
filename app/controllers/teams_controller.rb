@@ -66,18 +66,14 @@ class TeamsController < ApplicationController
   # PATCH/PUT /teams/1
   # PATCH/PUT /teams/1.json
   def update
-    flash[:notice] = " #{params} " 
-    redirect_to edit_team_path(@team)
-
-    # respond_to do |format|
-    #   # if @team.update(team_params[:team])
-    #   #   format.html { redirect_to @team, notice: 'Team was successfully updated.' }
-    #   #   format.json { render :show, status: :ok, location: @team }
-    #   # else
-    #   #   format.html { render :edit }
-    #   #   format.json { render json: @team.errors, status: :unprocessable_entity }
-    #   # end
-    # end
+    if @team.update(team_params)
+      flash[:notice] = "Team erfolgreich aktuallisiert."
+      redirect_to team_path
+    else
+      @users = User.where.not(id: @team.users).page(params[:userPage])
+      @team_users = @team.users_teams.page(params[:teamUserPage])
+      render :action => 'edit'
+    end
   end
 
   # DELETE /teams/1
@@ -98,7 +94,7 @@ class TeamsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def team_params
-      params.require(:team).permit(:team, :teams_users)
+      params.require(:team).permit(:name)
     end
 
     def team_user_params

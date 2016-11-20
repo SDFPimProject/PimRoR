@@ -11,7 +11,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   #:registerable
 
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/
+  VALID_ADRESS_REGEX = /\A(.*?)\s+(\d+[a-zA-Z]{0,1}\s{0,1}[-]{1}\s{0,1}\d*[a-zA-Z]{0,1}|\d+[a-zA-Z-]{0,1}\d*[a-zA-Z]{0,1})/
 
   ROLES = %i[admin moderator author banned]
 
@@ -29,7 +30,10 @@ class User < ActiveRecord::Base
   validates :last_name, length: { minimum: 2, maximum: 50 }, presence: true,  on: :create
 
   validates :birthday, date: { before_or_equal_to: Time.now, message: 'Geburtsdatum muss in der Vergangenheit liegen.' }
-  
+  validates :street_and_nr, format: { with: VALID_ADRESS_REGEX }
+  validates :state, length: { minimum: 2, maximum: 50 }
+  validates :zip_code, zipcode: { country_code: :de }
+
 
   scope :online, -> (user) do
     where("user.connection_id <> ''")
