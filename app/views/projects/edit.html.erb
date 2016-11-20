@@ -1,8 +1,16 @@
 <h1>Editing Project</h1>
 
-<% @project.errors.each do |error| %>
-    <%= error %> 
-<% end %>
+<% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project.errors.count, "error") %></h2>
+
+      <ul>
+      <% @project.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
 <%= form_for(@project, url: project_path, html: { method: :put }) do |f| %>
     <div class="field">

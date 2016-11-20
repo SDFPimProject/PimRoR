@@ -1,8 +1,16 @@
 <h1>Editing Team</h1>
 
-<% @team.errors.each do |error| %>
-    <%= error %> 
-<% end %>
+<% if @team.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@team.errors.count, "error") %></h2>
+
+      <ul>
+      <% @team.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
 
 <%= form_for(@team) do |f| %>
