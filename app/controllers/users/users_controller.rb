@@ -33,10 +33,6 @@ class Users::UsersController < ApplicationController
     end
   end
 
-  def user_params
-    params.require(:user).permit(:email, :email_confirmation ,:first_name, :last_name, :birthday, :role, :street_and_nr, :zip_code, :state, :password, :password_confirmation)
-  end
-
   def edit
     @user = User.find(params[:id])
   end
@@ -72,4 +68,10 @@ class Users::UsersController < ApplicationController
       redirect_to root_path
     end
   end 
+
+
+  private
+      def user_params
+        params.require(:user).permit(:email, :email_confirmation ,:first_name, :last_name, :birthday, :role, :street_and_nr, :zip_code, :state, :password, :password_confirmation)
+      end
 end

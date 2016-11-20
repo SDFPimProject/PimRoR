@@ -14,14 +14,18 @@
           </div>
       <% end %>
       <% if can? :manage_teams, @users %>
+          <div class="list-box">
              <%= link_to teams_path do %>
-                  <div class="nav-item"><i class="material-icons">&#xE8A6;</i></div>
+                  <div class="button"><i class="material-icons"></i> Teams</div>
               <% end %>
+          </div>
       <% end %>
       <% if can? :manage_projetcs, @users %>
+          <div class="list-box">
               <%= link_to projects_path do %>
-                  <div class="nav-item"><i class="material-icons">&#xE8A6;</i></div>
+                  <div class="button"><i class="material-icons"></i> Projekte</div>
               <% end %>
+          </div>
       <% end %>
 
       <div class="list-box">
