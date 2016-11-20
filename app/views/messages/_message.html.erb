@@ -4,9 +4,11 @@
       <%= message_interlocutor(message).first_name %> - <%= message.created_at.strftime("%H:%M %p") %>
     </time>
     <% if self_or_other(message, current_user) == 'self' %>
-        <div class="chat_box_message_status">
-          <%= render :template => 'messages/_message-status.html.erb', :locals => {:message => message} %>
-          <div class="button">
+        <div class="row chat-action-row">
+          <div class="chat_box_message_status">
+            <%= render :template => 'messages/_message-status.html.erb', :locals => {:message => message} %>
+          </div>
+          <div class="delete-button-action button">
             <div class="btn_message_delete" data-mid="<%= message.id %>">
               <i class="material-icons">delete</i>
             </div>

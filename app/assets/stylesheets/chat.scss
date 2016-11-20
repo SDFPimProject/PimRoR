@@ -152,15 +152,18 @@
   display: flex;
   flex-flow: row;
   text-align: right;
-  .button{
-    padding: 0;
-  }
+
 }
-.chat_box_message_status .material-icons {
+.chat-action-row .material-icons{
   font-size: 16px;
   padding: 4px;
   color: $primary-color-text;
 }
+
+.chat-action-row .button{
+  padding: 0;
+}
+
 .chat_box_message_status .chat_box_message_status_read .material-icons {
   color: #4262ee;
 }
