@@ -1,10 +1,16 @@
 class TeamsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_team, only: [:show, :edit, :update, :destroy]
 
   # GET /teams
   # GET /teams.json
   def index
-    @teams = Team.page(params[:page])
+    if (current_user.role == "admin" || current_user.role == "manager")
+      @teams = Team.page(params[:page])
+    else
+      userteams = current_user.users_teams.where("user_team_role = ?", "manager")
+      @teams = current_user.teams.where(id: userteams.pluck(:team_id)).page(params[:page])
+    end
   end
 
   # GET /teams/1

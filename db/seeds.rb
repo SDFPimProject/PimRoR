@@ -79,7 +79,6 @@ user_list.each do |user|
     u = User.create(first_name: user, last_name:"Doe", email: user + "@pimsuite.de", email_confirmation: user + "@pimsuite.de", password: "Secure!12345678", role: "admin", street_and_nr:"Sonnenweg 10")
     u.projects << Project.find_by_name(u.first_name)
     u.teams << Team.find_by_name(u.first_name)
-    u.save!
 end
 
 student_list.each do |student|

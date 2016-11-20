@@ -1,10 +1,16 @@
 class ProjectsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.page(params[:page])
+    if (current_user.role == "admin" || current_user.role == "manager")
+      @projects = Project.page(params[:page])
+    else
+      userprojects = current_user.users_projects.where("user_project_role = ?", "manager")
+      @projects = current_user.projects.where(id: userprojects.pluck(:project_id)).page(params[:page])
+    end
   end
 
   # GET /projects/1

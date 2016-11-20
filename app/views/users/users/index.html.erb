@@ -1,16 +1,15 @@
-<div class="user-wrapper">
-  <table class="user_table">
-    <tr>
-      <th>Vorname</th>
-      <th>Nachname</th>
-      <th colspan="2">Email</th>
-    </tr>
-    <tr>
-      <% if @users.any? %>
-          <%= render @users %>
-      <% end %>
-    </tr>
-  </table>
-</div>
-<%= will_paginate @users %>
-
+<% if @users != nil %>
+  <div class="user-wrapper">
+    <table class="user_table">
+      <tr>
+        <th>Vorname</th>
+        <th>Nachname</th>
+        <th colspan="2">Email</th>
+      </tr>
+      <tr>
+         <%= render @users %>
+      </tr>
+    </table>
+  </div>
+  <%= will_paginate @users %>
+<% end %>
