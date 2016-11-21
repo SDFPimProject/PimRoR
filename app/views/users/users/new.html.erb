@@ -39,6 +39,14 @@
           <%= f.text_field :state %>
         </div>
         <div class="box-content row">
+          <%= f.label :country_name %><br />
+          <%= f.text_field :country_name %>
+        </div>
+        <div class="box-content row">
+          <%= f.label :locality %><br />
+          <%= f.text_field :locality %>
+        </div>
+        <div class="box-content row">
           <div class="login-field">
             <%= f.collection_select(:role, User::ROLES, :to_s, lambda { |i| i.to_s.humanize }) %>
           </div>
