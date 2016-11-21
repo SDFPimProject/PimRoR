@@ -1,28 +1,6 @@
 <h1>Editing Team</h1>
 
-<% if @team.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@team.errors.count, "error") %></h2>
-
-      <ul>
-      <% @team.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-
-<%= form_for(@team) do |f| %>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true %>
-  </div>
-    <div class="actions">
-        <%= f.submit "Save" %>
-    </div>
-<% end %>
-
+<%= render 'form' %>
 
 <%= Team.human_attribute_name("users") %><br />
 <% @team_users.each do |a| %>

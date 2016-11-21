@@ -4,19 +4,17 @@ class Ability
   def initialize(user)
     if !user.nil? and user.role == "admin" || user.role == "manager"  
       can :manage, :all
-    #else
-    #  can :read, :all
     end
 
     if !user.nil? and user.users_teams.any? { |p| p.user_team_role == "manager"}
       can :manage, Team
-      else
+    else
       can :read, Team
     end
 
     if !user.nil? and user.users_projects.any? { |p| p.user_project_role == "manager"} 
       can :manage, Project
-      else
+    else
       can :read, Project
     end
   end

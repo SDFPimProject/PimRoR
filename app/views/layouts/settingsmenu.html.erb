@@ -6,7 +6,8 @@
                 <div class="button"><i class="material-icons">&#xE896;</i> all user</div>
             <% end %>
           </div>
-
+      <% end %>
+      <% if can? :create, User %>
           <div class="list-box">
             <%= link_to new_user_path do %>
                 <div class="button"><i class="material-icons">&#xE145;</i> add user</div>
@@ -20,6 +21,13 @@
               <% end %>
           </div>
       <% end %>
+      <% if can? :create, Team %>
+          <div class="list-box">
+            <%= link_to new_team_path do %>
+                <div class="button"><i class="material-icons">&#xE145;</i> add Team</div>
+            <% end %>
+          </div>
+      <% end %>
       <% if can? :show, Project %>
           <div class="list-box">
               <%= link_to projects_path do %>
@@ -27,7 +35,13 @@
               <% end %>
           </div>
       <% end %>
-
+      <% if can? :create, Project %>
+          <div class="list-box">
+            <%= link_to new_project_path do %>
+                <div class="button"><i class="material-icons">&#xE145;</i> add Project</div>
+            <% end %>
+          </div>
+      <% end %>
       <div class="list-box">
         <%= link_to '/users/edit' do %>
             <div class="button"><i class="material-icons">&#xE254;</i> edit user</div>
