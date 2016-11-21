@@ -32,6 +32,8 @@ class User < ActiveRecord::Base
   validates :birthday, date: { before_or_equal_to: Time.now, message: 'Geburtsdatum muss in der Vergangenheit liegen.' }
   validates :street_and_nr, format: { with: VALID_ADRESS_REGEX }
   validates :state, length: { minimum: 2, maximum: 50 }
+  validates :country_name, length: { minimum: 2, maximum: 50 }
+  validates :locality, length: { minimum: 2, maximum: 50 }
   validates :zip_code, zipcode: { country_code: :de }
 
 
