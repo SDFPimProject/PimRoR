@@ -4,13 +4,14 @@
   flex-flow: column;
   width: 100%;
   max-width: 800px;
-  .material-icons {
-    color: $primary-color-text !important;
-    font-size: 32px !important;
-  }
 }
 
-.content-box {
+.dashboard .material-icons{
+  color: $primary-color-text;
+  font-size: 32px;
+}
+
+.dashboard-content-box {
   background-color: $primary-color;
   box-shadow: $box-shadow;
   margin: 15px;
@@ -35,6 +36,7 @@
 }
 
 .box-content {
+  justify-content: space-between;
   align-self: center;
   flex-grow: 5;
 }

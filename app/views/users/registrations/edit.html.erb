@@ -1,22 +1,29 @@
-<div class="dashboard">
+<% provide(:title, "Profil") %>
+<div class="content-wrapper">
   <div class="content-box">
-    <div class="box-header"> <%= resource_name.to_s.humanize %></div>
+    <div class="box-header">
+      Profil
+    </div>
     <%= form_for(resource, as: resource_name, url: update_user_registration_path(resource_name), html: {method: :put}) do |f| %>
         <%= devise_error_messages! %>
 
         <div class="box-content">
           <div class="login-field">
-            <%= f.label :email %>:
+            <%= f.label "E-Mail" %>:
             <%= resource.email %>
           </div>
 
           <div class="login-field">
-            <%= f.label :first_name %>:
+            <%= f.label "Role" %>:
+            <%= resource.role %>
+          </div>
+          <div class="login-field">
+            <%= f.label "Vorname" %>:
             <%= resource.first_name %>
           </div>
 
           <div class="login-field">
-            <%= f.label :last_name %>:
+            <%= f.label "Nachname" %>:
             <%= resource.last_name %>
           </div>
 
@@ -70,16 +77,16 @@
         </div>
 
         <div class="box-header">
-          Password (leave blank if you don't want to change it)
+          Passwort (frei lassen, für keine Änderung)
         </div>
 
         <div class="box-content row">
           <div class="login-field">
-            <%= f.password_field :password, autocomplete: "off", placeholder: "password" %>
+            <%= f.password_field :password, autocomplete: "off", placeholder: "Passwort" %>
           </div>
 
           <div class="login-field">
-            <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "password confirmation" %>
+            <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Passwort bestätigen" %>
           </div>
         </div>
 
@@ -91,13 +98,18 @@
 
         <div class="box-content row">
           <div class="login-field input-button">
-            <%= f.submit "Update" %>
+            <%= f.submit "Aktualisieren" %>
           </div>
-          <%= link_to :back do %>
-              <div class="login-field button">
-                back
-              </div>
-          <% end %>
+          <div>
+
+          </div>
+          <div>
+            <%= link_to :back do %>
+                <div class="login-field button">
+                  zurück
+                </div>
+            <% end %>
+          </div>
         </div>
       <% end %>
   </div>

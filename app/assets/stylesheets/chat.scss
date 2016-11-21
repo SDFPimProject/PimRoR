@@ -3,7 +3,6 @@
 .messages {
   display: flex;
   flex-flow: row nowrap;
-  max-width: 90%;
   width: 100%;
   height: 85vh;
 }
@@ -12,7 +11,7 @@
   display: flex;
   background-color: $primary-color;
   box-shadow: $box-shadow;
-  margin: -25px 0 25px 0;
+  margin: 0px 0;
   padding: 10px;
   overflow-y: scroll;
   flex-flow: column;
@@ -23,7 +22,7 @@
 .right-side-wrapper-chat {
   display: flex;
   justify-content: center;
-  margin: -25px 25px 25px 25px;
+  margin: 0px 5px;
   background-color: $primary-color;
   box-shadow: $box-shadow;
   padding: 10px;
@@ -105,6 +104,7 @@
 }
 
 .chat_box_textarea {
+  resize: none;
   margin: 5px;
   height: 50px;
   flex-grow: 9;
@@ -126,6 +126,9 @@
 }
 
 .chat_box_message_timer {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
   padding: 3px;
   border-bottom: thin solid $primary-color-dark;
 }
@@ -146,14 +149,25 @@
   padding: 5px;
 }
 .chat_box_message_status {
+  display: flex;
+  flex-flow: row;
   text-align: right;
+
 }
-.chat_box_message_status .material-icons {
-  font-size: 24px; //TODO Remove IMPORTANT IN HEADER CSS, at moment no affect
-  //TODO color:
-  color: #2E2F30;
+.chat-action-row .material-icons{
+  font-size: 16px;
+  padding: 4px;
+  color: $primary-color-text;
 }
+
+.chat-action-row .button{
+  padding: 0;
+}
+
 .chat_box_message_status .chat_box_message_status_read .material-icons {
-  //TODO color:
   color: #4262ee;
+}
+.btn_message_delete .material-icons{
+  color: $primary-color-dark-text;
+  text-align: right;
 }

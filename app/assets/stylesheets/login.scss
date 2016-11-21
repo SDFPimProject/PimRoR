@@ -21,6 +21,13 @@ $margin: 20px;
   a {
     font-size: 8px;
     align-self: center;
+    color: $primary-color-text;
+    &:visited{
+      color: $primary-color-text;
+    }
+    &:hover{
+      color: $primary-accent-color;
+    }
   }
 }
 

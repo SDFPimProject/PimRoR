@@ -1,6 +1,7 @@
-<div class="dashboard">
+<% provide(:title, "Nutzer bearbeiten") %>
+<div class="content-wrapper">
   <div class="content-box">
-    <div class="box-header">Edit User</div>
+    <div class="box-header">Nutzer bearbeiten</div>
     <%= form_for(@user, url: user_path, html: {method: :put}) do |f| %>
         <% if @user.errors.any? %>
           <div id="error_explanation">
@@ -18,19 +19,19 @@
 
         <div class="box-content row">
           <div class="login-field">
-            <%= f.email_field :email, autofocus: true, placeholder: "email" %>
+            <%= f.email_field :email, autofocus: true, placeholder: "E-Mail" %>
           </div>
           <div class="login-field">
-            <%= f.email_field :email_confirmation, placeholder: "email confirmation" %>
+            <%= f.email_field :email_confirmation, placeholder: "E-Mail bestätigen" %>
           </div>
         </div>
 
         <div class="box-content row">
           <div class="login-field">
-            <%= f.text_field :first_name, placeholder: "first name" %>
+            <%= f.text_field :first_name, placeholder: "Vorname" %>
           </div>
           <div class="login-field">
-            <%= f.text_field :last_name, placeholder: "last name" %>
+            <%= f.text_field :last_name, placeholder: "Nachname" %>
           </div>
         </div>
         
@@ -71,18 +72,27 @@
 
         <div class="box-content row">
           <div class="login-field">
-            <%= f.password_field :password, autocomplete: "off", placeholder: "password" %>
+            <%= f.password_field :password, autocomplete: "off", placeholder: "Passwort" %>
           </div>
 
           <div class="login-field">
-            <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "password confirmation" %>
+            <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Passwort bestätigen" %>
           </div>
         </div>
 
-        <div class="box-content row">
+        <div class="box-content user-edit-action row">
+          <div class="login-field">
+            <%= f.collection_select(:role, User::ROLES, :to_s, lambda { |i| i.to_s.humanize }) %>
+          </div>
           <div class="login-field input-button">
-            <%= f.submit "Save" %>
-            <%= link_to "Cancel", :back %>
+            <%= f.submit "Speichern" %>
+          </div>
+          <div>
+            <%= link_to :back do %>
+                <div class="login-field button">
+                  zurück
+                </div>
+            <% end %>
           </div>
         </div>
     <% end %>

@@ -9,42 +9,45 @@
                 <div class="row">
                   <div class="nav-item">
                     <i class="material-icons md-48">&#xE88A;</i></div>
-                  <div class="nav-item-text">Home</div>
+                  <div class="nav-item-text">Startseite</div>
                 </div>
             <% end %>
             <%= link_to '/conversations' do %>
                 <div class="row">
                   <div class="nav-item"><i class="material-icons">&#xE0B7;</i></div>
-                  <div class="nav-item-text">Messages</div>
+                  <div class="nav-item-text">Nachrichten</div>
                 </div>
             <% end %>
             <%= link_to '/' do %>
                 <div class="row">
                   <div class="nav-item"><i class="material-icons">&#xE916;</i></div>
-                  <div class="nav-item-text">Calendar</div>
+                  <div class="nav-item-text">Kalender</div>
                 </div>
             <% end %>
             <%= link_to '/user' do %>
                 <div class="row">
                   <div class="nav-item"><i class="material-icons">&#xE8B8;</i></div>
-                  <div class="nav-item-text">Settings</div>
+                  <div class="nav-item-text">Einstellungen</div>
                 </div>
             <% end %>
           </div>
         </div>
         <div class="user-box">
-          <%= link_to '/users/edit' do %>
-              <div class="user_content">
-                <div class="user-name"><%= current_user.first_name %> <br> <%= current_user.last_name %></div>
-                <div class="user-icon"><i class="material-icons">&#xE8A6;</i></div>
-              </div>
-          <% end %>
-          <%= link_to '/users/sign_out', method: :delete do %>
-              <div class="user-logout">
-                <div><i class="material-icons">&#xE879;</i></div>
-              </div>
-          <% end %>
-          
+          <div class="user_content">
+            <%= link_to '/users/edit' do %>
+                <div class="row">
+                  <div class="user-name"><%= current_user.first_name %> <br> <%= current_user.last_name %></div>
+                  <div class="user-icon"><i class="material-icons">&#xE8A6;</i></div>
+                </div>
+            <% end %>
+            <div>
+              <%= link_to '/users/sign_out', method: :delete do %>
+                  <div class="user-logout">
+                    <div> logout </div>
+                  </div>
+              <% end %>
+            </div>
+          </div>
         </div>
       </div>
     </header>

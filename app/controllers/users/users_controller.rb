@@ -25,9 +25,7 @@ class Users::UsersController < ApplicationController
       else
         render :action => 'new'
       end
-    else 
-      redirect_to root_path
-    end 
+    end
   end
 
   def edit
@@ -45,7 +43,7 @@ class Users::UsersController < ApplicationController
       params[:user].delete(:password) if params[:user][:password].blank?
       params[:user].delete(:password_confirmation) if params[:user][:password].blank? and params[:user][:password_confirmation].blank?
       if @user.update_attributes(params[:user])
-        flash[:notice] = "Successfully updated User."
+        flash[:notice] = "Nutzer erfolgreich aktualisiert."
         redirect_to user_index_path
       else
         render :action => 'edit'

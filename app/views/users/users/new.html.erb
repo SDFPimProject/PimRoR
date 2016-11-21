@@ -1,29 +1,31 @@
-<div class="dashboard">
+<% provide(:title, "Nutzer neu") %>
+
+<div class="content-wrapper">
   <div class="content-box">
-    <div class="box-header">Sign up</div>
+    <div class="box-header">Neuer Nutzer</div>
     <%= form_for(@user, url: user_index_path) do |f| %>
         <div class="box-content row">
             <div class="login-field">
-              <%= f.text_field :first_name, placeholder: "first name" %>
+              <%= f.text_field :first_name, placeholder: "Vorname" %>
             </div>
             <div class="login-field">
-              <%= f.text_field :last_name, placeholder: "last name" %>
+              <%= f.text_field :last_name, placeholder: "Nachname" %>
             </div>
         </div>
         <div class="box-content row">
             <div class="login-field">
-              <%= f.email_field :email, placeholder: "email" %>
+              <%= f.email_field :email, placeholder: "E-Mail" %>
             </div>
             <div class="login-field">
-              <%= f.email_field :email_confirmation, placeholder: "email confirmation" %>
+              <%= f.email_field :email_confirmation, placeholder: "E-Mail bestätigen" %>
             </div>
         </div>
         <div class="box-content row">
           <div class="login-field">
-            <%= f.password_field :password, autocomplete: "off", placeholder: "password" %>
+            <%= f.password_field :password, autocomplete: "off", placeholder: "Passwort" %>
           </div>
           <div class="login-field">
-            <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "password confirmation" %>
+            <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Passwort bestätigen" %>
           </div>
         </div>
         <div class="box-content row">
@@ -51,7 +53,7 @@
             <%= f.collection_select(:role, User::ROLES, :to_s, lambda { |i| i.to_s.humanize }) %>
           </div>
           <div class="login-field input-button">
-            <%= f.submit "Sign up" %>
+            <%= f.submit "Anlegen" %>
           </div>
         </div>
     <% end %>

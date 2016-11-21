@@ -34,7 +34,7 @@ class ConversationsController < ApplicationController
   def show
     @conversation = Conversation.find(params[:id])
     @reciever = interlocutor(@conversation)
-    @messages = @conversation.messages
+    @messages = @conversation.messages.order('created_at')
     @message = Message.new
 
     render layout: false

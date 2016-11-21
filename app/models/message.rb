@@ -2,6 +2,13 @@ class Message < ActiveRecord::Base
   belongs_to :conversation, :foreign_key => :conversation_id, class_name: 'Conversation'
   belongs_to :user, :foreign_key => :send_from_id, class_name: 'User'
 
+  if Rails.env.development?
+    attr_encrypted :body, key: 'PimRoR ist ein super geiles Projekt!'
+  end
+  if Rails.env.production?
+    attr_encrypted :body, key: ENV['MESSAGE_API_KEY'], if: Rails.env.production?
+  end
+
   def message_time
     created_at.strftime("%m/%d/%y at %l:%M %p")
   end

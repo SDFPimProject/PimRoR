@@ -1,0 +1,31 @@
+@import "colors";
+
+/* Styling Container e.g. Position, size, etc. */
+#toast-container{
+  padding: 5px;
+}
+/* Genral Styling Toast */
+#toast-container .toast{
+  color: $primary-color-text;
+  background-color: $primary-color;
+  box-shadow: $box-shadow-hover;
+}
+/* INFO */
+#toast-container .toast.toast-info{
+  background-color: deepskyblue;
+}
+/* SUCCESS */
+#toast-container .toast.toast-success{
+  background-color: $color2;
+  box-shadow: $box-shadow;
+}
+/* WARNING */
+#toast-container .toast.toast-warning{
+  background-color: yellow;
+  box-shadow: $box-shadow;
+}
+/* ERROR */
+#toast-container .toast.toast-error{
+  background-color: $primary-accent-color;
+  box-shadow: $box-shadow;
+}
