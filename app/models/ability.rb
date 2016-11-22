@@ -7,13 +7,15 @@ class Ability
     end
 
     if !user.nil? and user.users_teams.any? { |p| p.user_team_role == "manager"}
-      can :manage, Team
+      can :read, Team
+      can :update, Team
     else
       can :read, Team
     end
 
     if !user.nil? and user.users_projects.any? { |p| p.user_project_role == "manager"} 
-      can :manage, Project
+      can :read, Project
+      can :update, Project
     else
       can :read, Project
     end
