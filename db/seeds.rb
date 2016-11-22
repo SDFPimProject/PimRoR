@@ -76,13 +76,34 @@ student_list = [
 ]
 
 user_list.each do |user|
-    u = User.create(first_name: user, last_name:"Doe", email: user + "@pimsuite.de", email_confirmation: user + "@pimsuite.de", password: "Secure!12345678", role: "admin", street_and_nr:"Sonnenweg 10")
+    u = User.create(first_name: user,
+                    last_name:"PimCrew",
+                    email: user + "@pimsuite.de",
+                    email_confirmation: user + "@pimsuite.de",
+                    password: "Secure!12345678",
+                    role: "admin",
+                    street_and_nr:"Sonnenweg 10",
+                    birthday: "01.01.1985",
+                    state: "de",
+                    country_name: "Deutschland",
+                    locality: "Berlin",
+                    zip_code: "12351")
     u.projects << Project.find_by_name(u.first_name)
     u.teams << Team.find_by_name(u.first_name)
 end
 
 student_list.each do |student|
-    User.create(first_name: student ,email: student + "@htw-berlin.de", password: "123456", role: "author")
+    User.create(first_name: student ,
+                last_name: "TestUser",
+                email: student + "@htw-berlin.de",
+                email_confirmation: student + "@htw-berlin.de",
+                password: "12345678",
+                role: "author",
+                street_and_nr:"Sonnenweg 10",
+                birthday: "01.01.1980",
+                state: "de",
+                country_name: "Deutschland",
+                locality: "Berlin",
+                zip_code: "12351")
 end
-
 
