@@ -24,4 +24,6 @@
 <%= will_paginate @teams %>
 <br>
 
-<%= link_to 'New Team', new_team_path %>
+<% if can? :create, Team %>
+  <%= link_to 'New Team', new_team_path %>
+<% end %>
