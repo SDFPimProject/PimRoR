@@ -10,7 +10,7 @@
         dispatcher.bind('connection_closed', function(data) {
             console.log('Connection is closed');
             // Try Reconnect
-            dispatcher = new WebSocketRails( url + '/websocket');
+            
         });
 
         //User Channel for Private Single Messages to one User
