@@ -29,6 +29,10 @@
           </div>
         </div>
         <div class="box-content row">
+          <%= f.label :birthday %><br />
+          <%= f.date_field :birthday %>
+        </div>
+        <div class="box-content row">
           <%= f.label :street_and_nr %><br>
           <%= f.text_field :street_and_nr, :placeholder => "Weg 15" %>
         </div>
