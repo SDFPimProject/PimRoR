@@ -4,3 +4,4 @@ $(document).on('click', '#push_notify_all', function() {
 });
 
 //Functions
+$('#calendar_go_to_date').datepicker();

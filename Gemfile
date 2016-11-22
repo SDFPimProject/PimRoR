@@ -21,6 +21,11 @@ gem 'bootstrap-sass', '3.3.7'
 gem 'jquery-rails'
 #User jquery-turbolinks to write JS-Code in a normal way
 gem 'jquery-turbolinks'
+#Use for date picker
+gem 'jquery-ui-rails'
+#Use for calendar
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
