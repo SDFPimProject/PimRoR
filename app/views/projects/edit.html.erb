@@ -2,5 +2,30 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @project %> |
+<%= Project.human_attribute_name("users") %><br />
+<% @project_users.each do |a| %>
+    <%= form_for(a) do |ff| %>
+        <p>
+            <%= User.find(a.user_id).email %>
+            <%= ff.collection_select(:user_project_role, UsersProject::ROLES, :to_s, lambda{|i| i.to_s.humanize}) %>
+            <%= link_to 'Remove',  project_remove_user_path(@project, a.user_id),  method: :post %>
+        </p>
+        <div class="actions">
+            <%= ff.submit "Save" %>
+        </div>
+    <% end %>
+<% end %>
+<%= will_paginate @project_users, :param_name => 'projectUserPage' %>
+
+    
+
+<div>
+    <%= Project.human_attribute_name("users") %> hinzufügen<br />
+    <% @users.each do |user| %>
+        <p><%= user.email %>
+        <%= link_to 'add',  project_add_user_path(@project, user),  method: :post %></p>
+    <% end %>
+    <%= will_paginate @users, :param_name => 'userPage' %>
+</div>
+
 <%= link_to 'Back', projects_path %>

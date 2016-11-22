@@ -1,15 +1,23 @@
 class ProjectsController < ApplicationController
+  load_and_authorize_resource
+  layout "settingsmenu"
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
+    if (current_user.role == "admin" || current_user.role == "manager")
+      @projects = Project.page(params[:page])
+    else
+      userprojects = current_user.users_projects.where("user_project_role = ?", "manager")
+      @projects = current_user.projects.where(id: userprojects.pluck(:project_id)).page(params[:page])
+    end
   end
 
   # GET /projects/1
   # GET /projects/1.json
   def show
+    @project_users = @project.users.page(params[:projectUserPage])
   end
 
   # GET /projects/new
@@ -19,6 +27,24 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1/edit
   def edit
+    @users = User.where.not(id: @project.users).page(params[:userPage])
+    @project_users = @project.users_projects.page(params[:projectUserPage])
+  end
+
+  # POST /projects/1/user/1/remove
+  def removeUser 
+    @project = Project.find(params[:projectid])
+    @user = User.find(params[:userid])
+    @project.users.destroy(@user)
+    redirect_to edit_project_path(@project)
+  end
+
+   # POST /projects/1/user/1/add
+  def addUser 
+    @project = Project.find(params[:projectid])
+    @user = User.find(params[:userid])
+    @project.users << @user
+    redirect_to edit_project_path(@project)
   end
 
   # POST /projects
@@ -40,14 +66,13 @@ class ProjectsController < ApplicationController
   # PATCH/PUT /projects/1
   # PATCH/PUT /projects/1.json
   def update
-    respond_to do |format|
-      if @project.update(project_params)
-        format.html { redirect_to @project, notice: 'Project was successfully updated.' }
-        format.json { render :show, status: :ok, location: @project }
-      else
-        format.html { render :edit }
-        format.json { render json: @project.errors, status: :unprocessable_entity }
-      end
+    if @project.update(project_params)
+      flash[:notice] = "Projekt erfolgreich aktuallisiert."
+      redirect_to project_path
+    else
+      @users = User.where.not(id: @project.users).page(params[:userPage])
+      @team_users = @project.users_projects.page(params[:projectUserPage])
+      render :action => 'edit'
     end
   end
 
@@ -70,5 +95,9 @@ class ProjectsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
       params.require(:project).permit(:name)
+    end
+
+    def team_user_params
+      params.permit(:projectid, :userid)
     end
 end

@@ -1,15 +1,23 @@
 class TeamsController < ApplicationController
+  load_and_authorize_resource
+  layout "settingsmenu"
   before_action :set_team, only: [:show, :edit, :update, :destroy]
 
   # GET /teams
   # GET /teams.json
   def index
-    @teams = Team.all
+    if (current_user.role == "admin" || current_user.role == "manager")
+      @teams = Team.page(params[:page])
+    else
+      userteams = current_user.users_teams.where("user_team_role = ?", "manager")
+      @teams = current_user.teams.where(id: userteams.pluck(:team_id)).page(params[:page])
+    end
   end
 
   # GET /teams/1
   # GET /teams/1.json
   def show
+    @team_users = @team.users.page(params[:teamUserPage])
   end
 
   # GET /teams/new
@@ -19,6 +27,24 @@ class TeamsController < ApplicationController
 
   # GET /teams/1/edit
   def edit
+    @users = User.where.not(id: @team.users).page(params[:userPage])
+    @team_users = @team.users_teams.page(params[:teamUserPage])
+  end
+
+  # POST /teams/1/user/1/remove
+  def removeUser 
+    @team = Team.find(params[:teamid])
+    @user = User.find(params[:userid])
+    @team.users.destroy(@user)
+    redirect_to edit_team_path(@team)
+  end
+
+   # POST /teams/1/user/1/add
+  def addUser 
+    @team = Team.find(params[:teamid])
+    @user = User.find(params[:userid])
+    @team.users << @user
+    redirect_to edit_team_path(@team)
   end
 
   # POST /teams
@@ -40,14 +66,13 @@ class TeamsController < ApplicationController
   # PATCH/PUT /teams/1
   # PATCH/PUT /teams/1.json
   def update
-    respond_to do |format|
-      if @team.update(team_params)
-        format.html { redirect_to @team, notice: 'Team was successfully updated.' }
-        format.json { render :show, status: :ok, location: @team }
-      else
-        format.html { render :edit }
-        format.json { render json: @team.errors, status: :unprocessable_entity }
-      end
+    if @team.update(team_params)
+      flash[:notice] = "Team erfolgreich aktuallisiert."
+      redirect_to team_path
+    else
+      @users = User.where.not(id: @team.users).page(params[:userPage])
+      @team_users = @team.users_teams.page(params[:teamUserPage])
+      render :action => 'edit'
     end
   end
 
@@ -70,5 +95,9 @@ class TeamsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def team_params
       params.require(:team).permit(:name)
+    end
+
+    def team_user_params
+      params.permit(:teamid, :userid)
     end
 end

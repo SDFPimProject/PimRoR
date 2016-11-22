@@ -1,39 +1,63 @@
-<h2>Sign up</h2>
+<% provide(:title, "Nutzer neu") %>
 
-<%= form_for(@user, url: user_index_path) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email %>
+<div class="content-wrapper">
+  <div class="content-box">
+    <div class="box-header">Neuer Nutzer</div>
+    <%= form_for(@user, url: user_index_path) do |f| %>
+        <div class="box-content row">
+            <div class="login-field">
+              <%= f.text_field :first_name, placeholder: "Vorname" %>
+            </div>
+            <div class="login-field">
+              <%= f.text_field :last_name, placeholder: "Nachname" %>
+            </div>
+        </div>
+        <div class="box-content row">
+            <div class="login-field">
+              <%= f.email_field :email, placeholder: "E-Mail" %>
+            </div>
+            <div class="login-field">
+              <%= f.email_field :email_confirmation, placeholder: "E-Mail bestätigen" %>
+            </div>
+        </div>
+        <div class="box-content row">
+          <div class="login-field">
+            <%= f.password_field :password, autocomplete: "off", placeholder: "Passwort" %>
+          </div>
+          <div class="login-field">
+            <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Passwort bestätigen" %>
+          </div>
+        </div>
+        <div class="box-content row">
+          <%= f.label :street_and_nr %><br>
+          <%= f.text_field :street_and_nr, :placeholder => "Weg 15" %>
+        </div>
+        <div class="box-content row">
+          <%= f.label :zip_code %><br />
+          <%= f.number_field :zip_code %>
+        </div>
+        <div class="box-content row">
+          <%= f.label :state %><br />
+          <%= f.text_field :state %>
+        </div>
+        <div class="box-content row">
+          <%= f.label :country_name %><br />
+          <%= f.text_field :country_name %>
+        </div>
+        <div class="box-content row">
+          <%= f.label :locality %><br />
+          <%= f.text_field :locality %>
+        </div>
+        <div class="box-content row">
+          <div class="login-field">
+            <%= f.collection_select(:role, User::ROLES, :to_s, lambda { |i| i.to_s.humanize }) %>
+          </div>
+          <div class="login-field input-button">
+            <%= f.submit "Anlegen" %>
+          </div>
+        </div>
+    <% end %>
   </div>
+</div>
+</div>
 
-  <div class="field">
-    <%= f.label :email_confirmation %><br />
-    <%= f.email_field :email_confirmation %>
-  </div>
-
-   <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
-  </div>
-  
-    <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
-  </div>
-
-  <%= f.collection_select(:role, User::ROLES, :to_s, lambda{|i| i.to_s.humanize}) %>
-
-  <div class="field">
-    <%= f.label :password %>
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>

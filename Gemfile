@@ -38,6 +38,11 @@ gem 'devise'
 
 gem 'cancancan', '~> 1.10'
 
+gem 'will_paginate', '~> 3.1.0'
+
+gem 'date_validator'
+gem 'validates_zipcode'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -50,6 +55,9 @@ gem 'faye-websocket', '0.10.0' # --> https://github.com/websocket-rails/websocke
 
 #Simple Messaging System
 gem 'toastr-rails'
+
+# Encryp Plugin
+gem "attr_encrypted", "~> 3.0.0"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

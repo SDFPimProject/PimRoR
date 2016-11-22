@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
-  <title><%= yield(:title) %> | PimSuite+</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PIM Suite+ | <%= yield(:title) %></title>
+
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -49,11 +52,16 @@
     </script>
 <% end %>
 <%= render template: 'layouts/header' %>
+
 <div class="background-image"></div>
 <main>
   <div class="main-container">
-    <%= yield %>
-
+    <div class="messages">
+      <%= yield(:sidebar) %>
+      <div class="right-side-wrapper">
+        <%= yield %>
+      </div>
+    </div>
     <%= debug(params) if Rails.env.development? %>
   </div>
 </main>

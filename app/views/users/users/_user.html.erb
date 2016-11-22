@@ -1,7 +1,11 @@
 <tr>
-    <td><%= user.first_name %></td>
-    <td><%= user.last_name %></td>
-    <td><%= user.email %></td>
-    <td><%= link_to 'Edit', edit_user_path(user.id) %></td>
+  <td><%= user.first_name %></td>
+  <td><%= user.last_name %></td>
+  <td><%= user.email %></td>
+  <td>
+    <%= link_to edit_user_path(user.id) do %>
+    <div class="button"> bearbeiten </div>
+    <% end %>
+  </td>
 </tr>
   

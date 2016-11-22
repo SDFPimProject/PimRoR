@@ -1,9 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @project.name %>
-</p>
+<div>
+    <%= Project.human_attribute_name("name") %><br />
+    <%= @project.name %>
+</div>
+
+<div>
+    <%= Project.human_attribute_name("users") %><br />
+    <% @project_users.each do |user| %>
+        <p>
+            <%= user.email %>
+            <%= user.users_projects.where('project_id = ?', @project.id)[0].user_project_role %>
+        </p>
+    <% end %>
+    <%= will_paginate @project_users, :param_name => 'projectUserPage' %>
+</div>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>

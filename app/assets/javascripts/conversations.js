@@ -12,6 +12,11 @@ $(document).on('click', '.chat_box_submit', function (event) {
 $(document).on('keydown', '.chat_box_textarea', function (event) {
     Chat.getInstance().checkInputKey(event, $(this));
 });
+$(document).on('click', '.btn_message_delete', function (e) {
+    e.preventDefault();
+    var message_id = $(this).data('mid');
+    Chat.getInstance().deleteMessage(message_id);
+});
 
 //Functions
 function openConversation(sender_id, recipient_id){

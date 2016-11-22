@@ -1,0 +1,15 @@
+<% if message.is_read %>
+    <div class="chat_box_message_status_read">
+      <i class="material-icons">check</i>
+      <i class="material-icons">check</i>
+    </div>
+<% elsif message.is_receive %>
+    <div class="chat_box_message_status_receive">
+      <i class="material-icons">check</i>
+      <i class="material-icons">check</i>
+    </div>
+<% elsif message.is_send %>
+    <div class="chat_box_message_status_send">
+      <i class="material-icons">check</i>
+    </div>
+<% end %>

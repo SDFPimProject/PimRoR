@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161103092825) do
+ActiveRecord::Schema.define(version: 20161121164735) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,13 +27,15 @@ ActiveRecord::Schema.define(version: 20161103092825) do
   add_index "conversations", ["sender_id"], name: "index_conversations_on_sender_id", using: :btree
 
   create_table "messages", force: :cascade do |t|
-    t.text     "body"
     t.integer  "conversation_id"
     t.integer  "send_from_id"
-    t.boolean  "is_receive",      default: false
-    t.boolean  "is_read",         default: false
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.boolean  "is_receive",        default: false
+    t.boolean  "is_read",           default: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.boolean  "is_send",           default: false
+    t.text     "encrypted_body",    default: "",    null: false
+    t.text     "encrypted_body_iv", default: "",    null: false
   end
 
   add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
@@ -68,9 +70,37 @@ ActiveRecord::Schema.define(version: 20161103092825) do
     t.string   "last_name",              default: "", null: false
     t.string   "connection_id",          default: "", null: false
     t.string   "role"
+    t.string   "street_and_nr"
+    t.string   "state"
+    t.integer  "zip_code"
+    t.date     "birthday"
+    t.string   "locality"
+    t.string   "country_name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "users_projects", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "project_id"
+    t.string   "user_project_role", default: ""
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  add_index "users_projects", ["project_id"], name: "index_users_projects_on_project_id", using: :btree
+  add_index "users_projects", ["user_id"], name: "index_users_projects_on_user_id", using: :btree
+
+  create_table "users_teams", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "team_id"
+    t.string   "user_team_role", default: ""
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "users_teams", ["team_id"], name: "index_users_teams_on_team_id", using: :btree
+  add_index "users_teams", ["user_id"], name: "index_users_teams_on_user_id", using: :btree
 
 end

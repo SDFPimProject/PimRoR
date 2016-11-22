@@ -1,9 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @team.name %>
-</p>
+<div>
+    <%= Team.human_attribute_name("name") %><br />
+    <%= @team.name %>
+</div>
+
+<div>
+    <%= Team.human_attribute_name("users") %><br />
+    <% @team_users.each do |user| %>
+        <p>
+            <%= user.email %>
+            <%= user.users_teams.where('team_id = ?', @team.id)[0].user_team_role %>
+        </p>
+    <% end %>
+    <%= will_paginate @team_users, :param_name => 'teamUserPage' %>
+</div>
 
 <%= link_to 'Edit', edit_team_path(@team) %> |
 <%= link_to 'Back', teams_path %>

@@ -28,5 +28,10 @@ module PimRoR
 
     # Remove the Rack::Lock Middleware for Websocket --> https://github.com/websocket-rails/websocket-rails/wiki/Installation-and-Setup
     config.middleware.delete Rack::Lock
+
+    WillPaginate.per_page = 25 
+
+    #SET Language German
+    config.i18n.default_locale = :de
   end
 end

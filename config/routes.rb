@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
-  devise_for :users, controllers: {registrations: 'users/registrations', :sessions => "users/sessions"}
+  resources :users_projects
+  resources :users_teams
   resources :projects
   resources :teams
+  devise_for :users, controllers: {registrations: 'users/registrations', :sessions => "users/sessions"}
   root 'welcome#index'
 
   # Routes for Login/Devise
@@ -21,4 +23,11 @@ Rails.application.routes.draw do
 
   get 'conservations_list', to: 'conversations#get_conservation_list'
   post 'messages_read', to: "messages#message_read"
+  post 'message_receive', to: "messages#message_receive"
+
+  post 'teams/:teamid/user/:userid/remove' => 'teams#removeUser', :as => 'team_remove_user'
+  post 'teams/:teamid/user/:userid/add' => 'teams#addUser', :as =>'team_add_user'
+  
+  post 'projects/:projectid/user/:userid/remove' => 'projects#removeUser', :as => 'project_remove_user'
+  post 'projects/:projectid/user/:userid/add' => 'projects#addUser', :as => 'project_add_user'
 end

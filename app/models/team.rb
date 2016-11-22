@@ -1,4 +1,7 @@
 class Team < ActiveRecord::Base
-  has_and_belongs_to_many :Users, polymorphic: true
-  has_and_belongs_to_many :Roles, polymorphic: true
+    has_many :users_teams
+    has_many :users, through: :users_teams
+
+    validates :name, length: { minimum: 2, maximum: 50 }, presence: {message: "unzulässiges format"}
+
 end

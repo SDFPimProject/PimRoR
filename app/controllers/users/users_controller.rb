@@ -1,51 +1,60 @@
 class Users::UsersController < ApplicationController
-   load_and_authorize_resource
+  layout "settingsmenu"
 
   def index
-     @users = User.all
+     if(can? :show, User)
+        @users = User.all.page(params[:page])
+     end
   end
 
   def new
-    @user = User.new
+    if(can? :Create, User)
+      @user = User.new
+    else 
+      redirect_to root_path
+    end 
   end
 
   def create
-    params.permit!
-    @user = User.new(params[:user])
-    if @user.save
-      flash[:notice] = "Successfully created User." 
-      redirect_to root_path
-    else
-      render :action => 'new'
+    if(can? :Create, User)
+      params.permit!
+      @user = User.new(params[:user])
+      if @user.save
+        flash[:notice] = "Successfully created User." 
+        redirect_to root_path
+      else
+        render :action => 'new'
+      end
     end
-  end
-
-  def user_params
-    params.require(:user).permit(:email, :email_confirmation ,:first_name, :last_name, :role, :password, :password_confirmation)
   end
 
   def edit
-    @user = User.find(params[:id])
+    if(can? :Edit, User)
+      @user = User.find(params[:id])
+    else  
+      redirect_to root_path
+    end 
   end
 
   def update
-    params.permit!
-    @user = User.find(params[:id])
-    params[:user].delete(:password) if params[:user][:password].blank?
-    params[:user].delete(:password_confirmation) if params[:user][:password].blank? and params[:user][:password_confirmation].blank?
-    if @user.update_attributes(params[:user])
-      flash[:notice] = "Successfully updated User."
-      redirect_to user_index_path
-    else
-      render :action => 'edit'
+    if(can? :Update, User)
+      params.permit!
+      @user = User.find(params[:id])
+      params[:user].delete(:password) if params[:user][:password].blank?
+      params[:user].delete(:password_confirmation) if params[:user][:password].blank? and params[:user][:password_confirmation].blank?
+      if @user.update_attributes(params[:user])
+        flash[:notice] = "Nutzer erfolgreich aktualisiert."
+        redirect_to user_index_path
+      else
+        render :action => 'edit'
+      end
+    else  
+      redirect_to root_path
     end
   end
 
-  def destroy
-    @user = User.find(params[:id])
-    if @user.destroy
-      flash[:notice] = "Successfully deleted User."
-      redirect_to root_path
-    end
-  end 
+  private
+      def user_params
+        params.require(:user).permit(:email, :email_confirmation ,:first_name, :last_name, :birthday, :role, :street_and_nr, :zip_code, :state, :locality, :country_name, :password, :password_confirmation)
+      end
 end

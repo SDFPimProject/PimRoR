@@ -1,7 +1,8 @@
+<% provide(:title, "Login") %>
 <div class="content">
   <div class="login-box">
 
-    <h2>Pimsuite</h2>
+    <h2>PIM Suite+</h2>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="login-field">
@@ -19,14 +20,14 @@
                     <%= f.check_box :remember_me %>
                   </div>
                   <div>
-                    <%= f.label :"Remember login" %>
+                    <%= f.label :"Angemeldet bleiben" %>
                   </div>
                 </div>
               </div>
           <% end -%>
 
-          <div class="button">
-            <%= f.submit "Log in" %>
+          <div class="input-button">
+            <%= f.submit "Anmelden" %>
           </div>
 
         </div>
