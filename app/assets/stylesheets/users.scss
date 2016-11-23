@@ -15,6 +15,7 @@
     padding: 20px;
   }
   tr {
+      border-bottom: 1px solid #eee;
     &:hover{
       background-color: $primary-color-dark;
     }
@@ -23,4 +24,3 @@
     padding: 8px;
   }
 }
-

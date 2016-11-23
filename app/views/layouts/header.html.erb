@@ -19,7 +19,17 @@
                   <div class="nav-item-text">Nachrichten</div>
                 </div>
             <% end %>
-            <%= link_to '/' do %>
+
+            <%
+                params[:day] = nil;
+                if params[:month] == nil && @appointment != nil
+                    params[:month] = @appointment.month;
+                end
+                if params[:year] == nil && @appointment != nil
+                    params[:year] = @appointment.year;
+                end
+            %>
+            <%= link_to appointments_path(params) do %>
                 <div class="row">
                   <div class="nav-item"><i class="material-icons">&#xE916;</i></div>
                   <div class="nav-item-text">Kalender</div>

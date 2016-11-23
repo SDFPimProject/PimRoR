@@ -1,0 +1,48 @@
+<% if @appointments != nil %>
+
+<div class="left-side-wrapper">
+    <div class="list-box">
+        <%= link_to new_appointment_path(params) do %>
+            <div class="button"><i class="material-icons"></i> Neues Termin</div>
+        <% end %>
+    </div>
+    <div class="list-box">
+        <%
+            params_clone = params.clone
+            params_clone[:day] = nil;
+        %>
+        <%= link_to appointments_path(params_clone) do %>
+            <div class="button"><i class="material-icons"></i> Zurück zum Kalendar</div>
+        <% end %>
+    </div>
+</div>
+
+<div class="right-side-wrapper">
+
+    <div class="user-wrapper">
+          <table class="user_table">
+               <tr>
+                   <th>Datum</th>
+                   <th>Zeit</th>
+                   <th>Beschreibung</th>
+                   <th>&nbsp;</th>
+                   <th>&nbsp;</th>
+               </tr>
+                 <% @appointments.each do |appointment| %>
+                       <tr>
+                           <td><%= sprintf '%02d', appointment.day %>.<%= sprintf '%02d', appointment.month %>.<%= sprintf '%04d', appointment.year %></td>
+                           <td><%= sprintf '%02d', appointment.hours %>:<%= sprintf '%02d', appointment.minutes %></td>
+                           <td><%= appointment.content %></td>
+                           <td><%= link_to edit_appointment_path(appointment) do %><div class="button"> Verändern </div><% end %></td>
+                           <td><%= link_to appointment, method: :delete, data: { confirm: 'Are you sure?' } do %><div class="button"> Entfernen </div><% end %></td>
+                       </tr>
+                 <%
+                     end
+                 %>
+        </table>
+    </div>
+</div>
+
+<% else %>
+<%= render 'calendar' %>
+<% end %>

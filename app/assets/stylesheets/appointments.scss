@@ -1,0 +1,90 @@
+// Place all the styles related to the calendars controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.calendars {
+  display: flex;
+  flex-flow: row nowrap;
+  max-width: 1200px;
+  width: 100%;
+  /* height: 80vh; */
+}
+
+.calendar_head a {
+    margin-left: 10px;
+    margin-right: 10px;
+    color: #000;
+}
+
+.calendar_head a:visited {
+    color: #000;
+}
+
+.calendar_head a:hover {
+    color: #888;
+}
+
+.calendar_table a {
+    display: block;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.calendar_table a:hover {
+    background-color: #ADD8E6;
+}
+
+.calendars a div {
+    color: #000000;
+}
+
+.calendar_head {
+  position: relative;
+  font-size: 25px;
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.calendar_head .next_previous_links {
+    position: absolute;
+    right: 0px;
+    top: 2px;
+}
+
+.calendar_table td {
+    position: relative;
+    background-color: #fff;
+    border: 2px solid #f1f1f1;
+    font-size: 22px;
+    border-radius: 5px;
+}
+
+.calendar_table td.today {
+    background-color: #33cc33;
+}
+
+.calendar_table td .visits {
+    position: absolute;
+    width: 100%;
+    bottom: 2px;
+    font-size: 14px;
+}
+
+.calendar_table .empty {
+    background-color: #f1f1f1 !important;
+}
+
+.calendar_table th {
+    height: 75px;
+    background-color: #DDD;
+    border: 2px solid #f1f1f1;
+    font-size: 23px;
+    border-radius: 5px;
+}
+/*
+.calendar_table tr > :first-child {
+    background-color: #DDD;
+}
+*/

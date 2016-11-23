@@ -33,4 +33,5 @@ class User < ActiveRecord::Base
   has_many :conversations, :foreign_key => :sender_id
   has_many :conversations, :foreign_key => :recipient_id
   has_many :messages, :foreign_key => :send_from_id
+  has_many :appointments, :foreign_key => :user_id
 end

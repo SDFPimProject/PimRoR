@@ -13,22 +13,22 @@ loaclDb: &localDb
   host: localhost
   port: 5432
   username: postgres
-  password: 123456
+  password: postgres
 
 development:
   <<: *default
   <<: *localDb
-  database: PimRoR
+  database: PimRoR2
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
-test:
-  <<: *default
-  <<: *localDb
-  database: PimRoR_test
+# test:
+#  <<: *default
+#  <<: *localDb
+#  database: PimRoR_test
 
-production:
-  <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
-  password: <%= ENV['DATABASE_PASSWORD'] %>
+#production:
+#  <<: *default
+#  url: <%= ENV['DATABASE_URL'] %>
+#  password: <%= ENV['DATABASE_PASSWORD'] %>

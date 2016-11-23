@@ -1,0 +1,80 @@
+<div class="calendars">
+
+  <div class="right-side-wrapper">
+      <div style="display: block; width: 100%;">
+          <div class="calendar_head">
+              <%
+              next_month = @month + 1
+              next_year = @year
+              if next_month == 13
+                  next_year += 1
+                  next_month = 1
+              end
+
+              previous_month = @month - 1
+              previous_year = @year
+              if previous_month == 0
+                  previous_year -= 1
+                  previous_month = 12
+              end
+              %>
+              <div class="next_previous_links">
+                <%= link_to appointments_path(:month => previous_month, :year => previous_year) do %>◀<% end %>
+                <%= link_to appointments_path(:month => next_month, :year => next_year) do %>▶<% end %>
+              </div>
+              <%= Appointment.get_name_of_month(@month) %> <%= @year %>
+          </div>
+          <table class="calendar_table" cellspacing="0" cellpadding="0" border="0" width="100%">
+              <tr>
+                  <th width="12.5%" align="center">Mon</th>
+                  <th width="12.5%" align="center">Tue</th>
+                  <th width="12.5%" align="center">Wed</th>
+                  <th width="12.5%" align="center">Thur</th>
+                  <th width="12.5%" align="center">Fri</th>
+                  <th width="12.5%" align="center">Sat</th>
+                  <th width="12.5%" align="center">Sun</th>
+              </tr>
+
+                  <%
+                    number_of_weeks = (@start_day + @number_of_days) / 7
+                    if number_of_weeks % 7 > 0
+                        number_of_weeks += 1
+                    end
+
+                    count = number_of_weeks * 7
+                    day = 1
+                    count.times do |i|
+                        if i % 7 == 0
+                            %><tr><%
+                        end
+
+                        if i < @start_day || day == (@number_of_days + 1)
+                            %><td align="center" class="empty">&nbsp;</td><%
+                        else
+                            %><td align="center"<% if @this_day == day && @this_month == @month && @this_year == @year %> class="today"<% end %>>
+                                <%= link_to appointments_path(:day => day, :month => @month, :year => @year) do %>
+                                <div class="day"><%= day %></div><% end %><%
+                                    number = Appointment.by_day_month_and_year(current_user.id, day, @month, @year).count
+                                    if number > 0
+                                        %>
+                                        <div class="visits">
+                                        <%=
+                                            number
+                                        %>
+                                        &nbsp;Termine</div>
+                                        <%
+                                    end
+
+                                %></td><%
+                            day += 1
+                        end
+
+                        if i % 7 == 6
+                            %></tr><%
+                        end
+                    end
+                  %>
+      </table>
+  </div>
+  </div>
+</div>
