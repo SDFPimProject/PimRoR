@@ -149,3 +149,8 @@ p {
     flex-grow: 1;
   }
 }
+
+.turbolinks-progress-bar {
+  height: 5px;
+  background-color: $primary-accent-color;
+}
