@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   resources :users_projects
   resources :users_teams
+  resources :events
   resources :projects
   resources :teams
   devise_for :users, controllers: {registrations: 'users/registrations', :sessions => "users/sessions"}
@@ -27,7 +28,7 @@ Rails.application.routes.draw do
 
   post 'teams/:teamid/user/:userid/remove' => 'teams#removeUser', :as => 'team_remove_user'
   post 'teams/:teamid/user/:userid/add' => 'teams#addUser', :as =>'team_add_user'
-  
+
   post 'projects/:projectid/user/:userid/remove' => 'projects#removeUser', :as => 'project_remove_user'
   post 'projects/:projectid/user/:userid/add' => 'projects#addUser', :as => 'project_add_user'
 end

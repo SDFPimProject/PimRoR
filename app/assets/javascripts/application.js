@@ -13,6 +13,9 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
+//= require jquery-ui/datepicker
+//= require moment
+//= require fullcalendar
 
 //= require websocket_rails/main
 //= require toastr
