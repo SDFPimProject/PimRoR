@@ -1,29 +1,36 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Teams</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @teams.each do |team| %>
-      <tr>
-        <td><%= team.name %></td>
-        <td><%= link_to 'Show', team %></td>
-        <td><%= link_to 'Edit', edit_team_path(team) %></td>
-        <td><%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<%= will_paginate @teams %>
+<div class="content-wrapper">
+  <div class="content-box">
+    <div class="row" style="justify-content: space-between;">
+      <div class="box-header" style="flex-basis: 0; flex-grow: 1">
+        <div>Listing Teams</div>
+      </div>
+      <div class="new-team" style="flex-basis: 0; flex-grow: 20;">
+        <% if can? :create, Team %>
+            <%= link_to new_team_path do %>
+                <div class="button">New Team</div>
+            <% end %>
+        <% end %>
+      </div>
+    </div>
+    <%= will_paginate @teams %>
+    <table class="team-table">
+      <% @teams.each do |team| %>
+          <tr>
+            <td><%= team.name %></td>
+            <td>
+              <div class="button"><%= link_to 'Show', team %></div>
+            </td>
+            <td>
+              <div class="button"><%= link_to 'Edit', edit_team_path(team) %></div>
+            </td>
+            <td>
+              <div class="button"><%= link_to 'Destroy', team, method: :delete, data: {confirm: 'Are you sure?'} %></div>
+            </td>
+          </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
 <br>
-
-<% if can? :create, Team %>
-  <%= link_to 'New Team', new_team_path %>
-<% end %>
