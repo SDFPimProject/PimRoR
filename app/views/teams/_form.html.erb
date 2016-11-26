@@ -1,23 +1,32 @@
 <%= form_for(@team) do |f| %>
-  <% if @team.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@team.errors.count, "error") %></h2>
+    <div class="box-content">
+      <table style="width: 100%; padding: 20px">
+        <tr>
+          <td>
+            <%= f.label :name %>
+          </td>
+          <td width="100%">
+            <div class="login-field">
+              <%= f.text_field :name, autofocus: true, placeholder: "team name" %>
+            </div>
+          </td>
+          <td>
+            <div class="input-button">
+              <%= f.submit %>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <% if @team.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@team.errors.count, "error") %></h2>
 
-      <ul>
-      <% @team.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+            <ul>
+              <% @team.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
       <% end %>
-      </ul>
     </div>
-  <% end %>
-
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>
