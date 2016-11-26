@@ -6,74 +6,117 @@
     </div>
     <%= form_for(resource, as: resource_name, url: update_user_registration_path(resource_name), html: {method: :put}) do |f| %>
         <%= devise_error_messages! %>
-
         <div class="box-content">
-          <div class="login-field">
-            <%= f.label "E-Mail" %>:
-            <%= resource.email %>
-          </div>
-
-          <div class="login-field">
-            <%= f.label "Role" %>:
-            <%= resource.role %>
-          </div>
-          <div class="login-field">
-            <%= f.label "Vorname" %>:
-            <%= resource.first_name %>
-          </div>
-
-          <div class="login-field">
-            <%= f.label "Nachname" %>:
-            <%= resource.last_name %>
-          </div>
-
-           <div class="login-field">
-            <%= f.label :role %>:
-            <%= resource.role %>
-          </div>
-
-           <div class="login-field">
-           Projects: 
-            <% @user.projects.each do |project| %>
-                <%=  project.name %> 
-           <% end %>
-           </div>
-
-           <div class="login-field">
-           Teams: 
-            <% @user.teams.each do |teams| %>
-                <%=  teams.name %> 
-           <% end %>
-           </div>
-
-          <div class="login-field">
-            <%= f.label :street_and_nr %><br />
-            <%= resource.street_and_nr %><br />
-          </div>
-
-           <%= f.collection_select(:role, User::ROLES, :to_s, lambda { |i| i.to_s.humanize }) %>
-
-          <div class="login-field">
-            <%= f.label :zip_code %><br />
-            <%= resource.zip_code %><br />
-          </div>
-          <div class="login-field">
-            <%= f.label :birthday %><br />
-            <%= resource.birthday %>
-          </div>
-
-          <div class="login-field">
-            <%= f.label :state %><br />
-            <%= resource.state %><br />
-          </div>
-          <div class="login-field">
-            <%= f.label :country_name %><br />
-            <%= f.text_field :country_name %>
-          </div>
-          <div class="login-field">
-            <%= f.label :locality %><br />
-            <%= f.text_field :locality %>
-          </div>
+          <table class="form-display-table">
+            <tr>
+              <td>
+                <%= f.label "E-Mail" %>
+              </td>
+              <td>
+                <%= resource.email %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <%= f.label "Role" %>
+              </td>
+              <td>
+                <%= resource.role %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <%= f.label "Vorname" %>
+              </td>
+              <td>
+                <%= resource.first_name %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <%= f.label "Nachname" %>
+              </td>
+              <td>
+                <%= resource.last_name %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <%= f.label :role %>
+              </td>
+              <td>
+                <%= resource.role %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Projekte
+              </td>
+              <td>
+                <% @user.projects.each do |project| %>
+                    <%= project.name %> <br>
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Teams
+              </td>
+              <td>
+                <% @user.teams.each do |teams| %>
+                    <%= teams.name %> <br>
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <%= f.label :street_and_nr %><br/>
+              </td>
+              <td>
+                <%= resource.street_and_nr %><br/>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <%= f.label :zip_code %><br/>
+              </td>
+              <td>
+                <%= resource.zip_code %><br/>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <%= f.label :birthday %><br/>
+              </td>
+              <td>
+                <%= resource.birthday %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <%= f.label :state %>
+              </td>
+              <td>
+                <%= resource.state %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <%= f.label :country_name %><br/>
+              </td>
+              <td>
+                <%= resource.country_name %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <%= f.label :locality %><br/>
+              </td>
+              <td>
+                <%= resource.locality %>
+              </td>
+            </tr>
+          </table>
         </div>
 
         <div class="box-header">
@@ -111,7 +154,7 @@
             <% end %>
           </div>
         </div>
-      <% end %>
+    <% end %>
   </div>
 </div>
 

@@ -24,3 +24,20 @@
   }
 }
 
+.form-display-table{
+  padding: 20px;
+  width: 100%;
+  td{
+    padding: 8px;
+  }
+  tr td:first-child{
+    width: 200px;
+    text-align: right;
+    vertical-align: top;
+  }
+  tr:hover{
+    color: $primary-color-dark-text;
+    background-color: $primary-accent-color;
+  }
+}
+
