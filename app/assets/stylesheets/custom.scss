@@ -31,11 +31,10 @@
 .main-container {
   width: 100%;
   min-height: 90vh;
-  overflow-y: scroll;
   display: flex;
-  flex-flow: column;
+  flex-flow: row;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .left-side-wrapper {
