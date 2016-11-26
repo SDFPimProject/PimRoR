@@ -45,35 +45,30 @@ header {
   align-self: center;
   display: flex;
   flex-flow: row wrap;
+  .row {
+    margin: 0 10px 0 10px;
+    &:hover {
+      box-shadow: $box-shadow-hover;
+      cursor: pointer;
+    }
+  }
 }
 
 .nav-item {
   display: flex;
   flex-flow: row nowrap;
+  z-index: 2;
   background-color: $primary-accent-color;
-  border-radius: 40px;
-  width: $nav-item-height;
+  padding: 0 12px;
+  border-radius: 3px;
   height: $nav-item-height;
-  margin: 0px 10px 0 10px;
   justify-content: center;
   align-items: center;
-  box-shadow: $box-shadow;
+  //box-shadow: $box-shadow;
   transition: all 0.3s;
-  &:hover {
-    box-shadow: $box-shadow-hover;
-    cursor: pointer;
+  .material-icons{
+    padding-right: 8px;
   }
-}
-
-.nav-item-text {
-  display: flex;
-  align-self: center;
-  margin-left: -15px;
-  padding-right: 8px;
-  align-items: center;
-  height: $nav-item-height/2;
-  background-color: $primary-accent-color;
-  border-radius: 0 3px 3px 0;
 }
 
 body .material-icons {
@@ -103,13 +98,12 @@ body .material-icons {
   color: $primary-color-text;
   background-color: $primary-color-dark-text;
   transition: all 0.3s;
-  &:hover{
+  &:hover {
     color: $primary-accent-color;
   }
 }
 
 .user_content {
-  margin-top: 5px;
   align-self: center;
   border-radius: 3px;
   display: flex;
@@ -120,16 +114,16 @@ body .material-icons {
   &:hover {
     box-shadow: $box-shadow-hover;
     cursor: pointer;
-    margin-top: 48px;
+    margin-top: 43px;
     transition: all 0.3s;
   }
-  .row{
+  .row {
     background-color: $primary-accent-color;
     padding: 16px 32px;
   }
 }
 
-.user_content:hover .user-logout{
+.user_content:hover .user-logout {
   display: flex;
   height: 35px;
   transition: all 0.3s;
