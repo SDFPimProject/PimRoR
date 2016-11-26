@@ -1,61 +1,110 @@
 <% provide(:title, "Nutzer neu") %>
 
-<div class="content-wrapper">
+<div class="content-wrapper user-new">
   <div class="content-box">
     <div class="box-header">Neuer Nutzer</div>
     <%= form_for(@user, url: user_index_path) do |f| %>
+        <table class="user-new-table">
+          <tr>
+            <td>
+              Name
+            </td>
+            <td>
+              <div class="login-field">
+                <%= f.text_field :first_name, placeholder: "Vorname" %>
+              </div>
+            </td>
+            <td>
+              <div class="login-field">
+                <%= f.text_field :last_name, placeholder: "Nachname" %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Email
+            </td>
+            <td>
+              <div class="login-field">
+                <%= f.email_field :email, placeholder: "E-Mail" %>
+              </div>
+            </td>
+            <td>
+              <div class="login-field">
+                <%= f.email_field :email_confirmation, placeholder: "E-Mail bestätigen" %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Password</td>
+            <td>
+              <div class="login-field">
+                <%= f.password_field :password, autocomplete: "off", placeholder: "Passwort" %>
+              </div>
+            </td>
+            <td>
+              <div class="login-field">
+                <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Passwort bestätigen" %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Birthdate</td>
+            <td colspan="2">
+              <div class="login-field">
+                <%= f.date_field :birthday, :placeholder => "Birthdate" %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Street & Housenumber</td>
+            <td colspan="2">
+              <div class="login-field">
+                <%= f.text_field :street_and_nr, :placeholder => "Street & Housenumber" %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>zip code</td>
+            <td colspan="2">
+              <div class="login-field">
+                <%= f.number_field :zip_code, placeholder: "zip code" %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>State</td>
+            <td colspan="2">
+              <div class="login-field">
+                <%= f.text_field :state, placeholder: "State" %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Country Name</td>
+            <td colspan="2">
+              <div class="login-field">
+                <%= f.text_field :country_name, placeholder: "Country Name" %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Locality</td>
+            <td colspan="2">
+              <div class="login-field">
+                <%= f.text_field :locality, placeholder: "Locality" %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Role</td>
+            <td><div class="login-field">
+              <%= f.collection_select(:role, User::ROLES, :to_s, lambda { |i| i.to_s.humanize }) %>
+            </div></td>
+          </tr>
+        </table>
         <div class="box-content row">
-            <div class="login-field">
-              <%= f.text_field :first_name, placeholder: "Vorname" %>
-            </div>
-            <div class="login-field">
-              <%= f.text_field :last_name, placeholder: "Nachname" %>
-            </div>
-        </div>
-        <div class="box-content row">
-            <div class="login-field">
-              <%= f.email_field :email, placeholder: "E-Mail" %>
-            </div>
-            <div class="login-field">
-              <%= f.email_field :email_confirmation, placeholder: "E-Mail bestätigen" %>
-            </div>
-        </div>
-        <div class="box-content row">
-          <div class="login-field">
-            <%= f.password_field :password, autocomplete: "off", placeholder: "Passwort" %>
-          </div>
-          <div class="login-field">
-            <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Passwort bestätigen" %>
-          </div>
-        </div>
-        <div class="box-content row">
-          <%= f.label :birthday %><br />
-          <%= f.date_field :birthday %>
-        </div>
-        <div class="box-content row">
-          <%= f.label :street_and_nr %><br>
-          <%= f.text_field :street_and_nr, :placeholder => "Weg 15" %>
-        </div>
-        <div class="box-content row">
-          <%= f.label :zip_code %><br />
-          <%= f.number_field :zip_code %>
-        </div>
-        <div class="box-content row">
-          <%= f.label :state %><br />
-          <%= f.text_field :state %>
-        </div>
-        <div class="box-content row">
-          <%= f.label :country_name %><br />
-          <%= f.text_field :country_name %>
-        </div>
-        <div class="box-content row">
-          <%= f.label :locality %><br />
-          <%= f.text_field :locality %>
-        </div>
-        <div class="box-content row">
-          <div class="login-field">
-            <%= f.collection_select(:role, User::ROLES, :to_s, lambda { |i| i.to_s.humanize }) %>
-          </div>
+
           <div class="login-field input-button">
             <%= f.submit "Anlegen" %>
           </div>
