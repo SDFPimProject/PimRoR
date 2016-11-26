@@ -18,7 +18,7 @@
   width: 100%;
 }
 
-.content-box{
+.content-box {
   background-color: $primary-color;
   box-shadow: $box-shadow;
   margin: 0 15px 0 0;
@@ -52,7 +52,7 @@
   div {
     justify-content: flex-start;
     align-items: center;
-    padding:12px;
+    padding: 12px;
   }
 }
 
@@ -153,4 +153,19 @@ p {
 .turbolinks-progress-bar {
   height: 5px;
   background-color: $primary-accent-color;
+}
+
+.list-box .sidebar-icon {
+  padding: 0;
+  flex-grow: 1;
+  flex-basis: 0;
+  align-self: flex-start;
+}
+
+.list-box .sidebar-item-name {
+  padding: 0;
+  flex-grow: 2;
+  flex-basis: 0;
+  justify-content: center;
+  justify-self: center;
 }
