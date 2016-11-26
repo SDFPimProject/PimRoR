@@ -37,7 +37,7 @@ $margin: 20px;
     border-radius: 3px;
     padding: 12px;
     width: 100%;
-    border: 0;
+    border: thin solid $primary-color-dark;
     box-sizing: border-box;
     box-shadow: $box-shadow;
   }
