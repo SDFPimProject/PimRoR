@@ -1,5 +1,25 @@
 @import "colors";
 
+.pagination{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 16px;
+  a, span{
+    color: $primary-color-text;
+    padding: 4px 8px 4px 8px;
+  }
+  a:hover{
+    background-color: $primary-color-dark;
+    color: $primary-color-dark-text;
+  }
+  .current{
+    padding: 4px 8px 4px 8px;
+    background-color: $primary-accent-color;
+    color: $primary-color-dark-text;
+  }
+}
+
 .user-wrapper {
   overflow-x: hidden;
   width: 100%;
