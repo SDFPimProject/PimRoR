@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
   include MessagesHelper
+  include ConversationsHelper
 
   def create
     @conversation = Conversation.find(params[:conversation_id])
@@ -27,7 +28,6 @@ class MessagesController < ApplicationController
     reciever = interlocutor(conversation)
     message = Message.find(params[:id])
 
-
     if current_user.id == message.send_from_id
       message.destroy
 
@@ -45,32 +45,23 @@ class MessagesController < ApplicationController
   end
 
   def message_read
-    @conversation = Conversation.find(params[:conversation_id])
-    @messages = @conversation.messages.where("messages.send_from_id <> ? AND messages.is_read = false", current_user)
+    conversation = Conversation.find(params[:conversation_id])
+    messages = conversation.messages.where("messages.send_from_id <> ? AND messages.is_read = false", current_user)
 
 
-    @messages.each do |message|
+    messages.each do |message|
       message.is_read=true
       message.is_receive=true
       message.save!
 
-      Fiber.new{
-        WebsocketRails[message.send_from_id].trigger('new_message_status', {
-            :conversation_id => @conversation.id,
-            :message_id => message.id,
-            :html => render_to_string(:template => 'messages/_message-status.html.erb', :locals => { :message => message }, layout: false)
-        })
-      }.resume
     end
 
     render json: { ok: true }
   end
 
   def message_receive
-    @conversation = Conversation.find(params[:conversation_id])
-    @messages = @conversation.messages.where("messages.send_from_id <> ? AND messages.is_receive = false", current_user)
-
-    set_messages_receive(@conversation.id, @messages)
+    conversation = Conversation.find(params[:conversation_id])
+    set_messages_receive(conversation)
 
     render json: { ok: true }
   end
@@ -79,9 +70,5 @@ class MessagesController < ApplicationController
 
   def message_params
     params.require(:message).permit(:body)
-  end
-
-  def interlocutor(conversation)
-    current_user == conversation.recipient ? conversation.sender : conversation.recipient
   end
 end

@@ -3,10 +3,16 @@ class WelcomeController < ApplicationController
   # TO MACIG STUFF oN INIT
   def index
     conversations = Conversation.involving(current_user)
+    conversations_new_message = Array
     unread = 0
     conversations.each do |conversation|
-      unread = unread + conversation.messages.unread(conversation.id, current_user).size
-      set_messages_receive(conversation.id, conversation.messages.where("messages.send_from_id <> ? AND messages.is_read = false", current_user))
+      size = conversation.messages.unread(conversation.id, current_user).size
+      if size > 0
+        conversations_new_message.push(conversation)
+        unread = unread + size
+      end
+
+      set_messages_receive(conversation.id)
     end
     if unread > 0
       if unread == 1

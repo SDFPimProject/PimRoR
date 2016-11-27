@@ -1,4 +1,6 @@
 class ConversationsController < ApplicationController
+  include ConversationsHelper
+
   def index
     @users = User.all
     @conversations = Conversation.involving(current_user)
@@ -43,9 +45,5 @@ class ConversationsController < ApplicationController
   private
   def conversation_params
     params.permit(:sender_id, :recipient_id)
-  end
-
-  def interlocutor(conversation)
-    current_user == conversation.recipient ? conversation.sender : conversation.recipient
   end
 end
