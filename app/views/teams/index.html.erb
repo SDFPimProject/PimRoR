@@ -2,11 +2,11 @@
 
 <div class="content-wrapper">
   <div class="content-box">
-    <div class="row" style="justify-content: space-between;">
-      <div class="box-header" style="flex-basis: 0; flex-grow: 1">
+    <div class="row">
+      <div class="box-header">
         <div>Listing Teams</div>
       </div>
-      <div class="new-team" style="flex-basis: 0; flex-grow: 20;">
+      <div class="headline-button">
         <% if can? :create, Team %>
             <%= link_to new_team_path do %>
                 <div class="button">New Team</div>
@@ -31,6 +31,7 @@
           </tr>
       <% end %>
     </table>
+    <%= will_paginate @teams %>
   </div>
 </div>
 <br>

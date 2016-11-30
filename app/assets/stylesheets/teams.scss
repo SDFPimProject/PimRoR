@@ -1,4 +1,16 @@
 @import "colors";
+
+.team-member {
+  width: 100%;
+  padding: 20px;
+  tr:hover {
+    background-color: $primary-color-dark;
+  }
+  td {
+    padding: 8px;
+  }
+}
+
 .team-table{
   padding: 20px;
   width: 100%;
@@ -14,11 +26,3 @@
   }
 }
 
-.new-team{
-  display: flex;
-  justify-content: flex-end;
-  padding: 8px;
-  a{
-    color: $primary-color-dark-text;
-  }
-}

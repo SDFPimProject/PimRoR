@@ -1,20 +1,34 @@
-<p id="notice"><%= notice %></p>
+<div class="content-wrapper">
 
-<div>
-    <%= Team.human_attribute_name("name") %><br />
-    <%= @team.name %>
-</div>
 
-<div>
-    <%= Team.human_attribute_name("users") %><br />
-    <% @team_users.each do |user| %>
-        <p>
-            <%= user.email %>
-            <%= user.users_teams.where('team_id = ?', @team.id)[0].user_team_role %>
-        </p>
-    <% end %>
+  <div class="content-box">
+    <div class="row">
+      <div class="box-header">
+        <div>
+          Team:
+          <%= @team.name %>
+        </div>
+      </div>
+      <div class="headline-button">
+        <% if can? :edit, Team %>
+            <%= link_to edit_team_path(@team) do %>
+                <div class="button">Edit Team</div>
+            <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="box-content"><p id="notice"><%= notice %></p></div>
+    <div class="box-content"> Team Member</div>
+    <table class="team-member">
+      <% @team_users.each do |user| %>
+          <tr>
+            <td>
+              <%= user.email %>
+              <%= user.users_teams.where('team_id = ?', @team.id)[0].user_team_role %>
+            </td>
+          </tr>
+      <% end %>
+    </table>
     <%= will_paginate @team_users, :param_name => 'teamUserPage' %>
+  </div>
 </div>
-
-<%= link_to 'Edit', edit_team_path(@team) %> |
-<%= link_to 'Back', teams_path %>

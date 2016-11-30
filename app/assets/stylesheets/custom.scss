@@ -144,9 +144,6 @@ p {
 .row {
   display: flex;
   flex-flow: row;
-  div {
-    flex-grow: 1;
-  }
 }
 
 .turbolinks-progress-bar {
