@@ -17,10 +17,13 @@ Rails.application.routes.draw do
   end
 
   resources :user, :controller => "users/users"
+  
 
   resources :conversations do
     resources :messages
   end
+
+  get 'users/:id/show' =>'users/users#show', :as => 'show_users_path'
 
   get 'conservations_list', to: 'conversations#get_conservation_list'
   post 'messages_read', to: "messages#message_read"

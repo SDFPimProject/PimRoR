@@ -1,6 +1,5 @@
 <% content_for :sidebar do %>
     <div class="left-side-wrapper">
-      <% if can? :show, User %>
           <div class="list-box">
             <%= link_to user_index_path do %>
                 <div class="button">
@@ -9,7 +8,6 @@
                 </div>
             <% end %>
           </div>
-      <% end %>
       <% if can? :create, User %>
           <div class="list-box">
             <%= link_to new_user_path do %>
