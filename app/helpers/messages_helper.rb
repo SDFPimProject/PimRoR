@@ -9,7 +9,7 @@ module MessagesHelper
     message.user == message.conversation.sender ? message.conversation.sender : message.conversation.recipient
   end
 
-  def set_messages_receive(conversation)
+  def set_messages_receive(conversation, use_websocket)
     messages = conversation.messages.where("messages.send_from_id <> ? AND messages.is_receive = false", current_user)
 
     messages.each do |message|
@@ -17,11 +17,13 @@ module MessagesHelper
       message.save!
     end
 
-    send_new_status(conversation, messages)
+    if use_websocket
+      send_new_status(conversation, messages)
+    end
   end
 
 
-  def set_messages_read(conversation)
+  def set_messages_read(conversation, use_websocket)
     messages = conversation.messages.where("messages.send_from_id <> ? AND messages.is_read = false", current_user)
 
     messages.each do |message|
@@ -30,16 +32,18 @@ module MessagesHelper
       message.save!
     end
 
-    send_new_status(conversation, messages)
+    if use_websocket
+      send_new_status(conversation, messages)
+    end
   end
 
   private
 
   def send_new_status(conversation, messages)
-    messages_status_send = Array
+    messages_status = Array.new
 
     messages.each do |message|
-      messages_receive_send.push({
+      messages_status.push({
                                      :message_id => message.id,
                                      :html => render_to_string(:template => 'messages/_message-status.html.erb', :locals => { :message => message }, layout: false)
                                  })
@@ -47,7 +51,7 @@ module MessagesHelper
     Fiber.new{
       WebsocketRails[interlocutor(conversation).id].trigger('new_message_status', {
           :conversation => conversation.id,
-          :messages => messages_receive_send
+          :messages => messages_status
       })
     }.resume
   end

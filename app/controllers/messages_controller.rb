@@ -46,22 +46,14 @@ class MessagesController < ApplicationController
 
   def message_read
     conversation = Conversation.find(params[:conversation_id])
-    messages = conversation.messages.where("messages.send_from_id <> ? AND messages.is_read = false", current_user)
-
-
-    messages.each do |message|
-      message.is_read=true
-      message.is_receive=true
-      message.save!
-
-    end
+    set_messages_read(conversation, true)
 
     render json: { ok: true }
   end
 
   def message_receive
     conversation = Conversation.find(params[:conversation_id])
-    set_messages_receive(conversation)
+    set_messages_receive(conversation, true)
 
     render json: { ok: true }
   end
