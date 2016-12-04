@@ -18,11 +18,9 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'bootstrap-sass', '3.3.7'
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails'
+gem 'jquery-ui-rails', '~> 4.2.1'
 #User jquery-turbolinks to write JS-Code in a normal way
 gem 'jquery-turbolinks'
-#Use for date picker
-gem 'jquery-ui-rails'
 #Use for calendar
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
