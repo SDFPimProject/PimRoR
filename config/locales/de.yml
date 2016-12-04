@@ -28,3 +28,9 @@ de:
       - "day"
       - "month"
       - "year"
+
+  user:
+    birthday: "Geburstag"
+    street_and_nr: "Straße und Hausnummer"
+    country: "Land"
+    state: "Bundesland"
