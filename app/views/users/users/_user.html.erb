@@ -2,9 +2,16 @@
   <td><%= user.first_name %></td>
   <td><%= user.last_name %></td>
   <td><%= user.email %></td>
+  <% if can? :show, User %>
   <td>
     <%= link_to edit_user_path(user.id) do %>
     <div class="button"> bearbeiten </div>
+    <% end %>
+    </td>
+    <% end %>
+    <td>
+      <%= link_to show_users_path_url(user.id) do %>
+    <div class="button"> Profil </div>
     <% end %>
   </td>
 </tr>
