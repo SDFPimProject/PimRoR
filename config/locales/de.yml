@@ -28,3 +28,21 @@ de:
       - "day"
       - "month"
       - "year"
+
+  activerecord:
+    models:
+      user: "Benutzer"
+    attributes:
+      user:
+        birthday: "Geburtstag"
+        email: "E-Mail"
+        role: "Rolle"
+        projects: "Projekte"
+        teams: "Teams"
+        street_and_nr: "Straße und Hausnummer"
+        first_name: "Vorname"
+        last_name: "Nachname"
+        state: "Bundesland"
+        country_name: "Land"
+        locality: "Stadt"
+        zip_code: "Postleitzahl"

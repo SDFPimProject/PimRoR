@@ -2,9 +2,7 @@ class Users::UsersController < ApplicationController
   layout "settingsmenu"
 
   def index
-     if(can? :show, User)
         @users = User.all.page(params[:page])
-     end
   end
 
   def new
@@ -34,6 +32,10 @@ class Users::UsersController < ApplicationController
     else  
       redirect_to root_path
     end 
+  end
+
+  def show
+      @user = User.find(params[:id])
   end
 
   def update
