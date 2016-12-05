@@ -7,7 +7,7 @@
           <table class="form-display-table">
             <tr>
               <td>
-                E-Mail
+               <%= User.human_attribute_name( :email) %>
               </td>
               <td>
                 <%= @user.email %>
@@ -15,7 +15,7 @@
             </tr>
             <tr>
               <td>
-                Vorname
+                <%= User.human_attribute_name( :first_name) %>
               </td>
               <td>
                 <%= @user.first_name %>
@@ -23,7 +23,8 @@
             </tr>
             <tr>
               <td>
-                Nachname
+                <%= User.human_attribute_name( :last_name) %>
+
               </td>
               <td>
                 <%= @user.last_name %>
@@ -31,7 +32,7 @@
             </tr>
             <tr>
               <td>
-                Rolle
+               <%= User.human_attribute_name( :role) %>
               </td>
               <td>
                 <%= @user.role %>
@@ -39,7 +40,7 @@
             </tr>
             <tr>
               <td>
-                Projekte
+                <%= User.human_attribute_name( :projects) %>
               </td>
               <td>
                 <% @user.projects.each do |project| %>
@@ -49,7 +50,7 @@
             </tr>
             <tr>
               <td>
-                Teams
+                <%= User.human_attribute_name( :teams) %>
               </td>
               <td>
                 <% @user.teams.each do |teams| %>
@@ -59,7 +60,7 @@
             </tr>
             <tr>
               <td>
-               Straße und Hausnummer
+              <%= User.human_attribute_name( :street_and_nr) %>
               </td>
               <td>
                 <%= @user.street_and_nr %><br/>
@@ -67,7 +68,7 @@
             </tr>
             <tr>
               <td>
-               Postleitzahl
+               <%= User.human_attribute_name( :zip_code) %>
               </td>
               <td>
                 <%= @user.zip_code %><br/>
@@ -75,7 +76,7 @@
             </tr>
             <tr>
               <td>
-                 Geburtstag
+                  <%= User.human_attribute_name( :birthday) %>
               </td>
               <td>
                 <%= @user.birthday %>
@@ -83,7 +84,7 @@
             </tr>
             <tr>
               <td>
-                Stadt
+                <%= User.human_attribute_name( :locality) %>
               </td>
               <td>
                 <%= @user.locality %>
@@ -91,7 +92,7 @@
             </tr>
             <tr>
               <td>
-                Bundesland
+                <%= User.human_attribute_name( :state) %>
               </td>
               <td>
                 <%= @user.state %>
@@ -99,7 +100,7 @@
             </tr>
             <tr>
               <td>
-                Land
+                <%= User.human_attribute_name( :country_name) %>
               </td>
               <td>
                 <%= @user.country_name %>
@@ -118,6 +119,3 @@
         </div>
   </div>
 </div>
-
-
-
