@@ -121,12 +121,15 @@ var Chat = (function() {
                     notifyNewMessage(from_user.first_name);
                 }
             },
-            webSocketNewMessageStatus: function (conversation_id, message_id, html) {
+            webSocketNewMessageStatus: function (conversation_id, messages) {
                 //Prüfung ob überhaupt Chat Box vorhanden oder auf andere Seire
                 if($('.' + CLASS_CHAT_BOX_WRAPPER).length >= 1) {
                     //Prüfung ob auch aktuelle Konversation
                     if (currentConversation == conversation_id) {
-                        setTextMessageStatus(message_id, html);
+                        for(var i = 0; i < messages.length; i++){
+                            setTextMessageStatus(messages[i].message_id, messages[i].html);
+                        }
+
                     }
                 }
             },
