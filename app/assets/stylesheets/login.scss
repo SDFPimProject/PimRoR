@@ -34,12 +34,17 @@ $margin: 20px;
 .login-field {
   margin: $margin;
   input {
-    border-radius: 3px;
     padding: 12px;
     width: 100%;
-    border: thin solid $primary-color-dark;
+    border: 0;
+    border-bottom: 2px solid $primary-color-dark;
     box-sizing: border-box;
-    box-shadow: $box-shadow;
+    transition: all 0.3s;
+    &:focus{
+      border-color: $primary-accent-color;
+      outline: none;
+      transition: all 0.3s;
+    }
   }
 }
 
