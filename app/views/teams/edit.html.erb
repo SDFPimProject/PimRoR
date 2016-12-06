@@ -1,32 +1,56 @@
-<h1>Editing Team</h1>
+<div class="content-wrapper">
+  <div class="content-box">
+    <div class="box-header">Edit Team</div>
+    <div class="box-content">
+      <%= render 'form' %>
+    </div>
+    <div class="box-content row edit-team">
+      <div class="box-content-column">
+        <div class="box-header"><%= t('views.team_member') %></div>
+        <%= will_paginate @team_users, :param_name => 'teamUserPage' %>
+        <table class="team-member">
+          <% @team_users.each do |a| %>
+              <%= form_for(a) do |ff| %>
+                  <tr>
+                    <td>
+                      <%= User.find(a.user_id).email %>
+                    </td>
+                    <td>
+                      <%= ff.collection_select(:user_team_role, UsersTeam::ROLES, :to_s, lambda { |i| i.to_s.humanize }) %>
+                    </td>
+                    <td>
 
-<%= render 'form' %>
-
-<%= Team.human_attribute_name("users") %><br />
-<% @team_users.each do |a| %>
-    <%= form_for(a) do |ff| %>
-        <p>
-            <%= User.find(a.user_id).email %>
-            <%= ff.collection_select(:user_team_role, UsersTeam::ROLES, :to_s, lambda{|i| i.to_s.humanize}) %>
-            <%= link_to 'Remove',  team_remove_user_path(@team, a.user_id),  method: :post %>
-        </p>
-        <div class="actions">
-            <%= ff.submit "Save" %>
+                        <%= link_to team_remove_user_path(@team, a.user_id), method: :post do %>
+                          <div class="button">Remove</div>
+                        <% end %>
+                    </td>
+                    <td>
+                      <div class="input-button">
+                        <%= ff.submit "update" %>
+                      </div>
+                    </td>
+                  </tr>
+              <% end %>
+          <% end %>
+        </table>
+        <%= will_paginate @team_users, :param_name => 'teamUserPage' %>
+      </div>
+      <div class="box-content-column">
+        <div>
+          <div class="box-header"><%= Team.human_attribute_name("users") %> hinzufügen</div>
+          <%= will_paginate @users, :param_name => 'userPage' %>
+          <table class="team-member">
+          <% @users.each do |user| %>
+                <tr>
+                  <td><%= user.email %></td>
+                  <td><%= link_to team_add_user_path(@team, user), method: :post do %><div class="button">add</div><% end %></td>
+                </tr>
+          <% end %>
+          </table>
+          <%= will_paginate @users, :param_name => 'userPage' %>
         </div>
-    <% end %>
-<% end %>
-<%= will_paginate @team_users, :param_name => 'teamUserPage' %>
-
-
-
-<div>
-    <%= Team.human_attribute_name("users") %> hinzufügen<br />
-    <% @users.each do |user| %>
-        <p><%= user.email %>
-        <%= link_to 'add',  team_add_user_path(@team, user),  method: :post %></p>
-    <% end %>
-    <%= will_paginate @users, :param_name => 'userPage' %>
+      </div>
+    </div>
+    <%= link_to 'Back', teams_path %>
+  </div>
 </div>
-
-
-<%= link_to 'Back', teams_path %>
