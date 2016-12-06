@@ -1,6 +1,13 @@
-<h1>Editing Event</h1>
+<div class="edit_event_wrapper">
+    <h1>Editing Event</h1>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @event %> |
-<%= link_to 'Back', events_path %>
+    <%= render 'form' %>
+    <div class="navi_links">
+        <%= link_to events_path do %>
+            <div class="button">Zurück zum Kalender</div>
+        <% end %>
+        <%= link_to @event, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <div class="button">Entfernen</div>
+        <% end %>
+    </div>
+</div>
