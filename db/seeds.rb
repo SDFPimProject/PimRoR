@@ -32,10 +32,10 @@ student_list =
         },
         {
             "last_name": "Doan",
-            "first_name": "Duc",
-            "email": "Long",
-            "projekt": "s0552870@htw-berlin.de",
-            "role": "C"
+            "first_name": "Duc Long",
+            "email": "s0552870@htw-berlin.de",
+            "projekt": "C",
+            "role": USER_PROJEKT_ROLE[:admin]
         },
         {
             "last_name": "Pupke",
