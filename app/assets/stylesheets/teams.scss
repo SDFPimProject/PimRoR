@@ -3,6 +3,7 @@
 .team-member {
   width: 100%;
   padding: 20px;
+  border-collapse: collapse;
   tr:hover {
     background-color: $primary-color-dark;
   }
@@ -15,6 +16,7 @@
   padding: 20px;
   width: 100%;
   color: $primary-color-text;
+  border-collapse: collapse;
   tr td:first-child{
     width: 100%;
   }
@@ -26,3 +28,6 @@
   }
 }
 
+.edit-team{
+  width: 100%;
+}

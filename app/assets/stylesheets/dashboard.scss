@@ -45,6 +45,11 @@
   flex-grow: 5;
 }
 
+.box-content-column{
+  flex-basis: 0;
+  flex-grow: 1;
+}
+
 .headline-button {
   display: flex;
   flex-basis: 0;

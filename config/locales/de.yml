@@ -47,3 +47,5 @@ de:
         country_name: "Land"
         locality: "Stadt"
         zip_code: "Postleitzahl"
+  views:
+    team_member: "Teilnehmer"
