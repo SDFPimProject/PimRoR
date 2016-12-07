@@ -48,4 +48,4 @@ de:
         locality: "Stadt"
         zip_code: "Postleitzahl"
   views:
-    team_member: "Teilnehmer"
+    member: "Teilnehmer"

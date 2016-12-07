@@ -1,31 +1,58 @@
-<h1>Editing Project</h1>
-
-<%= render 'form' %>
-
-<%= Project.human_attribute_name("users") %><br />
-<% @project_users.each do |a| %>
-    <%= form_for(a) do |ff| %>
-        <p>
-            <%= User.find(a.user_id).email %>
-            <%= ff.collection_select(:user_project_role, UsersProject::ROLES, :to_s, lambda{|i| i.to_s.humanize}) %>
-            <%= link_to 'Remove',  project_remove_user_path(@project, a.user_id),  method: :post %>
-        </p>
-        <div class="actions">
-            <%= ff.submit "Save" %>
+<div class="content-wrapper">
+  <div class="content-box">
+    <div class="box-header">Edit Project</div>
+    <div class="box-content">
+      <%= render 'form' %>
+    </div>
+    <div class="box-content row edit-team">
+      <div class="box-content-column">
+        <div class="box-header"><%= t('views.member') %></div>
+        <%= will_paginate @project_users, :param_name => 'projectUserPage' %>
+        <table class="member-table">
+          <% @project_users.each do |a| %>
+              <%= form_for(a) do |ff| %>
+                  <tr>
+                    <td>
+                      <%= User.find(a.user_id).email %>
+                    </td>
+                    <td>
+                      <%= ff.collection_select(:user_project_role, UsersProject::ROLES, :to_s, lambda { |i| i.to_s.humanize }) %>
+                    </td>
+                    <td>
+                      <%= link_to project_remove_user_path(@project, a.user_id), method: :post do %>
+                          <div class="button"><i class="material-icons">&#xE14C;</i></div>
+                      <% end %>
+                    </td>
+                    <td>
+                      <div class="input-button">
+                        <%= ff.submit "update" %>
+                      </div>
+                    </td>
+                  </tr>
+              <% end %>
+          <% end %>
+        </table>
+      </div>
+      <%= will_paginate @project_users, :param_name => 'projectUserPage' %>
+      <div class="box-content-column">
+        <div>
+          <div class="box-header"><%= Project.human_attribute_name("users") %> hinzufügen</div>
+          <%= will_paginate @users, :param_name => 'userPage' %>
+          <table class="member-table">
+            <% @users.each do |user| %>
+                <tr>
+                  <td><%= user.email %></td>
+                  <td>
+                    <%= link_to project_add_user_path(@project, user), method: :post do %>
+                        <div class="button"><i class="material-icons">&#xE145;</i></div>
+                    <% end %>
+                  </td>
+                </tr>
+            <% end %>
+          </table>
+          <%= will_paginate @users, :param_name => 'userPage' %>
         </div>
-    <% end %>
-<% end %>
-<%= will_paginate @project_users, :param_name => 'projectUserPage' %>
-
-    
-
-<div>
-    <%= Project.human_attribute_name("users") %> hinzufügen<br />
-    <% @users.each do |user| %>
-        <p><%= user.email %>
-        <%= link_to 'add',  project_add_user_path(@project, user),  method: :post %></p>
-    <% end %>
-    <%= will_paginate @users, :param_name => 'userPage' %>
+      </div>
+    </div>
+  </div>
 </div>
-
-<%= link_to 'Back', projects_path %>

@@ -17,7 +17,7 @@
     <div class="box-content"><p id="notice"><%= notice %></p></div>
     <div class="box-content">Project Member</div>
     <%= will_paginate @project_users, :param_name => 'projectUserPage' %>
-    <table class="team-member">
+    <table class="member-table">
       <% @project_users.each do |user| %>
           <tr>
             <td>
