@@ -1,6 +1,4 @@
 <div class="content-wrapper">
-
-
   <div class="content-box">
     <div class="row">
       <div class="box-header">
@@ -19,6 +17,7 @@
     </div>
     <div class="box-content"><p id="notice"><%= notice %></p></div>
     <div class="box-content"> Team Member</div>
+    <%= will_paginate @team_users, :param_name => 'teamUserPage' %>
     <table class="team-member">
       <% @team_users.each do |user| %>
           <tr>

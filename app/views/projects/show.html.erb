@@ -1,20 +1,32 @@
-<p id="notice"><%= notice %></p>
-
-<div>
-    <%= Project.human_attribute_name("name") %><br />
-    <%= @project.name %>
-</div>
-
-<div>
-    <%= Project.human_attribute_name("users") %><br />
-    <% @project_users.each do |user| %>
-        <p>
-            <%= user.email %>
-            <%= user.users_projects.where('project_id = ?', @project.id)[0].user_project_role %>
-        </p>
-    <% end %>
+<div class="content-wrapper">
+  <div class="content-box">
+    <div class="row">
+      <div class="box-header">
+        <div>
+          Project: <%= @project.name %>
+        </div>
+      </div>
+      <div class="headline-button">
+        <div>
+          <%= link_to edit_project_path(@project) do %>
+              <div class="button">Edit Project</div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="box-content"><p id="notice"><%= notice %></p></div>
+    <div class="box-content">Project Member</div>
     <%= will_paginate @project_users, :param_name => 'projectUserPage' %>
+    <table class="team-member">
+      <% @project_users.each do |user| %>
+          <tr>
+            <td>
+              <%= user.email %>
+              <%= user.users_projects.where('project_id = ?', @project.id)[0].user_project_role %>
+            </td>
+          </tr>
+      <% end %>
+    </table>
+    <%= will_paginate @project_users, :param_name => 'projectUserPage' %>
+  </div>
 </div>
-
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
