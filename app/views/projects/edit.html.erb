@@ -6,9 +6,9 @@
     </div>
     <div class="box-content row edit-team">
       <div class="box-content-column">
-        <div class="box-header"><%= t('views.team_member') %></div>
+        <div class="box-header"><%= t('views.member') %></div>
         <%= will_paginate @project_users, :param_name => 'projectUserPage' %>
-        <table class="team-member">
+        <table class="member-table">
           <% @project_users.each do |a| %>
               <%= form_for(a) do |ff| %>
                   <tr>
@@ -20,7 +20,7 @@
                     </td>
                     <td>
                       <%= link_to project_remove_user_path(@project, a.user_id), method: :post do %>
-                          <div class="button">Remove</div>
+                          <div class="button"><i class="material-icons">&#xE14C;</i></div>
                       <% end %>
                     </td>
                     <td>
@@ -38,13 +38,13 @@
         <div>
           <div class="box-header"><%= Project.human_attribute_name("users") %> hinzufügen</div>
           <%= will_paginate @users, :param_name => 'userPage' %>
-          <table class="team-member">
+          <table class="member-table">
             <% @users.each do |user| %>
                 <tr>
                   <td><%= user.email %></td>
                   <td>
                     <%= link_to project_add_user_path(@project, user), method: :post do %>
-                        <div class="button">add</div>
+                        <div class="button"><i class="material-icons">&#xE145;</i></div>
                     <% end %>
                   </td>
                 </tr>
@@ -53,7 +53,6 @@
           <%= will_paginate @users, :param_name => 'userPage' %>
         </div>
       </div>
-      <%= link_to 'Back', teams_path %>
     </div>
   </div>
 </div>
