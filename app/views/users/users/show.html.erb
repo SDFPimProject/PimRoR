@@ -2,120 +2,110 @@
 <div class="content-wrapper">
   <div class="content-box">
     <div class="box-header">
-      Profil
+      <div>
+        Profil
+      </div>
     </div>
-          <table class="form-display-table">
-            <tr>
-              <td>
-               <%= User.human_attribute_name( :email) %>
-              </td>
-              <td>
-                <%= @user.email %>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <%= User.human_attribute_name( :first_name) %>
-              </td>
-              <td>
-                <%= @user.first_name %>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <%= User.human_attribute_name( :last_name) %>
+    <table class="form-display-table">
+      <tr>
+        <td>
+          <%= User.human_attribute_name(:email) %>
+        </td>
+        <td>
+          <%= @user.email %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= User.human_attribute_name(:first_name) %>
+        </td>
+        <td>
+          <%= @user.first_name %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= User.human_attribute_name(:last_name) %>
 
-              </td>
-              <td>
-                <%= @user.last_name %>
-              </td>
-            </tr>
-            <tr>
-              <td>
-               <%= User.human_attribute_name( :role) %>
-              </td>
-              <td>
-                <%= @user.role %>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <%= User.human_attribute_name( :projects) %>
-              </td>
-              <td>
-                <% @user.projects.each do |project| %>
-                    <%= project.name %> <br>
-                <% end %>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <%= User.human_attribute_name( :teams) %>
-              </td>
-              <td>
-                <% @user.teams.each do |teams| %>
-                    <%= teams.name %> <br>
-                <% end %>
-              </td>
-            </tr>
-            <tr>
-              <td>
-              <%= User.human_attribute_name( :street_and_nr) %>
-              </td>
-              <td>
-                <%= @user.street_and_nr %><br/>
-              </td>
-            </tr>
-            <tr>
-              <td>
-               <%= User.human_attribute_name( :zip_code) %>
-              </td>
-              <td>
-                <%= @user.zip_code %><br/>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                  <%= User.human_attribute_name( :birthday) %>
-              </td>
-              <td>
-                <%= @user.birthday %>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <%= User.human_attribute_name( :locality) %>
-              </td>
-              <td>
-                <%= @user.locality %>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <%= User.human_attribute_name( :state) %>
-              </td>
-              <td>
-                <%= @user.state %>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <%= User.human_attribute_name( :country_name) %>
-              </td>
-              <td>
-                <%= @user.country_name %>
-              </td>
-            </tr>
-          </table>
-        </div>
-
-          <div>
-            <%= link_to :back do %>
-                <div class="login-field button">
-                  zurück
-                </div>
-            <% end %>
-          </div>
-        </div>
+        </td>
+        <td>
+          <%= @user.last_name %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= User.human_attribute_name(:role) %>
+        </td>
+        <td>
+          <%= @user.role %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= User.human_attribute_name(:projects) %>
+        </td>
+        <td>
+          <% @user.projects.each do |project| %>
+              <%= project.name %> <br>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= User.human_attribute_name(:teams) %>
+        </td>
+        <td>
+          <% @user.teams.each do |teams| %>
+              <%= teams.name %> <br>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= User.human_attribute_name(:street_and_nr) %>
+        </td>
+        <td>
+          <%= @user.street_and_nr %><br/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= User.human_attribute_name(:zip_code) %>
+        </td>
+        <td>
+          <%= @user.zip_code %><br/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= User.human_attribute_name(:birthday) %>
+        </td>
+        <td>
+          <%= @user.birthday %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= User.human_attribute_name(:locality) %>
+        </td>
+        <td>
+          <%= @user.locality %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= User.human_attribute_name(:state) %>
+        </td>
+        <td>
+          <%= @user.state %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= User.human_attribute_name(:country_name) %>
+        </td>
+        <td>
+      </tr>
+    </table>
   </div>
 </div>
