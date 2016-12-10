@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   get 'users/:id/show' =>'users/users#show', :as => 'show_users_path'
 
   get 'conservations_list', to: 'conversations#get_conservation_list'
+  get 'conversation_landingpage', to: 'conversations#get_landing_page'
   post 'messages_read', to: "messages#message_read"
   post 'message_receive', to: "messages#message_receive"
 
