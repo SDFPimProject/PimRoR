@@ -1,0 +1,37 @@
+<div class="message-landing-container">
+  <div class="list-box">
+    <div class="box-title">
+      <h3><%= t('views.message.random_conversations') %></h3>
+    </div>
+      <% random_conversations.each do |user| %>
+          <div class="list-item list-item-float">
+            <div class="list-item-content open-conversation" data-sid="<%= current_user.id %>" data-rip="<%= user.id %>">
+              <div class="list-item-heading">
+                <%= user.first_name + " " + user.last_name %>
+              </div>
+              <div class="list-item-content">
+                <%= user.email %>
+              </div>
+            </div>
+          </div>
+      <% end %>
+  </div>
+  <div class="clear"></div>
+  <div class="list-box">
+    <div class="box-title">
+      <h3><%= t('views.message.vip') %></h3>
+    </div>
+      <% vip_users.each do |user| %>
+          <div class="list-item list-item-float">
+            <div class="list-item-content open-conversation" data-sid="<%= current_user.id %>" data-rip="<%= user.id %>">
+              <div class="list-item-heading">
+                <%= user.first_name + " " + user.last_name %>
+              </div>
+              <div class="list-item-content">
+                <%= user.email %>
+              </div>
+            </div>
+          </div>
+      <% end %>
+  </div>
+</div>
