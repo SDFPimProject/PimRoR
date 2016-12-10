@@ -116,11 +116,14 @@ var Chat = (function() {
                 var that = this;
                 //Prüfung ob überhaupt Chat Box vorhanden oder auf andere Seire
                 if($('.' + CLASS_CHAT_BOX_WRAPPER).length >= 1) {
+                    //enjoy the loading Animations :D
+                    setTimeout(function(){
                         if(currentConversation){
                             that.openChat(currentConversation);
                         }else{
                             loadLandingPage();
                         }
+                    }, 300);
 
                 }
             },
