@@ -1,4 +1,8 @@
 //Events
+document.addEventListener("turbolinks:load", function() {
+    Chat.getInstance().openMessanger();
+});
+
 $(document).on('click', '.open-conversation', function(e) {
     e.preventDefault();
     var sender_id = $(this).data('sid');
