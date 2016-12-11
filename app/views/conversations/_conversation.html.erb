@@ -10,5 +10,5 @@
         <div class="message-count"><%= conversation.count_unread %></div>
     <% end %>
   </div>
-  <div class="list-item-content"><%= conversation.last_message %></div>
+  <div class="list-item-content"><%= raw conversation.last_message %></div>
 </div>

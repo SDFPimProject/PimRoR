@@ -1,12 +1,15 @@
 class MessagesController < ApplicationController
   include MessagesHelper
   include ConversationsHelper
+  include ActionView::Helpers::TextHelper
 
   def create
     @conversation = Conversation.find(params[:conversation_id])
     @reciever = interlocutor(@conversation)
     @message = @conversation.messages.create(message_params)
+
     @message.send_from_id = current_user.id
+    @message.body = simple_format(message_params[:body])
     @message.is_send = true
     @message.save!
 
