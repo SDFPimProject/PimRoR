@@ -10,6 +10,7 @@ var Chat = (function() {
         var CLASS_CHAT_BOX_CONTENT = "chat_box_content";
         var CLASS_CHAT_BOX_TEXTAREA = "chat_box_textarea";
         var CLASS_CHAT_BOX_MESSAGE_STATUS = "chat_box_message_status";
+        var CLASS_SEARCH_LIST = "chat-user-search-result";
         var PATH_CONVERSATIONS = "conversations/";
         var PATH_MESSAGES = "/messages";
         var currentConversation = null;
@@ -24,6 +25,11 @@ var Chat = (function() {
 
         function setConversationLandingPage(html) {
             $("." + CLASS_CHAT_BOX_WRAPPER).html(html);
+        }
+
+        function setUserSearchList(html){
+            $("." + CLASS_SEARCH_LIST).html(html);
+            $("." + CLASS_SEARCH_LIST).show();
         }
 
         function setTextMessage(html){
@@ -57,6 +63,7 @@ var Chat = (function() {
 
             });
         }
+
         function loadConversationData() {
             $.get('conservations_list', setConversationList, "html");
         }
@@ -74,6 +81,10 @@ var Chat = (function() {
         
         function loadLandingPage() {
             $.get('conversation_landingpage', setConversationLandingPage, "html");
+        }
+
+        function loadUserSearchList(search){
+            $.get('user_search', {search: search, class: 'chat'}, setUserSearchList, "html");
         }
 
         function sendMessage(text){
@@ -110,6 +121,8 @@ var Chat = (function() {
             //PUBLIC
             openChat : function(conversation_id){
                 currentConversation = conversation_id;
+                $('.' + CLASS_SEARCH_LIST).hide();
+                $('.search-user-chat').val("");
                 loadChatData(conversation_id);
             },
             openMessanger: function () {
@@ -179,6 +192,14 @@ var Chat = (function() {
                 if (event.keyCode == 13 && !event.shiftKey && !event.ctrlKey) {
                     event.preventDefault();
                     sendMessage(textarea.val());
+                }
+            },
+            searchUser:function (inputField) {
+                if(inputField.val().length < 1){
+                    $('.' + CLASS_SEARCH_LIST).hide();
+                    return;
+                }else{
+                    loadUserSearchList(inputField.val());
                 }
             },
             clickSubmit:function () {
