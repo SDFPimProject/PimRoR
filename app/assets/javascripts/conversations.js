@@ -16,6 +16,9 @@ $(document).on('click', '.chat_box_submit', function (event) {
 $(document).on('keydown', '.chat_box_textarea', function (event) {
     Chat.getInstance().checkInputKey(event, $(this));
 });
+$(document).on('keyup', '.search-user-chat', function (event) {
+    Chat.getInstance().searchUser($(this))
+});
 $(document).on('click', '.btn_message_delete', function (e) {
     e.preventDefault();
     var message_id = $(this).data('mid');
@@ -25,7 +28,13 @@ $(document).on('click', '.btn_chat_overview', function (e) {
     e.preventDefault();
     Chat.getInstance().showOverview();
 });
+$(document).on('click', '.user-search-list-wrapper.chat li', function (e) {
+    e.preventDefault();
+    var user_id = $(this).data('userid');
+    var current_id = user.id;
 
+    openConversation(user_id, current_id);
+});
 
 //Functions
 function openConversation(sender_id, recipient_id){
