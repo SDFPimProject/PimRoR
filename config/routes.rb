@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   end
 
   get 'users/:id/show' =>'users/users#show', :as => 'show_users_path'
+  get 'user_search', to: 'users/users#search'
 
   get 'conservations_list', to: 'conversations#get_conservation_list'
   get 'conversation_landingpage', to: 'conversations#get_landing_page'

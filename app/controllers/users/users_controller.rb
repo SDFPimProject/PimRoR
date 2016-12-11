@@ -55,6 +55,23 @@ class Users::UsersController < ApplicationController
     end
   end
 
+  def search
+
+    if params[:search]
+      @users = User.search(params[:search]).order("first_name")
+    else
+      @users = User.order("first_name")
+    end
+    # zum behandeln von klick events auf der Suchliste
+    if params[:class]
+      @class = params[:class]
+    else
+      @class = ""
+    end
+
+    render :template => 'users/users/_user_search.html.erb', :locals => { :users => @users, :special_class => @class}, layout: false
+  end
+
   private
       def user_params
         params.require(:user).permit(:email, :email_confirmation ,:first_name, :last_name, :birthday, :role, :street_and_nr, :zip_code, :state, :locality, :country_name, :password, :password_confirmation)

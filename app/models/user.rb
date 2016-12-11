@@ -63,4 +63,8 @@ class User < ActiveRecord::Base
     email_confirmation.try(:downcase!)
     email.try(:downcase!)
   end
+
+  def self.search(search)
+    where("UPPER(first_name) LIKE UPPER(?) OR UPPER(last_name) LIKE UPPER(?) OR UPPER(email) LIKE UPPER(?)", "%#{search}%","%#{search}%","%#{search}%")
+  end
 end

@@ -1,0 +1,25 @@
+<div class="user-search-list-wrapper  <%= special_class %>">
+  <ul class="user-serach-list">
+    <% if users.any? %>
+      <% users.each do |user| %>
+            <!-- beim Chat soll der eigene Nutzer nicht angezeigt werden werden -->
+          <% if user.id != current_user.id && special_class == 'chat' %>
+          <li class="user-search-list-item" data-userid="<%= user.id%>">
+            <span class="user-status">
+              <% if user.connection_id != '' %>
+                <span>ONLINE</span>
+              <% else %>
+                  <span>OFFLINE</span>
+              <% end %>
+            </span>
+            <%= user.first_name + " " + user.last_name %>
+          </li>
+          <% end %>
+      <% end %>
+    <% else %>
+        <li class="user-search-list-item-no-result">
+          <%= t('views.no_results') %>
+        </li>
+    <% end %>
+  </ul>
+</div>

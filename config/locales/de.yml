@@ -49,6 +49,7 @@ de:
         zip_code: "Postleitzahl"
   views:
     member: "Teilnehmer"
+    no_results: "Keine Ergebnisse"
     message:
       last_conversations: "Letzte Unterrhaltungen"
       vip: "Möchtest du ... schreiben?"
