@@ -127,6 +127,10 @@ var Chat = (function() {
 
                 }
             },
+            showOverview: function () {
+              currentConversation = null;
+              loadLandingPage();
+            },
             webSocketNewMessage: function (conversation_id, message_id, from_user, html) {
                 //Prüfung ob überhaupt Chat Box vorhanden oder auf andere Seire
                 if($('.' + CLASS_CHAT_BOX_WRAPPER).length >= 1){
