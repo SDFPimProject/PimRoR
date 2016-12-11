@@ -1,0 +1,12 @@
+test:
+    first_name: "test"
+    last_name: "PimCrew"
+    email: "test@pimsuite.de"
+    encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+    role: "admin"
+    street_and_nr: "Sonnenweg 10"
+    birthday: "01.01.1985"
+    state: "Berlin"
+    country_name: "Deutschland"
+    locality: "Berlin"
+    zip_code: "12351"
