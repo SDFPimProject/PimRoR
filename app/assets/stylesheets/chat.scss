@@ -100,6 +100,16 @@
   padding: 15px;
   font-size: large;
   border-bottom: thin solid $primary-color-dark;
+  .name{
+
+  }
+  .profile{
+    font-size: 1em;
+  }
+  .status{
+    font-size: 0.8em;
+    color: #828282;
+  }
 }
 
 .chat_box_content {
