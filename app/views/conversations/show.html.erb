@@ -1,6 +1,6 @@
 <div class="chat_box">
   <div class="chat_box_head">
-      <%= @reciever.first_name %>
+      <%= @reciever.first_name + " " + @reciever.last_name %>
   </div>
   <div class="chat_box_content">
     <% if @messages.any? %>
