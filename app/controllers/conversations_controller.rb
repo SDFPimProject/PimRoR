@@ -2,7 +2,6 @@ class ConversationsController < ApplicationController
   include ConversationsHelper
 
   def index
-    @users = User.all
     @conversations = Conversation.involving(current_user)
 
     @conversations.each do |conversation|

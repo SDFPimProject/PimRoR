@@ -66,6 +66,10 @@
 .list-item-content {
   padding: 8px;
   overflow: hidden;
+  p{
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 }
 
 .box-title {
@@ -100,6 +104,16 @@
   padding: 15px;
   font-size: large;
   border-bottom: thin solid $primary-color-dark;
+  .name{
+
+  }
+  .profile{
+    font-size: 1em;
+  }
+  .status{
+    font-size: 0.8em;
+    color: #828282;
+  }
 }
 
 .chat_box_content {
@@ -108,6 +122,10 @@
   max-height: 75%;
   height: 50000px;
   overflow-y: scroll;
+  p{
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 }
 
 .chat_box_input {

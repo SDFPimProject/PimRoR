@@ -26,20 +26,6 @@
         <% end %>
       </div>
     </div>
-    <div class="list-box">
-      <div class="box-title">
-        Alle Nutzer
-      </div>
-      <% @users.each do |user| %>
-          <% if user.id != current_user.id %>
-              <div class="list-item">
-                <div class="list-item-content open-conversation" data-sid="<%= current_user.id %>" data-rip="<%= user.id %>">
-                  <%= user.first_name %>
-                </div>
-              </div>
-          <% end %>
-      <% end %>
-    </div>
   </div>
   <div class="chat_box_wrapper right-side-wrapper-chat">
     <div class="material-icon failed-loader">

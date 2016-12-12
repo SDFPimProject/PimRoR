@@ -1,6 +1,20 @@
 <div class="chat_box">
   <div class="chat_box_head">
-      <%= @reciever.first_name %>
+    <div class="name">
+      <%= @reciever.first_name + " " + @reciever.last_name %>
+    </div>
+    <div class="profile">
+      <a  href="users/<%= @reciever.id %>/show" class="button">
+        <i class="material-icons">account_circle</i>
+      </a>
+    </div>
+    <div class="status">
+      <% if @reciever.connection_id != '' %>
+          <%= t('views.online') %>
+      <% else %>
+          <%= t('views.offline') %>
+      <% end %>
+    </div>
   </div>
   <div class="chat_box_content">
     <% if @messages.any? %>

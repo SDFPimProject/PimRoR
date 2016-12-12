@@ -56,3 +56,6 @@ de:
       random_conversations: "Unterhaltungen"
       overview: "Übersicht"
       search_person: "Suche Person"
+    you: "Du"
+    online: "Online"
+    offline: "Offline"

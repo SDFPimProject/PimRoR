@@ -18,6 +18,9 @@ var Chat = (function() {
         function notifyNewMessage(name) {
             toastr['info']("Neue Nachricht von " + name);
         }
+        function setPersonOnline () {
+            $('.chat_box_head .status').text('Online');
+        }
 
         function setConversationList(html) {
             $("." + CLASS_CONVESATIONS_LIST).html(html);
@@ -151,6 +154,7 @@ var Chat = (function() {
                     if(currentConversation == conversation_id){
                         appendTextMessage(html);
                         setMessageRead(conversation_id);
+                        setPersonOnline();
                     }else{
                         setMessageReceive(conversation_id);
                         loadConversationData();
