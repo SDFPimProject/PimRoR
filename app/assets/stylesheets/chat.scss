@@ -19,6 +19,15 @@
   flex-basis: 0;
 }
 
+.message-landing-container {
+  width: 100%;
+  overflow-y: auto;
+  .clear{
+    clear: both;
+    margin-bottom: 20px;
+  }
+}
+
 .right-side-wrapper-chat {
   display: flex;
   justify-content: center;
@@ -39,6 +48,10 @@
     cursor: pointer;
     box-shadow: $box-shadow-hover;
   }
+}
+.list-item-float {
+  float: left;
+  min-width: 250px;
 }
 
 .list-item-heading {

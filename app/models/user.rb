@@ -37,12 +37,19 @@ class User < ActiveRecord::Base
   validates :zip_code, zipcode: { country_code: :de }
 
 
-  scope :online, -> (user) do
+  scope :online, -> () do
     where("user.connection_id <> ''")
   end
 
-  scope :offline, -> (user) do
+  scope :offline, -> () do
     where("user.connection_id = ''")
+  end
+
+  scope :team_and_project_mates, -> (users_teams, users_projects, current_user) do
+    joins(:users_teams).joins(:users_projects)
+        .where('users_teams.team_id in (?) OR users_projects.project_id in (?)', users_teams.pluck(:team_id), users_projects.pluck(:project_id))
+        .where(['users.id != ?', current_user.id])
+        .select('distinct users.*')
   end
 
   has_many :conversations, :foreign_key => :sender_id

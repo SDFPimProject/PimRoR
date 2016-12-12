@@ -22,6 +22,10 @@ var Chat = (function() {
             $("." + CLASS_CONVESATIONS_LIST).html(html);
         }
 
+        function setConversationLandingPage(html) {
+            $("." + CLASS_CHAT_BOX_WRAPPER).html(html);
+        }
+
         function setTextMessage(html){
             $("." + CLASS_CHAT_BOX_WRAPPER).html(html);
 
@@ -67,6 +71,10 @@ var Chat = (function() {
                 textarea.focus();
             }, "html");
         }
+        
+        function loadLandingPage() {
+            $.get('conversation_landingpage', setConversationLandingPage, "html");
+        }
 
         function sendMessage(text){
             text = text.replace(/^\s+|\s+$/g, "");
@@ -103,6 +111,25 @@ var Chat = (function() {
             openChat : function(conversation_id){
                 currentConversation = conversation_id;
                 loadChatData(conversation_id);
+            },
+            openMessanger: function () {
+                var that = this;
+                //Prüfung ob überhaupt Chat Box vorhanden oder auf andere Seire
+                if($('.' + CLASS_CHAT_BOX_WRAPPER).length >= 1) {
+                    //enjoy the loading Animations :D
+                    setTimeout(function(){
+                        if(currentConversation){
+                            that.openChat(currentConversation);
+                        }else{
+                            loadLandingPage();
+                        }
+                    }, 300);
+
+                }
+            },
+            showOverview: function () {
+              currentConversation = null;
+              loadLandingPage();
             },
             webSocketNewMessage: function (conversation_id, message_id, from_user, html) {
                 //Prüfung ob überhaupt Chat Box vorhanden oder auf andere Seire
@@ -168,6 +195,9 @@ var Chat = (function() {
                 instance = init();
             }
             return instance;
+        },
+        destroy: function () {
+            instance = null;
         }
     };
 })();

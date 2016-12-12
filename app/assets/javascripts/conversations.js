@@ -1,4 +1,8 @@
 //Events
+document.addEventListener("turbolinks:load", function() {
+    Chat.getInstance().openMessanger();
+});
+
 $(document).on('click', '.open-conversation', function(e) {
     e.preventDefault();
     var sender_id = $(this).data('sid');
@@ -17,6 +21,11 @@ $(document).on('click', '.btn_message_delete', function (e) {
     var message_id = $(this).data('mid');
     Chat.getInstance().deleteMessage(message_id);
 });
+$(document).on('click', '.btn_chat_overview', function (e) {
+    e.preventDefault();
+    Chat.getInstance().showOverview();
+});
+
 
 //Functions
 function openConversation(sender_id, recipient_id){

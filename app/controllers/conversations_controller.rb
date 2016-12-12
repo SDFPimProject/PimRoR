@@ -11,6 +11,23 @@ class ConversationsController < ApplicationController
     end
   end
 
+  def get_landing_page
+    conversations = Conversation.involving(current_user)
+    random_conversations = conversations.sample(5)
+    random_team_and_project_users = User.team_and_project_mates(current_user.users_teams, current_user.users_projects, current_user).sample(10)
+    @random_conversation_user = Array.new
+    @vip_users = Array.new
+
+    random_conversations.each do |conversation|
+      @random_conversation_user.push(interlocutor(conversation))
+    end
+    random_team_and_project_users.each do |user|
+      @vip_users.push(user)
+    end
+
+    render :template => 'conversations/_conversation_landing.html.erb', :locals => {:random_conversations => @random_conversation_user, :vip_users => @vip_users}, layout: false
+  end
+
   def get_conservation_list
     @conversations = Conversation.involving(current_user)
 
@@ -20,7 +37,6 @@ class ConversationsController < ApplicationController
     end
 
     render @conversations
-    # render :template => 'messages/_message.html.erb', :locals => { :message => @message, :current_user => current_user }, layout: false
   end
 
   def create

@@ -27,4 +27,7 @@
 $(document).ready(function() {
     // Websockets
     bindWebSockets(dispatcher);
+
+    //To Clear local Chat data
+    Chat.destroy();
 });
