@@ -5,7 +5,7 @@
   box-shadow: $box-shadow-hover;
   min-width: 250px;
   max-height: 600px;
-  overflow-y: auto;
+  overflow-y: scroll;
 }
 .user-serach-list{
   padding-left: 0;
@@ -24,6 +24,11 @@
     background-color: $primary-accent-color;
     color: $primary-color-dark-text;
     cursor: pointer;
+    .user-status{
+      .online{
+        background-color: $primary-color-dark-text;
+      }
+    }
   }
   :first-child{
     border-top-right-radius: .25rem;
@@ -42,6 +47,19 @@
     text-align: center;
     white-space: nowrap;
     vertical-align: baseline;
+    div{
+      width: 8px;
+      height: 8px;
+      margin-top: 3px;
+      border-radius: 50%;
+
+    }
+    .online{
+      background-color: $primary-accent-color;
+    }
+    .offline{
+      background-color: $primary-color-dark;
+    }
   }
 }
 .user-search-list-item-no-result {
