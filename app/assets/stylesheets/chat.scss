@@ -70,6 +70,15 @@
     margin-top: 0;
     margin-bottom: 0;
   }
+  a{
+    color: $primary-color-text;
+    &:hover{
+      color: $primary-accent-color
+    }
+    &:visited{
+      color: inherit;
+    }
+  }
 }
 
 .box-title {
@@ -136,6 +145,16 @@
   p{
     margin-top: 0;
     margin-bottom: 0;
+  }
+  a{
+    color: $primary-accent-color;
+    &:hover{
+      cursor: pointer;
+      color: $primary-accent-color-lighten;
+    }
+    &:visited{
+      color: $primary-accent-color-lighten;
+    }
   }
 }
 
