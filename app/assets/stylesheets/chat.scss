@@ -98,19 +98,30 @@
 }
 
 .chat_box_head {
-  display: flex;
   background-color: $primary-color;
   justify-content: center;
   padding: 15px;
   font-size: large;
   border-bottom: thin solid $primary-color-dark;
   .name{
-
+    text-align: center;
   }
   .profile{
+    float: right;
     font-size: 1em;
+    margin-top: -20px;
+    .material-icons{
+      color: $primary-accent-color;
+      &:hover{
+        color: $primary-color-dark-text;
+        background-color: $primary-accent-color;
+        border-radius: 50%;
+      }
+    }
+
   }
   .status{
+    text-align: center;
     font-size: 0.8em;
     color: #828282;
   }
