@@ -1,32 +1,5 @@
 <% provide(:title, "Nachrichten") %>
-
 <div class="messages">
-  <div class="left-side-wrapper-chat">
-    <div class="login-field">
-      <input type="text" placeholder="<%= t('views.message.search_person') %>" class="search-user-chat"/>
-      <div class="chat-user-search-result">
-
-      </div>
-    </div>
-    <div class="list-box">
-      <div class="box-title">
-        <a class="button btn_chat_overview" style="width: 100%">
-          <%= t('views.message.overview')%>
-        </a>
-      </div>
-    </div>
-
-    <div class="list-box">
-      <div class="box-title">
-        Briefkasten
-      </div>
-      <div class="conversation_list">
-        <% if @conversations.any? %>
-            <%= render @conversations %>
-        <% end %>
-      </div>
-    </div>
-  </div>
   <div class="chat_box_wrapper right-side-wrapper-chat">
     <div class="material-icon failed-loader">
       <span class="first"></span>

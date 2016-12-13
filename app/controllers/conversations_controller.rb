@@ -1,6 +1,8 @@
 class ConversationsController < ApplicationController
   include ConversationsHelper
 
+  layout "chatlayout"
+
   def index
     @conversations = Conversation.involving(current_user)
 
