@@ -33,7 +33,8 @@ $(document).on('click', '.user-search-list-wrapper.chat li', function (e) {
     var user_id = $(this).data('userid');
     var current_id = user.id;
 
-    openConversation(user_id, current_id);
+    if(user_id)
+        openConversation(user_id, current_id);
 });
 
 //Functions

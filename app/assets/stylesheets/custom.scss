@@ -48,7 +48,8 @@
   flex-grow: 1;
   flex-basis: 0;
 
-  div {
+  .list-box,
+  .button{
     justify-content: flex-start;
     align-items: center;
     padding: 12px;

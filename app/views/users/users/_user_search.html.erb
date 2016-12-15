@@ -7,9 +7,9 @@
           <li class="user-search-list-item" data-userid="<%= user.id%>">
             <span class="user-status">
               <% if user.connection_id != '' %>
-                <span>ONLINE</span>
+                <div class="online"></div>
               <% else %>
-                  <span>OFFLINE</span>
+                  <div class="offline"></div>
               <% end %>
             </span>
             <%= user.first_name + " " + user.last_name %>

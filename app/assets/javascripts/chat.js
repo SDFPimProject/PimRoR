@@ -91,7 +91,7 @@ var Chat = (function() {
         }
 
         function sendMessage(text){
-            text = text.replace(/^\s+|\s+$/g, "");
+            text = text.replace(/^\s+|\s+$/g, ""); //REMOVE bad things
 
             if(text == "")
                 return;

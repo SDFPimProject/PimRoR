@@ -1,0 +1,25 @@
+<% content_for :sidebar do %>
+    <div class="left-side-wrapper">
+      <!-- BUTTON OVERVIEW -->
+      <div class="list-box">
+        <a class="button btn_chat_overview">
+          <%= t('views.message.overview')%>
+        </a>
+      </div>
+      <!-- SEARCH FIELD -->
+      <div class="login-field">
+        <input type="text" placeholder="<%= t('views.message.search_person') %>" class="search-user-chat"/>
+        <div class="chat-user-search-result"></div>
+      </div>
+
+        <div class="box-title">
+          Briefkasten
+        </div>
+        <div class="conversation_list">
+          <% if @conversations.any? %>
+              <%= render @conversations %>
+          <% end %>
+        </div>
+      </div>
+<% end %>
+<%= render template: "layouts/application" %>

@@ -5,6 +5,14 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+def createWelcomeMess(conversation, send_from, recieve)
+  message = conversation.messages.create(:body => "Hey " + recieve.first_name + " Willkommen bei PimSuite+, <br /> <br /> ich freue mich dich beim Messanger zu begrüßen zu können. <br /> Du hast Angst das jmd. deine Nachrichten lesen kann? Keine sorge die Kommunikation ist über SSL verschlüsselt und die Nachrichten werden ebenfalls in der DB verschküsselt gespeichert! <br /> <br /> Du glaubst mit nicht? Dann Check den Code: <br /> <a href='https://github.com/SDFPimProject/PimRoR' target='_blank'>https://github.com/SDFPimProject/PimRoR</a> <br/> <br/> Dein PimSuite+ Bot")
+  message.send_from_id = send_from.id
+  message.is_send = true
+  message.save!
+end
+
 USER_ROLE = {
     admin: "admin",
     moderator: "moderator",
@@ -361,6 +369,19 @@ pD = Project.create(name: "Spring (Java)")
 pE = Project.create(name: "Ruby on Rails")
 pF = Project.create(name: "NodeJS (JavaScript)")
 
+bot = User.create(first_name: "Bot",
+                  last_name:"PimSuite+",
+                  email:  "bot@pimsuite.de",
+                  email_confirmation: "bot@pimsuite.de",
+                  password: "jsfer4herb132sb#ijo#qr'uwerz289490!65236Q7O34VHBSFd,bsl",
+                  role: USER_ROLE[:admin],
+                  street_and_nr:"PimSuite 1",
+                  birthday: "01.01.1900",
+                  state: "Berlin",
+                  country_name: "Deutschland",
+                  locality: "Berlin",
+                  zip_code: "12345")
+
 user_list.each do |user|
   u = User.create(first_name: user,
                     last_name:"PimCrew",
@@ -374,7 +395,8 @@ user_list.each do |user|
                     country_name: "Deutschland",
                     locality: "Berlin",
                     zip_code: "12351")
-
+  conversation = Conversation.create(sender: bot, recipient: u)
+  createWelcomeMess(conversation, bot, u)
   UsersTeam.create(user: u, team: tAdmins, user_team_role: USER_TEAM_ROLE[:user])
   UsersTeam.create(user: u, team: tEntwickler, user_team_role: USER_TEAM_ROLE[:user])
   UsersProject.create(user: u, project: pGreatAgain, user_project_role: USER_PROJEKT_ROLE[:user])
@@ -409,6 +431,8 @@ student_list.each do |student|
                 locality: "Potsdam",
                 zip_code: "14469")
 
+  conversation = Conversation.create(sender: bot, recipient: u)
+  createWelcomeMess(conversation, bot, u)
   UsersTeam.create(user: u, team: tSDF, user_team_role: USER_TEAM_ROLE[:user])
 
   case student[:projekt]
@@ -442,6 +466,8 @@ prof_list.each do |prof|
                 locality: "Potsdam",
                 zip_code: "14469")
 
+  conversation = Conversation.create(sender: bot, recipient: u)
+  createWelcomeMess(conversation, bot, u)
   UsersTeam.create(user: u, team: tSDF, user_team_role: USER_TEAM_ROLE[:admin])
 end
 

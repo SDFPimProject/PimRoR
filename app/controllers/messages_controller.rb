@@ -3,13 +3,17 @@ class MessagesController < ApplicationController
   include ConversationsHelper
   include ActionView::Helpers::TextHelper
 
+  require 'rails_autolink'
+
   def create
     @conversation = Conversation.find(params[:conversation_id])
     @reciever = interlocutor(@conversation)
     @message = @conversation.messages.create(message_params)
 
     @message.send_from_id = current_user.id
-    @message.body = simple_format(message_params[:body])
+    message = simple_format(message_params[:body])
+    message = auto_link(message, :html => {:target => '_blank'})
+    @message.body = message
     @message.is_send = true
     @message.save!
 
