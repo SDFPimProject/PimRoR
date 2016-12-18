@@ -1,0 +1,5 @@
+test:
+    sender_id: 1
+    recipient_id: 1
+    created_at: <%= Time.now %>
+    updated_at: <%= Time.now + 1000 %>
