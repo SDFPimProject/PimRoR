@@ -3,20 +3,20 @@
     <div class="row">
       <div class="box-header">
         <div>
-          Team:
+          <%= t('views.team') %>:
           <%= @team.name %>
         </div>
       </div>
       <div class="headline-button">
         <% if can? :edit, Team %>
             <%= link_to edit_team_path(@team) do %>
-                <div class="button">Edit Team</div>
+                <div class="button"><%= t('views.edit') %> <%= t('views.team') %></div>
             <% end %>
         <% end %>
       </div>
     </div>
     <div class="box-content"><p id="notice"><%= notice %></p></div>
-    <div class="box-content"> Team Member</div>
+    <div class="box-content"> <%= t('views.team') %> <%= t('views.member') %></div>
     <%= will_paginate @team_users, :param_name => 'teamUserPage' %>
     <table class="member-table">
       <% @team_users.each do |user| %>

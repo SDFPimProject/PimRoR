@@ -1,16 +1,15 @@
 <% if @users != nil %>
     <% provide(:title, "Nutzer") %>
-
     <div class="user-wrapper">
       <div class="row">
         <div class="box-header">
-          <div>Listing User</div>
+          <div><%= t('views.users') %></div>
         </div>
         <div class="headline-button">
           <% if can? :create, User %>
               <div class="list-box">
                 <%= link_to new_user_path do %>
-                      <div class="button">new user</div>
+                      <div class="button"><%= t('views.new') %> <%= t('views.user') %></div>
                 <% end %>
               </div>
           <% end %>
@@ -19,9 +18,9 @@
       <%= will_paginate @users %>
       <table class="user_table">
         <tr>
-          <th>Vorname</th>
-          <th>Nachname</th>
-          <th colspan="2">Email</th>
+          <th><%= t('views.first_name') %></th>
+          <th><%= t('views.last_name') %></th>
+          <th colspan="2"><%= t('views.mail') %></th>
         </tr>
         <tr>
           <%= render @users %>

@@ -32,7 +32,8 @@
   width: 100%;
   border-collapse: collapse;
   th {
-    padding: 20px;
+    text-align: left;
+    padding: 20px 7px;
   }
   tr {
     &:hover {

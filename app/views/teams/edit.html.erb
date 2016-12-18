@@ -1,12 +1,12 @@
 <div class="content-wrapper">
   <div class="content-box">
-    <div class="box-header">Edit Team</div>
+    <div class="box-header"><%= t('views.edit') %>  <%= t('views.team') %> </div>
     <div class="box-content">
       <%= render 'form' %>
     </div>
     <div class="box-content row full-width-table">
       <div class="box-content-column">
-        <div class="box-header"><%= t('views.team_member') %></div>
+        <div class="box-header"><%= t('views.team') %><%= t('views.member') %></div>
         <%= will_paginate @team_users, :param_name => 'teamUserPage' %>
         <table class="team-member">
           <% @team_users.each do |a| %>
@@ -25,7 +25,7 @@
                     </td>
                     <td>
                       <div class="input-button">
-                        <%= ff.submit "update" %>
+                        <%= ff.submit t('views.update') %>
                       </div>
                     </td>
                   </tr>
@@ -36,7 +36,7 @@
       </div>
       <div class="box-content-column">
         <div>
-          <div class="box-header"><%= Team.human_attribute_name("users") %> hinzufügen</div>
+          <div class="box-header"><%= Team.human_attribute_name("users") %><%= t('views.add') %> </div>
           <%= will_paginate @users, :param_name => 'userPage' %>
           <table class="team-member">
           <% @users.each do |user| %>

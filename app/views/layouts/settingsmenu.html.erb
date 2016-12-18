@@ -4,7 +4,7 @@
             <%= link_to user_index_path do %>
                 <div class="button">
                   <div class="sidebar-icon"><i class="material-icons">&#xE896;</i></div>
-                  <div class="sidebar-item-name">all user</div>
+                  <div class="sidebar-item-name"><%= t('views.user') %></div>
                 </div>
             <% end %>
           </div>
@@ -13,7 +13,7 @@
             <%= link_to teams_path do %>
                 <div class="button">
                   <div class="sidebar-icon"><i class="material-icons">&#xE7FC;</i></div>
-                  <div class="sidebar-item-name">Teams</div>
+                  <div class="sidebar-item-name"><%= t('views.teams') %></div>
                 </div>
             <% end %>
           </div>
@@ -23,7 +23,7 @@
             <%= link_to projects_path do %>
                 <div class="button">
                   <div class="sidebar-icon"><i class="material-icons">&#xE8F9;</i></div>
-                  <div class="sidebar-item-name">Projekte</div>
+                  <div class="sidebar-item-name"><%= t('views.projects') %></div>
                 </div>
             <% end %>
           </div>
@@ -32,7 +32,7 @@
         <%= link_to '/users/edit' do %>
             <div class="button">
               <div class="sidebar-icon"><i class="material-icons">&#xE254;</i></div>
-              <div class="sidebar-item-name">Profile</div>
+              <div class="sidebar-item-name"><%= t('views.profile') %></div>
             </div>
         <% end %>
       </div>
