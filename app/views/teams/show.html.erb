@@ -22,7 +22,7 @@
       <% @team_users.each do |user| %>
           <tr>
             <td>
-              <%= user.email %>
+              <%= user.first_name + " " + user.last_name %>
               <%= user.users_teams.where('team_id = ?', @team.id)[0].user_team_role %>
             </td>
           </tr>

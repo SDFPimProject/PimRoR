@@ -21,7 +21,7 @@
       <% @project_users.each do |user| %>
           <tr>
             <td>
-              <%= user.email %>
+              <%= user.first_name + " " + user.last_name %>
               <%= user.users_projects.where('project_id = ?', @project.id)[0].user_project_role %>
             </td>
           </tr>
