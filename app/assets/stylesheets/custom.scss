@@ -1,17 +1,6 @@
 /* universal */
 @import "colors";
 
-.background-image {
-  z-index: -1;
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: $main-background;
-  background-size: cover;
-}
-
 .content-wrapper {
   display: flex;
   flex-flow: column;
@@ -26,42 +15,6 @@
   flex-flow: column;
   justify-content: center;
   min-height: 200px;
-}
-
-.main-container {
-  width: 100%;
-  min-height: 90vh;
-  display: flex;
-  flex-flow: row;
-  justify-content: flex-start;
-  align-items: flex-start;
-}
-
-.left-side-wrapper {
-  display: flex;
-  background-color: $primary-color;
-  box-shadow: $box-shadow;
-  margin: 5px;
-  padding: 10px;
-  overflow-y: scroll;
-  flex-flow: column;
-  flex-grow: 1;
-  flex-basis: 0;
-
-  .list-box,
-  .button{
-    justify-content: flex-start;
-    align-items: center;
-    padding: 12px;
-  }
-}
-
-.right-side-wrapper {
-  display: flex;
-  justify-content: center;
-  margin: 5px;
-  flex-grow: 5;
-  flex-basis: 0;
 }
 
 .input-button {
@@ -103,34 +56,22 @@
 .button .material-icons {
   font-size: 1.6em;
 }
-section {
-  overflow: auto;
-}
 
-/* typography */
-
-h1, h2, h3, h4, h5, h6 {
-  line-height: 1;
-}
-
-h1 {
-  font-size: 3em;
-  letter-spacing: -2px;
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-h2 {
-  font-size: 2.6em;
-  letter-spacing: -1px;
-  margin-bottom: 30px;
-  text-align: center;
-  font-weight: normal;
-}
-
-p {
-  font-size: 1.1em;
-  line-height: 1.7em;
+.field {
+  margin: 20px;
+  input {
+    padding: 12px;
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid $primary-color-dark;
+    box-sizing: border-box;
+    transition: all 0.3s;
+    &:focus{
+      border-color: $primary-accent-color;
+      outline: none;
+      transition: all 0.3s;
+    }
+  }
 }
 
 #error_explanation {
@@ -169,3 +110,4 @@ p {
   justify-content: center;
   justify-self: center;
 }
+
