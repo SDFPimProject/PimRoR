@@ -1,0 +1,8 @@
+test:
+    title: "test"
+    description: "test"
+    start_time: <%= Time.now + 500 %>
+    end_time: <%= Time.now + 1500 %>
+    creator: "user_id=1"
+    created_at: <%= Time.now %>
+    updated_at: <%= Time.now + 250 %>
