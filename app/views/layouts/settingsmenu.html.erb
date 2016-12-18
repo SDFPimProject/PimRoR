@@ -8,32 +8,12 @@
                 </div>
             <% end %>
           </div>
-      <% if can? :create, User %>
-          <div class="list-box">
-            <%= link_to new_user_path do %>
-                <div class="button">
-                  <div class="sidebar-icon"><i class="material-icons">&#xE145;</i></div>
-                  <div class="sidebar-item-name">add user</div>
-                </div>
-            <% end %>
-          </div>
-      <% end %>
       <% if can? :update, Team %>
           <div class="list-box">
             <%= link_to teams_path do %>
                 <div class="button">
                   <div class="sidebar-icon"><i class="material-icons">&#xE7FC;</i></div>
                   <div class="sidebar-item-name">Teams</div>
-                </div>
-            <% end %>
-          </div>
-      <% end %>
-      <% if can? :create, Team %>
-          <div class="list-box">
-            <%= link_to new_team_path do %>
-                <div class="button">
-                  <div class="sidebar-icon"><i class="material-icons">&#xE145;</i></div>
-                  <div class="sidebar-item-name">add Team</div>
                 </div>
             <% end %>
           </div>
@@ -48,21 +28,11 @@
             <% end %>
           </div>
       <% end %>
-      <% if can? :create, Project %>
-          <div class="list-box">
-            <%= link_to new_project_path do %>
-                <div class="button">
-                  <div class="sidebar-icon"><i class="material-icons">&#xE145;</i></div>
-                  <div class="sidebar-item-name">add Project</div>
-                </div>
-            <% end %>
-          </div>
-      <% end %>
       <div class="list-box">
         <%= link_to '/users/edit' do %>
             <div class="button">
               <div class="sidebar-icon"><i class="material-icons">&#xE254;</i></div>
-              <div class="sidebar-item-name">edit user</div>
+              <div class="sidebar-item-name">Profile</div>
             </div>
         <% end %>
       </div>
