@@ -13,7 +13,7 @@
               <%= form_for(a) do |ff| %>
                   <tr>
                     <td>
-                      <%= User.find(a.user_id).email %>
+                      <%= User.find(a.user_id).first_name + " " + User.find(a.user_id).last_name %>
                     </td>
                     <td>
                       <%= ff.collection_select(:user_project_role, UsersProject::ROLES, :to_s, lambda { |i| i.to_s.humanize }) %>
@@ -41,7 +41,7 @@
           <table class="member-table">
             <% @users.each do |user| %>
                 <tr>
-                  <td><%= user.email %></td>
+                  <td><%= user.first_name + " " + user.last_name %></td>
                   <td>
                     <%= link_to project_add_user_path(@project, user), method: :post do %>
                         <div class="button"><i class="material-icons">&#xE145;</i></div>
