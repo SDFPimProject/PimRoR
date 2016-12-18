@@ -1,0 +1,4 @@
+test:
+    name: "project"
+    created_at: <%= Time.now %>
+    updated_at: <%= Time.now + 100%>
