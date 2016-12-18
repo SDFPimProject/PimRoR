@@ -1,6 +1,21 @@
 <% if @users != nil %>
     <% provide(:title, "Nutzer") %>
+
     <div class="user-wrapper">
+      <div class="row">
+        <div class="box-header">
+          <div>Listing User</div>
+        </div>
+        <div class="headline-button">
+          <% if can? :create, User %>
+              <div class="list-box">
+                <%= link_to new_user_path do %>
+                      <div class="button">new user</div>
+                <% end %>
+              </div>
+          <% end %>
+        </div>
+      </div>
       <%= will_paginate @users %>
       <table class="user_table">
         <tr>
