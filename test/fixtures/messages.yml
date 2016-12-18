@@ -6,5 +6,5 @@ test:
     created_at: <%= Time.now %>
     updated_at: <%= Time.now %>
     is_send: false
-    encrypted_body: ""
-    encrypted_body_iv: ""
+    encrypted_body: "a"
+    encrypted_body_iv: "a"

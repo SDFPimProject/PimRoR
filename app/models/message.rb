@@ -1,6 +1,10 @@
 class Message < ActiveRecord::Base
+  include ActiveModel::Validations
+
   belongs_to :conversation, :foreign_key => :conversation_id, class_name: 'Conversation'
   belongs_to :user, :foreign_key => :send_from_id, class_name: 'User'
+
+  validates_with MessageValidator
 
   if Rails.env.development?
     attr_encrypted :body, key: 'PimRoR ist ein super geiles Projekt!'

@@ -24,7 +24,7 @@ class MessageTest < ActiveSupport::TestCase
   test "should not valid read bevore resived" do
       @message.is_send = true
       @message.is_read = true
-      assert_not = @message.valid?
+      assert_not @message.valid?
   end
 
   test "should not valid created_at nil" do
