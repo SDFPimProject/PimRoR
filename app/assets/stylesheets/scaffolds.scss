@@ -71,3 +71,51 @@ div {
     list-style: square;
   }
 }
+
+.background-image {
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: $main-background;
+  background-size: cover;
+}
+
+.main-container {
+  width: 100%;
+  min-height: 90vh;
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+
+.left-side-wrapper {
+  display: flex;
+  background-color: $primary-color;
+  box-shadow: $box-shadow;
+  margin: 5px;
+  padding: 10px;
+  overflow-y: scroll;
+  flex-flow: column;
+  flex-grow: 1;
+  flex-basis: 0;
+
+  .list-box,
+  .button{
+    justify-content: flex-start;
+    align-items: center;
+    padding: 12px;
+  }
+}
+
+.right-side-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 5px;
+  flex-grow: 5;
+  flex-basis: 0;
+}

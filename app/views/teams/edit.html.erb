@@ -4,7 +4,7 @@
     <div class="box-content">
       <%= render 'form' %>
     </div>
-    <div class="box-content row edit-team">
+    <div class="box-content row full-width-table">
       <div class="box-content-column">
         <div class="box-header"><%= t('views.team_member') %></div>
         <%= will_paginate @team_users, :param_name => 'teamUserPage' %>

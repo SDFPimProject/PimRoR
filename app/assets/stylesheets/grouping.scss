@@ -1,0 +1,33 @@
+@import "colors";
+
+.member-table {
+  width: 100%;
+  padding: 20px;
+  border-collapse: collapse;
+  tr:hover {
+    background-color: $primary-color-dark;
+  }
+  td {
+    padding: 8px;
+  }
+}
+
+.selection-table {
+  padding: 20px;
+  width: 100%;
+  color: $primary-color-text;
+  border-collapse: collapse;
+  tr td:first-child{
+    width: 100%;
+  }
+  td{
+    padding-left: 20px;
+  }
+  tr:hover{
+    background-color: $primary-color-dark;
+  }
+}
+
+.full-width-table {
+  width: 100%;
+}

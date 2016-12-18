@@ -20,12 +20,12 @@
               Name
             </td>
             <td>
-              <div class="login-field">
+              <div class="field">
                 <%= f.text_field :first_name, placeholder: "Vorname" %>
               </div>
             </td>
             <td>
-              <div class="login-field">
+              <div class="field">
                 <%= f.text_field :last_name, placeholder: "Nachname" %>
               </div>
             </td>
@@ -35,12 +35,12 @@
               Email
             </td>
             <td>
-              <div class="login-field">
+              <div class="field">
                 <%= f.email_field :email, placeholder: "E-Mail" %>
               </div>
             </td>
             <td>
-              <div class="login-field">
+              <div class="field">
                 <%= f.email_field :email_confirmation, placeholder: "E-Mail bestätigen" %>
               </div>
             </td>
@@ -48,12 +48,12 @@
           <tr>
             <td>Password</td>
             <td>
-              <div class="login-field">
+              <div class="field">
                 <%= f.password_field :password, autocomplete: "off", placeholder: "Passwort" %>
               </div>
             </td>
             <td>
-              <div class="login-field">
+              <div class="field">
                 <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Passwort bestätigen" %>
               </div>
             </td>
@@ -61,7 +61,7 @@
           <tr>
             <td>Birthdate</td>
             <td colspan="2">
-              <div class="login-field">
+              <div class="field">
                 <%= f.date_field :birthday, :placeholder => "Birthdate" %>
               </div>
             </td>
@@ -69,7 +69,7 @@
           <tr>
             <td>Street & Housenumber</td>
             <td colspan="2">
-              <div class="login-field">
+              <div class="field">
                 <%= f.text_field :street_and_nr, :placeholder => "Street & Housenumber" %>
               </div>
             </td>
@@ -77,7 +77,7 @@
           <tr>
             <td>zip code</td>
             <td colspan="2">
-              <div class="login-field">
+              <div class="field">
                 <%= f.number_field :zip_code, placeholder: "zip code" %>
               </div>
             </td>
@@ -85,7 +85,7 @@
           <tr>
             <td>State</td>
             <td colspan="2">
-              <div class="login-field">
+              <div class="field">
                 <%= f.text_field :state, placeholder: "State" %>
               </div>
             </td>
@@ -93,7 +93,7 @@
           <tr>
             <td>Country Name</td>
             <td colspan="2">
-              <div class="login-field">
+              <div class="field">
                 <%= f.text_field :country_name, placeholder: "Country Name" %>
               </div>
             </td>
@@ -101,21 +101,21 @@
           <tr>
             <td>Locality</td>
             <td colspan="2">
-              <div class="login-field">
+              <div class="field">
                 <%= f.text_field :locality, placeholder: "Locality" %>
               </div>
             </td>
           </tr>
           <tr>
             <td>Role</td>
-            <td><div class="login-field">
+            <td><div class="field">
               <%= f.collection_select(:role, User::ROLES, :to_s, lambda { |i| i.to_s.humanize }) %>
             </div></td>
           </tr>
         </table>
 
         <div class="box-content user-edit-action row">
-          <div class="login-field input-button">
+          <div class="field input-button">
             <%= f.submit "Speichern" %>
           </div>
         </div>

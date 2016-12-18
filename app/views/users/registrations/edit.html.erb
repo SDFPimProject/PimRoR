@@ -124,11 +124,11 @@
         </div>
 
         <div class="box-content row">
-          <div class="login-field">
+          <div class="field">
             <%= f.password_field :password, autocomplete: "off", placeholder: "Passwort" %>
           </div>
 
-          <div class="login-field">
+          <div class="field">
             <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Passwort bestätigen" %>
           </div>
         </div>
@@ -140,7 +140,7 @@
         </div>
 
         <div class="box-content row">
-          <div class="login-field input-button">
+          <div class="field input-button">
             <%= f.submit "Aktualisieren" %>
           </div>
           <div>
@@ -148,7 +148,7 @@
           </div>
           <div>
             <%= link_to :back do %>
-                <div class="login-field button">
+                <div class="field button">
                   zurück
                 </div>
             <% end %>
