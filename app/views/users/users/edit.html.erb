@@ -12,111 +12,115 @@
 <% end %>
 <div class="content-wrapper">
   <div class="content-box">
-    <div class="box-header">Nutzer bearbeiten</div>
+    <div class="box-header"><%= t('views.user') %> <%= t('views.edit') %></div>
     <%= form_for(@user, url: user_path, html: {method: :put}) do |f| %>
         <table class="user-new-table">
           <tr>
             <td>
-              Name
+              <%= f.label :name %>
             </td>
             <td>
               <div class="field">
-                <%= f.text_field :first_name, placeholder: "Vorname" %>
+                <%= f.text_field :first_name, placeholder: :first_name %>
               </div>
             </td>
             <td>
               <div class="field">
-                <%= f.text_field :last_name, placeholder: "Nachname" %>
+                <%= f.text_field :last_name, placeholder: :last_name %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= f.label :email %>
+            </td>
+            <td>
+              <div class="field">
+                <%= f.email_field :email, placeholder: :email %>
+              </div>
+            </td>
+            <td>
+              <div class="field">
+                <%= f.email_field :email_confirmation, placeholder: t('views.confirm_mail') %>
               </div>
             </td>
           </tr>
           <tr>
             <td>
-              Email
+              <%= f.label :password %>
             </td>
             <td>
               <div class="field">
-                <%= f.email_field :email, placeholder: "E-Mail" %>
+                <%= f.password_field :password, autocomplete: "off", placeholder: :password %>
               </div>
             </td>
             <td>
               <div class="field">
-                <%= f.email_field :email_confirmation, placeholder: "E-Mail bestätigen" %>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>Password</td>
-            <td>
-              <div class="field">
-                <%= f.password_field :password, autocomplete: "off", placeholder: "Passwort" %>
-              </div>
-            </td>
-            <td>
-              <div class="field">
-                <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Passwort bestätigen" %>
+                <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: :confirm_password %>
               </div>
             </td>
           </tr>
           <tr>
-            <td>Birthdate</td>
+            <td><%= f.label :birth_date %></td>
             <td colspan="2">
               <div class="field">
-                <%= f.date_field :birthday, :placeholder => "Birthdate" %>
+                <%= f.date_field :birthday, placeholder: :birth_date %>
               </div>
             </td>
           </tr>
           <tr>
-            <td>Street & Housenumber</td>
+            <td><%= f.label :street_and_nr %></td>
             <td colspan="2">
               <div class="field">
-                <%= f.text_field :street_and_nr, :placeholder => "Street & Housenumber" %>
+                <%= f.text_field :street_and_nr, placeholder: :street_and_nr %>
               </div>
             </td>
           </tr>
           <tr>
-            <td>zip code</td>
+            <td><%= f.label :zip_code %>/td>
             <td colspan="2">
               <div class="field">
-                <%= f.number_field :zip_code, placeholder: "zip code" %>
+                <%= f.number_field :zip_code, placeholder: :zip_code %>
               </div>
             </td>
           </tr>
           <tr>
-            <td>State</td>
+            <td><%= f.label :state %></td>
             <td colspan="2">
               <div class="field">
-                <%= f.text_field :state, placeholder: "State" %>
+                <%= f.text_field :state, placeholder: :state %>
               </div>
             </td>
           </tr>
           <tr>
-            <td>Country Name</td>
+            <td><%= f.label :country_name %></td>
             <td colspan="2">
               <div class="field">
-                <%= f.text_field :country_name, placeholder: "Country Name" %>
+                <%= f.text_field :country_name, placeholder: :country_name %>
               </div>
             </td>
           </tr>
           <tr>
-            <td>Locality</td>
+            <td><%= f.label :locality %></td>
             <td colspan="2">
               <div class="field">
-                <%= f.text_field :locality, placeholder: "Locality" %>
+                <%= f.text_field :locality, placeholder: :locality %>
               </div>
             </td>
           </tr>
           <tr>
-            <td>Role</td>
-            <td><div class="field">
-              <%= f.collection_select(:role, User::ROLES, :to_s, lambda { |i| i.to_s.humanize }) %>
-            </div></td>
+            <td><%= f.label :role %></td>
+            <td>
+              <div class="field">
+                <%= f.collection_select(:role, User::ROLES, :to_s, lambda { |i| i.to_s.humanize }) %>
+              </div>
+            </td>
           </tr>
         </table>
 
         <div class="box-content user-edit-action row">
           <div class="field input-button">
-            <%= f.submit "Speichern" %>
+            <%= f.submit t('views.save') %>
           </div>
         </div>
     <% end %>

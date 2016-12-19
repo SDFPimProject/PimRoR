@@ -10,34 +10,10 @@
           <table class="form-display-table">
             <tr>
               <td>
-                <%= f.label "E-Mail" %>
+                <%= f.label :email%>
               </td>
               <td>
                 <%= resource.email %>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <%= f.label "Role" %>
-              </td>
-              <td>
-                <%= resource.role %>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <%= f.label "Vorname" %>
-              </td>
-              <td>
-                <%= resource.first_name %>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <%= f.label "Nachname" %>
-              </td>
-              <td>
-                <%= resource.last_name %>
               </td>
             </tr>
             <tr>
@@ -50,7 +26,23 @@
             </tr>
             <tr>
               <td>
-                Projekte
+                <%= f.label :first_name %>
+              </td>
+              <td>
+                <%= resource.first_name %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <%= f.label :laste_name %>
+              </td>
+              <td>
+                <%= resource.last_name %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <%= t('views.projects') %>
               </td>
               <td>
                 <% @user.projects.each do |project| %>
@@ -60,7 +52,7 @@
             </tr>
             <tr>
               <td>
-                Teams
+                <%= t('views.teams') %>
               </td>
               <td>
                 <% @user.teams.each do |teams| %>
@@ -120,28 +112,28 @@
         </div>
 
         <div class="box-header">
-          Passwort (frei lassen, für keine Änderung)
+          <%= t('views.password') %> (<%= t('views.free_for_no_update') %>)
         </div>
 
         <div class="box-content row">
           <div class="field">
-            <%= f.password_field :password, autocomplete: "off", placeholder: "Passwort" %>
+            <%= f.password_field :password, autocomplete: "off", placeholder: :password %>
           </div>
 
           <div class="field">
-            <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Passwort bestätigen" %>
+            <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: t('views.confirm_password') %>
           </div>
         </div>
 
         <div class="box-content">
           <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-              <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+              <div><%= t('views.waiting_for_confirmation') %>: <%= resource.unconfirmed_email %></div>
           <% end %>
         </div>
 
         <div class="box-content row">
           <div class="field input-button">
-            <%= f.submit "Aktualisieren" %>
+            <%= f.submit :update %>
           </div>
           <div>
 
@@ -149,7 +141,7 @@
           <div>
             <%= link_to :back do %>
                 <div class="field button">
-                  zurück
+                  <%= t('views.back') %>
                 </div>
             <% end %>
           </div>

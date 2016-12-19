@@ -4,12 +4,12 @@
   <div class="content-box">
     <div class="row">
       <div class="box-header">
-        <div>Listing Projects</div>
+        <div><%= t('views.projects') %></div>
       </div>
       <div class="headline-button">
         <% if can? :create, Project %>
             <%= link_to new_project_path do %>
-                <div class="button">New Project</div>
+                <div class="button"><%= t('views.new') %> <%= t('views.project') %></div>
             <% end %>
         <% end %>
       </div>
@@ -21,20 +21,20 @@
             <td><%= project.name %></td>
             <td>
               <%= link_to project do %>
-                  <div class="button"> Show</div>
+                  <div class="button"><%= t('views.show') %></div>
               <% end %>
             </td>
             <td>
               <%= link_to edit_project_path(project) do %>
                   <div class="button">
-                    Edit
+                    <%= t('views.edit') %>
                   </div>
               <% end %>
             </td>
             <td>
-              <%= link_to project, method: :delete, data: {confirm: 'Are you sure?'} do %>
+              <%= link_to project, method: :delete, data: {confirm: t('views.are_you_sure')} do %>
                   <div class="button">
-                    Destroy
+                    <%= t('views.delete') %>
                   </div>
               <% end %>
             </td>

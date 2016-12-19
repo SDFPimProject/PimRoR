@@ -5,13 +5,13 @@
   <% if can? :show, User %>
   <td>
     <%= link_to edit_user_path(user.id) do %>
-    <div class="button"> bearbeiten </div>
+    <div class="button"> <%= t('views.edit') %> </div>
     <% end %>
     </td>
     <% end %>
     <td>
       <%= link_to show_users_path_url(user.id) do %>
-    <div class="button"> Profil </div>
+    <div class="button"> <%= t('views.profile') %> </div>
     <% end %>
   </td>
 </tr>

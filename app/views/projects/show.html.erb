@@ -3,19 +3,19 @@
     <div class="row">
       <div class="box-header">
         <div>
-          Project: <%= @project.name %>
+          <%= t('views.project') %>: <%= @project.name %>
         </div>
       </div>
       <div class="headline-button">
         <div>
           <%= link_to edit_project_path(@project) do %>
-              <div class="button">Edit Project</div>
+              <div class="button"><%= t('views.project') %> <%= t('views.edit') %> </div>
           <% end %>
         </div>
       </div>
     </div>
     <div class="box-content"><p id="notice"><%= notice %></p></div>
-    <div class="box-content">Project Member</div>
+    <div class="box-content"><%= t('views.project') %> <%= t('views.member') %></div>
     <%= will_paginate @project_users, :param_name => 'projectUserPage' %>
     <table class="member-table">
       <% @project_users.each do |user| %>

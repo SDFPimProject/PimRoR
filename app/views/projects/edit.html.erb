@@ -25,7 +25,7 @@
                     </td>
                     <td>
                       <div class="input-button">
-                        <%= ff.submit "update" %>
+                        <%= ff.submit t('views.update') %>
                       </div>
                     </td>
                   </tr>
@@ -36,7 +36,7 @@
       <%= will_paginate @project_users, :param_name => 'projectUserPage' %>
       <div class="box-content-column">
         <div>
-          <div class="box-header"><%= Project.human_attribute_name("users") %> hinzufügen</div>
+          <div class="box-header"><%= Project.human_attribute_name("users") %><%= t('views.add') %></div>
           <%= will_paginate @users, :param_name => 'userPage' %>
           <table class="member-table">
             <% @users.each do |user| %>

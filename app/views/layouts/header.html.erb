@@ -7,22 +7,22 @@
           <div class="links">
             <%= link_to '/' do %>
                 <div class="row">
-                  <div class="nav-item"><i class="material-icons md-48">&#xE88A;</i>Startseite</div>
+                  <div class="nav-item"><i class="material-icons md-48">&#xE88A;</i><%= t('views.start_page') %></div>
                 </div>
             <% end %>
             <%= link_to '/conversations' do %>
                 <div class="row">
-                  <div class="nav-item"><i class="material-icons">&#xE0B7;</i>Nachrichten</div>
+                  <div class="nav-item"><i class="material-icons">&#xE0B7;</i><%= t('views.messages') %></div>
                 </div>
             <% end %>
             <%= link_to '/events' do %>
                 <div class="row">
-                  <div class="nav-item"><i class="material-icons">&#xE916;</i>Kalender</div>
+                  <div class="nav-item"><i class="material-icons">&#xE916;</i><%= t('views.calendar') %></div>
                 </div>
             <% end %>
             <%= link_to '/user' do %>
                 <div class="row">
-                  <div class="nav-item"><i class="material-icons">&#xE8B8;</i>Einstellungen</div>
+                  <div class="nav-item"><i class="material-icons">&#xE8B8;</i><%= t('views.settings') %></div>
                 </div>
             <% end %>
           </div>
@@ -38,7 +38,7 @@
             <div>
               <%= link_to '/users/sign_out', method: :delete do %>
                   <div class="user-logout">
-                    <div> logout</div>
+                    <div><%= t('views.logout') %></div>
                   </div>
               <% end %>
             </div>

@@ -4,12 +4,12 @@
   <div class="content-box">
     <div class="row">
       <div class="box-header">
-        <div>Listing Teams</div>
+        <div><%= t('views.teams') %> </div>
       </div>
       <div class="headline-button">
         <% if can? :create, Team %>
             <%= link_to new_team_path do %>
-                <div class="button">New Team</div>
+                <div class="button"><%= t('views.new') %>  <%= t('views.team') %> </div>
             <% end %>
         <% end %>
       </div>
@@ -20,13 +20,21 @@
           <tr>
             <td><%= team.name %></td>
             <td>
-              <div class="button"><%= link_to 'Show', team %></div>
+              <%= link_to team do %>
+                  <div class="button"><%= t('views.show') %></div>
+              <% end %>
             </td>
             <td>
-              <div class="button"><%= link_to 'Edit', edit_team_path(team) %></div>
+              <%= link_to edit_team_path(team) do %>
+                  <div class="button"><%= t('views.edit') %></div>
+              <% end %>
             </td>
             <td>
-              <div class="button"><%= link_to 'Destroy', team, method: :delete, data: {confirm: 'Are you sure?'} %></div>
+              <%= link_to team, method: :delete, data: {confirm: t('views.are_you_sure')} do %>
+                  <div class="button">
+                    <%= t('views.delete') %>
+                  </div>
+              <% end %>
             </td>
           </tr>
       <% end %>

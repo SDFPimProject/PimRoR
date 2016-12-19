@@ -1,12 +1,12 @@
 <div class="edit_event_wrapper">
-    <h1>Termin ändern</h1>
+    <h1><%= t('views.event') %> <%= t('views.edit') %></h1>
 
     <%= render 'form' %>
     <div class="navi_links">
         <%= link_to events_path do %>
-            <div class="button">Zurück zum Kalender</div>
+            <div class="button"><%= t('views.back_to_calendar') %></div>
         <% end %>
-        <%= link_to @event, method: :delete, data: { confirm: 'Are you sure?' } do %>
+        <%= link_to @event, method: :delete, data: { confirm: t('views.are_you_sure')} do %>
             <div class="button">Entfernen</div>
         <% end %>
     </div>

@@ -1,5 +1,5 @@
 <h2>Profil <%= resource_name.to_s.humanize %></h2>
-Erfolgreich geupdatet! <br>
-Email: <%= @user.email %>
-Role: <%= @user.role %>
+<%= t('views.successfull_updated') %>! <br>
+<%= t('views.mail') %>: <%= @user.email %>
+<%= t('views.role') %>: <%= @user.role %>
 
