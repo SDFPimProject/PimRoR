@@ -7,15 +7,13 @@
       end
 
       if !user.nil? and user.users_teams.any? { |p| p.user_team_role == "manager"}
-        can :read, Team
-        can :update, Team
+        can :manage, Team
       else
         can :read, Team
       end
 
       if !user.nil? and user.users_projects.any? { |p| p.user_project_role == "manager"} 
-        can :read, Project
-        can :update, Project
+        can :manage, Project
       else
         can :read, Project
       end
