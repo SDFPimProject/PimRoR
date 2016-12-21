@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :invites
   resources :users_projects
   resources :users_teams
   resources :events

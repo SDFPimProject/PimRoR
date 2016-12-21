@@ -10,26 +10,40 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+      @is_show_mode = true;
   end
 
   # GET /events/new
   def new
+    @is_show_mode = false;
     @event = Event.new
-  end
-
-  # GET /events/1/edit
-  def edit
   end
 
   # POST /events
   # POST /events.json
   def create
     @event = Event.new(event_params)
-    @event.creator = "user_id = " + current_user.id.to_s
+    @event.creator_id = current_user.id
+    saved = @event.save
 
     respond_to do |format|
-      if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
+      if saved
+        @invited_persons_array = params[:invited_persons].split(";");
+        if @invited_persons_array.size() > 0
+            @invited_persons_array.each do |person_id|
+                @invite = Invite.new()
+                @invite.event_id = @event.id;
+                @invite.sender_id = current_user.id;
+                @invite.recipient_id = person_id;
+                @invite.sender_comment = "";
+                @invite.recipient_comment = "";
+                @invite.sender_status = 0;
+                @invite.recipient_status = 0;
+                @invite.save();
+            end
+        end
+
+        format.html { redirect_to @event, notice: 'Event was successfully created.'}
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new }
@@ -70,6 +84,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:title, :description, :start_time, :end_time, :creator)
+      params.require(:event).permit(:title, :description, :start_time, :end_time, :location)
     end
 end

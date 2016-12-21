@@ -8,9 +8,9 @@ class Users::UsersController < ApplicationController
   def new
     if(can? :Create, User)
       @user = User.new
-    else 
+    else
       redirect_to root_path
-    end 
+    end
   end
 
   def create
@@ -18,7 +18,7 @@ class Users::UsersController < ApplicationController
       params.permit!
       @user = User.new(params[:user])
       if @user.save
-        flash[:notice] = "Successfully created User." 
+        flash[:notice] = "Successfully created User."
         redirect_to root_path
       else
         render :action => 'new'
@@ -29,9 +29,9 @@ class Users::UsersController < ApplicationController
   def edit
     if(can? :Edit, User)
       @user = User.find(params[:id])
-    else  
+    else
       redirect_to root_path
-    end 
+    end
   end
 
   def show
@@ -50,7 +50,7 @@ class Users::UsersController < ApplicationController
       else
         render :action => 'edit'
       end
-    else  
+    else
       redirect_to root_path
     end
   end
@@ -69,7 +69,11 @@ class Users::UsersController < ApplicationController
       @class = ""
     end
 
-    render :template => 'users/users/_user_search.html.erb', :locals => { :users => @users, :special_class => @class}, layout: false
+    if params[:layout_type]
+        render :template => 'users/users/_user_search_' + params[:layout_type] + '.html.erb', :locals => { :users => @users, :special_class => @class}, layout: false
+    else
+        render :template => 'users/users/_user_search.html.erb', :locals => { :users => @users, :special_class => @class}, layout: false
+    end
   end
 
   private
