@@ -1,28 +1,26 @@
-<p id="notice"><%= notice %></p>
-
 <div class="content-wrapper">
   <div class="content-box">
     <div class="row">
       <div class="box-header">
-        <div> Kalendar </div>
+        <div> <%= t('views.calendar') %> </div>
       </div>
     </div>
     <%= will_paginate @users %>
     <table class="selection-table">
       <% @users.each do |user| %>
           <tr>
-            <td><%= user.first_name %> <%= user.last_name %>'s Kalender</td>
+            <td><%= user.first_name %> <%= user.last_name %><%= t('views.scalendar') %></td>
             <td>
               <%= link_to subscribe_to_calendar_path_url(user.id) do %>
                   <div class="button">
-                    Abonnieren 
+                    <%= t('views.subscribe') %> 
                   </div>
               <% end %>
               </td>
               <td>
                <%= link_to  delete_subscribtion_path_url(user.id) do %>
                   <div class="button">
-                    Abo löschen
+                     <%= t('views.unsubscribe') %> 
                   </div>
               <% end %>
             </td>

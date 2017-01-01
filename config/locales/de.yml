@@ -126,3 +126,8 @@ de:
     event: "Event"
     create: "anlegen"
     users: "Nutzer"
+    subscribed_calendars: "Abonnierte Kalender"
+    subscribe_to_calendars: "Kalender abonnieren"
+    subscribe: "abonnieren"
+    unsubscribe: "deabonnieren"
+    scalendar: "'s Kalender"
