@@ -12,6 +12,8 @@ class WelcomeController < ApplicationController
         conversations_new_message.push(conversation)
         unread = unread + size
       end
+
+      @subs=current_user.subscribtions
     end
 
     conversations_new_message.each do |conversation|

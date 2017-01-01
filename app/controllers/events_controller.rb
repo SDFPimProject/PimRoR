@@ -12,6 +12,12 @@ class EventsController < ApplicationController
   def show
   end
 
+  def subscribed
+      @events = Event.by_user_id(params[:id])
+     @user = User.find(params[:id])
+  end
+  
+
   # GET /events/new
   def new
     @event = Event.new
