@@ -50,6 +50,30 @@
     </div>
   </div>
 
+   <div class="dashboard-content-box">
+    <div class="box-header">
+      <i class="material-icons">&#xE916;</i>
+       <div style="padding: 10px"> Abonnierte Kalender</div>
+    </div>
+    <div class="box-content">
+    
+    <table>
+      <% @subs.each do |sub| %>
+      <tr>
+      <td>
+      <%= link_to subscribed_events_path_url(sub.calendar_id) do %>
+                  <div class="button">
+                     <%= sub.name %>
+                  </div>
+              <% end %>
+     
+      </td>
+      </tr>
+      <% end %>
+      </table>
+    </div>
+  </div>
+
   <div class="dashboard-content-box">
     <div class="box-header">
       <i class="material-icons">&#xE916;</i>
@@ -103,3 +127,6 @@
   </div>
 
 </div>
+
+ 
+

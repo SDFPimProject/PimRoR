@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :events
   resources :projects
   resources :teams
+  resources :subscribe_calendar
   devise_for :users, controllers: {registrations: 'users/registrations', :sessions => "users/sessions"}
   root 'welcome#index'
 
@@ -18,6 +19,7 @@ Rails.application.routes.draw do
   end
 
   resources :user, :controller => "users/users"
+  
   
 
   resources :conversations do
@@ -37,4 +39,7 @@ Rails.application.routes.draw do
 
   post 'projects/:projectid/user/:userid/remove' => 'projects#removeUser', :as => 'project_remove_user'
   post 'projects/:projectid/user/:userid/add' => 'projects#addUser', :as => 'project_add_user'
+
+  get 'calendar_subscribe/:id/subscribe' =>'subscribe_calendar#subscribe', :as => 'subscribe_to_calendar_path'
+   get 'events/:id/subscribed' =>'events#subscribed', :as => 'subscribed_events_path'
 end
