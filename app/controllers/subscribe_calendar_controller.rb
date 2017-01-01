@@ -8,18 +8,20 @@ layout "settingsmenu"
   def subscribe
    @selectedUser = User.find(params[:id])
    @user=current_user
-   @sub= @user.subscribtions.create(calendar_id: @selectedUser.id, name:@selectedUser.first_name);
-   @sub.save
-   @user.save
+   if(!@user.subscribtions.exists?(calendar_id: @selectedUser.id))
+       @sub= @user.subscribtions.create(calendar_id: @selectedUser.id, name:@selectedUser.first_name);
+       @sub.save
+       @user.save
 
-   if(@sub.save)
+       if(@sub.save)
 
-   flash[:notice] = "Kalender erfolgreich aboniert."
-   redirect_to :action => 'index'
-   else
-   flash[:notice] = "Kalender NICHT erfolgreich aboniert."
-   render root_path
-   end
+           flash[:notice] = "Kalender erfolgreich abonniert."
+           redirect_to :action => 'index'
+         end
+      else
+       flash[:notice] = "Kalender bereits abonniert."
+       redirect_to :action => 'index'
+      end
   end
 
  def show
