@@ -120,3 +120,25 @@ form.edit_event *:disabled {
     background-color: #EEE;
     color: #000;
 }
+
+.invites_table {
+  width: 500px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-collapse: collapse;
+  background-color: #FFF;
+  th {
+    text-align: left;
+    padding: 20px 7px;
+    border: 1px solid rgb(209, 198, 198);
+  }
+  tr {
+    &:hover {
+      background-color: #EEE;
+    }
+  }
+  td {
+    padding: 8px;
+    border: 1px solid rgb(209, 198, 198);
+  }
+}
