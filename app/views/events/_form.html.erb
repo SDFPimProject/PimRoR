@@ -14,28 +14,97 @@
 
       <div class="field">
         <%= f.label :title %><br>
-        <%= f.text_field :title %>
+        <%= f.text_field :title, disabled: @is_show_mode %>
+      </div>
+      <div class="field">
+        <%= f.label :location %><br>
+        <%= f.text_field :location, disabled: @is_show_mode %>
       </div>
       <div class="field">
         <%= f.label :description %><br>
-        <%= f.text_area :description %>
+        <%= f.text_area :description, disabled: @is_show_mode %>
       </div>
 
       <div class="field">
         <%= f.label :start_time %><br>
-        <%= f.datetime_select :start_time %>
+        <%= f.datetime_select :start_time, disabled: @is_show_mode %>
       </div>
       <div class="field">
         <%= f.label :end_time %><br>
-        <%= f.datetime_select :end_time %>
+        <%= f.datetime_select :end_time, disabled: @is_show_mode %>
       </div>
-      <!--
-      <div class="field">
-        <%= f.label :creator %><br>
-        <%= f.text_field :creator %>
-      </div>
-      -->
-      <div class="actions">
-        <%= f.submit :class => 'button' %>
-      </div>
+
+          <% if @is_show_mode %>
+          <hr />
+              <div class="field" style="margin-top: 45px;">
+                Kommentar<br>
+                <textarea name="recipient_comment" id="recipient_comment"><%= @invite.recipient_comment %></textarea>
+              </div>
+              <div class="field">
+                Möchten Sie an dem Event Teilnehmen?<br>
+                <select name="recipient_status">
+                    <option value="0">Ich weiß es nicht</option>
+                    <option value="1"<% if (@invite.recipient_status == 1) %>
+                        <%= ' selected="selected" ' %>
+                        <% end %>>Ja</option>
+                    <option value="2"<% if (@invite.recipient_status == 2) %>
+                        <%= ' selected="selected" ' %>
+                        <% end %>>Nein</option>
+                </select>
+              </div>
+              <div class="field">
+                  <div class="actions">
+                    <%= f.submit :class => 'button', value: "Speichern" %>
+                  </div>
+              </div>
+          <% end %>
+
+        <% if !@is_show_mode  %>
+            <div class="invited_persons">
+                <div class="field">
+                    <p>Personen einladen:</p>
+                    <input type="hidden" name="invited_persons" class="invited_persons_textarea" />
+                    <div class="invited_persons_list">
+                        <p>keine</p>
+                    </div>
+                    <input type="text" placeholder="Laden Sie eine Person ein" class="search-user-input_field" />
+                    <div class="chat-user-search-result"></div>
+                </div>
+            </div>
+                <% if !@is_show_mode %>
+                    <div class="field">
+                      <div class="actions">
+                        <%= f.submit :class => 'button' %>
+                      </div>
+                    </div>
+                <% end%>
+                <% if @invites %>
+                    <div class="field">
+                        <p>Eingeladene Personen: </p>
+                        <table class="invites_table">
+                          <thead>
+                            <tr>
+                              <th>Eingeladene Person</th>
+                              <th>Möchte Teilnehmen?</th>
+                              <th>Kommentar</th>
+                            </tr>
+                          </thead>
+
+                          <tbody>
+                            <% @invites.each do |invite| %>
+                              <tr>
+                                <td><%= invite.recipient_id %></td>
+                                <td>
+                                    <%=
+                                        invite.recipient_status
+                                    %>
+                                </td>
+                                <td><%= invite.recipient_comment %></td>
+                              </tr>
+                            <% end %>
+                          </tbody>
+                        </table>
+                    </div>
+                <% end %>
+        <% end  %>
     <% end %>

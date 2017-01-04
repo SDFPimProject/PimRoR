@@ -70,7 +70,7 @@ var Chat = (function() {
         function loadConversationData() {
             $.get('conservations_list', setConversationList, "html");
         }
-        
+
         function loadChatData(conversation_id){
             $.get(PATH_CONVERSATIONS + conversation_id, function(data){
                 setTextMessage(data);
@@ -81,7 +81,7 @@ var Chat = (function() {
                 textarea.focus();
             }, "html");
         }
-        
+
         function loadLandingPage() {
             $.get('conversation_landingpage', setConversationLandingPage, "html");
         }

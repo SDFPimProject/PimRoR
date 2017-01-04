@@ -1,13 +1,22 @@
 <div class="edit_event_wrapper">
-    <h1><%= t('views.event') %> <%= t('views.edit') %></h1>
+    <h1>
+        <%= t('views.event') %>
+        <% if @is_show_mode %>
+            <%= t('views.show') %>
+        <% else %>
+            <%= t('views.edit') %>
+        <% end %>
+    </h1>
 
     <%= render 'form' %>
     <div class="navi_links">
         <%= link_to events_path do %>
             <div class="button"><%= t('views.back_to_calendar') %></div>
         <% end %>
-        <%= link_to @event, method: :delete, data: { confirm: t('views.are_you_sure')} do %>
-            <div class="button">Entfernen</div>
+        <% if !@is_show_mode %>
+            <%= link_to @event, method: :delete, data: { confirm: t('views.are_you_sure')} do %>
+                <div class="button">Entfernen</div>
+            <% end %>
         <% end %>
     </div>
 </div>

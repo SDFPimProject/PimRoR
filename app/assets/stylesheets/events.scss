@@ -86,10 +86,59 @@
     height: 200px;
 }
 
+.edit_event_wrapper textarea.invited_persons_textarea {
+    width: 500px;
+    height: 100px;
+}
+
+
 input.button {
     width: 500px;
     margin-top: 20px;
     border: none;
     color: #FFFFFF;
     background-color: #7063a1;
+}
+
+.invited_persons_list p {
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.invited_persons_list p .deleter {
+    margin-right: 10px;
+    font-weight: bold;
+    color: #FF0000;
+    cursor: pointer;
+}
+
+.invited_persons_list p .deleter:hover {
+    text-decoration: underline;
+}
+
+form.edit_event *:disabled {
+    background-color: #EEE;
+    color: #000;
+}
+
+.invites_table {
+  width: 500px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-collapse: collapse;
+  background-color: #FFF;
+  th {
+    text-align: left;
+    padding: 20px 7px;
+    border: 1px solid rgb(209, 198, 198);
+  }
+  tr {
+    &:hover {
+      background-color: #EEE;
+    }
+  }
+  td {
+    padding: 8px;
+    border: 1px solid rgb(209, 198, 198);
+  }
 }
