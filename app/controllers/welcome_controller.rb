@@ -2,11 +2,15 @@ class WelcomeController < ApplicationController
   include MessagesHelper
   # TO MACIG STUFF oN INIT
   def index
-    conversations = Conversation.involving(current_user)
+    @conversations = Conversation.involving(current_user)
     conversations_new_message = Array.new
     unread = 0
 
-    conversations.each do |conversation|
+    @conversations.each do |conversation|
+      conversation.last_message = ActionView::Base.full_sanitizer.sanitize(conversation.messages.order('created_at').last.body[0..75])
+      conversation.last_message_date = conversation.messages.order('created_at').last.created_at
+      conversation.count_unread = conversation.messages.unread(conversation.id, current_user).size
+
       size = conversation.messages.unread(conversation.id, current_user).size
       if size > 0
         conversations_new_message.push(conversation)

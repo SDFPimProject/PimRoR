@@ -37,12 +37,47 @@
   align-self: flex-start;
   border-bottom: thin solid $primary-color-dark;
   white-space: nowrap;
+  a{
+    color: $primary-color-text;
+    :hover{
+      color: $primary-accent-color;
+    }
+  }
+  a:visited{
+    color: $primary-color-text;
+  }
 }
 
 .box-content {
   justify-content: flex-start;
   align-self: center;
   flex-grow: 5;
+}
+.dashboard-table-wrapper{
+  max-height: 150px;
+  overflow-y: auto;
+}
+.dashboard-table{
+  width: 100%;
+  border-collapse: collapse;
+  tr{
+    &.unread{
+      font-weight: bolder;
+    }
+    &:hover{
+      background-color: $primary-accent-color;
+      cursor: pointer;
+      color: $primary-color-dark-text
+    }
+  }
+  th {
+    text-align: left;
+    padding: 8px;
+  }
+  td{
+    padding: 8px;
+
+  }
 }
 
 .box-content-column{
