@@ -3,4 +3,5 @@ class Project < ActiveRecord::Base
     has_many :users, through: :users_projects
 
     validates :name, length: { minimum: 2, maximum: 50 }, presence: true
+    validates :users_id, :presence => true
 end

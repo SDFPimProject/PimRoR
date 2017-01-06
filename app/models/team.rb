@@ -3,5 +3,5 @@ class Team < ActiveRecord::Base
     has_many :users, through: :users_teams
 
     validates :name, length: { minimum: 2, maximum: 50 }, presence: {message: "unzulässiges format"}
-
+    validates :users_id, :presence => true
 end
