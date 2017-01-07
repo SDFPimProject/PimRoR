@@ -65,7 +65,6 @@ de:
       create: 'Projekt erfolgreich erstellt.'
     user:
       update: "Benutzer erfolgreich aktuallisiert."
-      destroy: 'Benutzer erfolgreich gelöscht.' 
       create: 'Benutzer erfolgreich erstellt.'
 
   views:
