@@ -54,7 +54,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
-        format.html { redirect_to @project, notice: 'Project was successfully created.' }
+        format.html { redirect_to @project, notice: t('models.project.create') }
         format.json { render :show, status: :created, location: @project }
       else
         format.html { render :new }
@@ -67,7 +67,7 @@ class ProjectsController < ApplicationController
   # PATCH/PUT /projects/1.json
   def update
     if @project.update(project_params)
-      flash[:notice] = "Projekt erfolgreich aktuallisiert."
+      flash[:notice] = t('models.project.update') 
       redirect_to project_path
     else
       @users = User.where.not(id: @project.users).order('last_name').page(params[:userPage])
@@ -81,7 +81,7 @@ class ProjectsController < ApplicationController
   def destroy
     @project.destroy
     respond_to do |format|
-      format.html { redirect_to projects_url, notice: 'Project was successfully destroyed.' }
+      format.html { redirect_to projects_url, notice: t('models.project.destroy')  }
       format.json { head :no_content }
     end
   end

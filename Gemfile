@@ -67,6 +67,8 @@ gem "attr_encrypted", "~> 3.0.0"
 #Aut_link --> greate a link from URL String in Message
 gem 'rails_autolink'
 
+gem 'rails-i18n'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
