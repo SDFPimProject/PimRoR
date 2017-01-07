@@ -7,17 +7,17 @@ class ProjectsController < ApplicationController
   # GET /projects.json
   def index
     if (current_user.role == "admin" || current_user.role == "manager")
-      @projects = Project.page(params[:page])
+      @projects = Project.order('name').page(params[:page])
     else
       userprojects = current_user.users_projects.where("user_project_role = ?", "manager")
-      @projects = current_user.projects.where(id: userprojects.pluck(:project_id)).page(params[:page])
+      @projects = current_user.projects.where(id: userprojects.pluck(:project_id)).order('name').page(params[:page])
     end
   end
 
   # GET /projects/1
   # GET /projects/1.json
   def show
-    @project_users = @project.users.page(params[:projectUserPage])
+    @project_users = @project.users.order('users.last_name').page(params[:projectUserPage])
   end
 
   # GET /projects/new
@@ -27,8 +27,8 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1/edit
   def edit
-    @users = User.where.not(id: @project.users).page(params[:userPage])
-    @project_users = @project.users_projects.page(params[:projectUserPage])
+    @users = User.where.not(id: @project.users).order('last_name').page(params[:userPage])
+    @project_users = @project.users_projects.joins(:user).order('users.last_name').page(params[:projectUserPage])
   end
 
   # POST /projects/1/user/1/remove
@@ -70,8 +70,8 @@ class ProjectsController < ApplicationController
       flash[:notice] = "Projekt erfolgreich aktuallisiert."
       redirect_to project_path
     else
-      @users = User.where.not(id: @project.users).page(params[:userPage])
-      @team_users = @project.users_projects.page(params[:projectUserPage])
+      @users = User.where.not(id: @project.users).order('last_name').page(params[:userPage])
+      @team_users = @project.users_projects.joins(:user).order('users.last_name').page(params[:projectUserPage])
       render :action => 'edit'
     end
   end

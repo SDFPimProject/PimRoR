@@ -2,7 +2,7 @@ class Users::UsersController < ApplicationController
   layout "settingsmenu"
 
   def index
-        @users = User.all.page(params[:page])
+        @users = User.all.order('last_name').page(params[:page])
   end
 
   def new
