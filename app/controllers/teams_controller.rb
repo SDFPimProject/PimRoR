@@ -7,17 +7,17 @@ class TeamsController < ApplicationController
   # GET /teams.json
   def index
     if (current_user.role == "admin" || current_user.role == "manager")
-      @teams = Team.page(params[:page])
+      @teams = Team.order('name').page(params[:page])
     else
       userteams = current_user.users_teams.where("user_team_role = ?", "manager")
-      @teams = current_user.teams.where(id: userteams.pluck(:team_id)).page(params[:page])
+      @teams = current_user.teams.where(id: userteams.pluck(:team_id)).order('name').page(params[:page])
     end
   end
 
   # GET /teams/1
   # GET /teams/1.json
   def show
-    @team_users = @team.users.page(params[:teamUserPage])
+    @team_users = @team.users.order('users.last_name').page(params[:teamUserPage])
   end
 
   # GET /teams/new
@@ -27,8 +27,8 @@ class TeamsController < ApplicationController
 
   # GET /teams/1/edit
   def edit
-    @users = User.where.not(id: @team.users).page(params[:userPage])
-    @team_users = @team.users_teams.page(params[:teamUserPage])
+    @users = User.where.not(id: @team.users).order('last_name').page(params[:userPage])
+    @team_users = @team.users_teams.joins(:user).order('users.last_name').page(params[:teamUserPage])
   end
 
   # POST /teams/1/user/1/remove
@@ -70,8 +70,8 @@ class TeamsController < ApplicationController
       flash[:notice] = "Team erfolgreich aktuallisiert."
       redirect_to team_path
     else
-      @users = User.where.not(id: @team.users).page(params[:userPage])
-      @team_users = @team.users_teams.page(params[:teamUserPage])
+      @users = User.where.not(id: @team.users).order('last_name').page(params[:userPage])
+      @team_users = @team.users_teams.joins(:user).order('users.last_name').page(params[:teamUserPage])
       render :action => 'edit'
     end
   end
