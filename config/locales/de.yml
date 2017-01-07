@@ -37,6 +37,17 @@ de:
         restrict_dependent_destroy:
           has_one: "Cannot delete record because a dependent %{record} exists"
           has_many: "Cannot delete record because dependent %{record} exist"
+      models:
+          team:
+            attributes:
+              name:
+                too_short: "Der Name ist zu kurz. Mindestlänge zwei zeichen."
+                too_long: "Der Name ist zu lang. Maximallänge 50 Zeichen."
+          project:
+            attributes:
+              name:
+                too_short: "Der Name ist zu kurz. Mindestlänge zwei zeichen."
+                too_long: "Der Name ist zu lang. Maximallänge 50 Zeichen."
     models:
       user: "Benutzer"
     attributes:
@@ -67,7 +78,9 @@ de:
     offline: "Offline"
     write_message: "Nachricht..."
     error:
-      save_prohibited: "speichern nicht erlaubt"
+      save_prohibited: "Speichern nicht erlaubt."
+      one: "1 Fehler"
+      other: "%{count} Fehler"
     edit_event: "Event bearbeiten"
     back_to_calendar: "zurück zum Kalender"
     are_you_sure: "Bist du sicher?"
