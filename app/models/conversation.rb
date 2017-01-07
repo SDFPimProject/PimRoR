@@ -7,12 +7,13 @@ class Conversation < ActiveRecord::Base
 
   attr_accessor :last_message
   attr_accessor :count_unread
+  attr_accessor :last_message_date
 
 
   validates_uniqueness_of :sender_id, :scope => :recipient_id
 
   scope :involving, -> (user) do
-    joins("INNER JOIN messages ON messages.conversation_id = conversations.id").distinct.where("conversations.sender_id =? OR conversations.recipient_id =?",user.id,user.id)
+    joins("INNER JOIN messages ON messages.conversation_id = conversations.id").distinct.where("conversations.sender_id =? OR conversations.recipient_id =?",user.id,user.id).order(' updated_at DESC')
   end
 
   scope :between, -> (sender_id,recipient_id) do

@@ -13,13 +13,40 @@
   <div class="dashboard-content-box">
     <div class="box-header">
       <i class="material-icons">&#xE0B7;</i>
-      <div style="padding: 10px"><%= t('views.messages') %></div>
+      <%= link_to '/conversations' do %>
+      <div style="padding: 10px">
+
+            <%= t('views.messages') %>
+      </div>
+      <% end %>
     </div>
     <div class="box-content">
-      <div class="input-button">
-        <input id="push_notify_all" type="button" value="PUSH TO ALL">
+      <div class="dashboard-table-wrapper">
+        <table class="dashboard-table dashboard-messages">
+          <tbody>
+          <% @conversations.each do |conversation| %>
+              <% if conversation.sender_id == current_user.id %>
+                  <% recipient = User.find(conversation.recipient_id) %>
+              <% else %>
+                  <% recipient = User.find(conversation.sender_id) %>
+              <% end %>
+              <% if conversation.count_unread > 0 %>
+              <tr class="unread" data-userid="<%= recipient.id%>">
+              <% else %>
+              <tr data-userid="<%= recipient.id%>">
+              <% end %>
+                <td><%= conversation.last_message_date.strftime("%H:%M - %d.%m.%Y") %></td>
+                <td><%= recipient.first_name + ' ' + recipient.last_name %></td>
+                <td><%= conversation.last_message %></td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
       </div>
-      <a class="input-button"></a>
+      <!--<div class="input-button">
+        <input id="push_notify_all" type="button" value="PUSH TO ALL">
+      </div>-->
+
     </div>
   </div>
 

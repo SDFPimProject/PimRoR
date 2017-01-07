@@ -17,6 +17,9 @@ class MessagesController < ApplicationController
     @message.is_send = true
     @message.save!
 
+    @conversation.updated_at = Time.now
+    @conversation.save!
+
     Fiber.new{
       WebsocketRails[@reciever.id].trigger('new_message', {
           :conversation_id => @conversation.id,

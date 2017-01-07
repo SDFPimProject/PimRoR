@@ -6,6 +6,7 @@ var Chat = (function() {
         //PRIVAT
         var CLASS_CONVESATIONS_LIST = "conversation_list";
         var CLASS_CHAT_BOX_WRAPPER = "chat_box_wrapper";
+        var CLASS_DASHBOARD_MESSAGE = "dashboard-messages";
         var ID_CHAT_BOX_MESSAGE = "chat_box_message_";
         var CLASS_CHAT_BOX_CONTENT = "chat_box_content";
         var CLASS_CHAT_BOX_TEXTAREA = "chat_box_textarea";
@@ -137,11 +138,20 @@ var Chat = (function() {
                         if(currentConversation){
                             that.openChat(currentConversation);
                         }else{
-                            loadLandingPage();
+                            if(sessionStorage.getItem('currentConversation')){
+                                that.openChat(sessionStorage.getItem('currentConversation'));
+                                sessionStorage.removeItem('currentConversation');
+                            }else{
+                                loadLandingPage();
+                            }
                         }
                     }, 300);
 
                 }
+            },
+            openChatFromOtherPage: function (conversation_id) {
+                sessionStorage.setItem('currentConversation', conversation_id);
+                window.location.href = "../conversations";
             },
             showOverview: function () {
               currentConversation = null;
@@ -161,8 +171,13 @@ var Chat = (function() {
                         notifyNewMessage(from_user.first_name);
                     }
                 }else{
-                    setMessageReceive(conversation_id);
-                    notifyNewMessage(from_user.first_name);
+                    //Prüfen ob auf der Hauptseite das Dashboard aktualisieren
+                    if($('.' + CLASS_DASHBOARD_MESSAGE).length >= 1){
+                        window.location.href = '..';
+                    }else {
+                        setMessageReceive(conversation_id);
+                        notifyNewMessage(from_user.first_name);
+                    }
                 }
             },
             webSocketNewMessageStatus: function (conversation_id, messages) {
