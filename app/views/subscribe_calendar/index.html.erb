@@ -7,6 +7,22 @@
     </div>
     <%= will_paginate @users %>
     <table class="selection-table">
+     
+    <% @subs.each do |sub| %>
+    <tr>
+            <td><%= sub.name %> <%= t('views.scalendar') %></td>
+              <td>
+               <%= link_to  delete_subscribtion_path_url(sub.calendar_id) do %>
+                  <div class="button">
+                     <%= t('views.unsubscribe') %> 
+                  </div>
+              <% end %>
+            </td>
+          </tr>
+    <% end %>
+    </table>
+    <hr>
+    <table class="selection-table">
       <% @users.each do |user| %>
           <tr>
             <td><%= user.first_name %> <%= user.last_name %><%= t('views.scalendar') %></td>
@@ -17,14 +33,6 @@
                   </div>
               <% end %>
               </td>
-              <td>
-               <%= link_to  delete_subscribtion_path_url(user.id) do %>
-                  <div class="button">
-                     <%= t('views.unsubscribe') %> 
-                  </div>
-              <% end %>
-            </td>
-            
           </tr>
       <% end %>
     </table>
