@@ -95,3 +95,31 @@
     color: $primary-color-dark-text;
   }
 }
+
+
+table.dashboard_table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #FFF;
+    th {
+      text-align: left;
+      padding: 20px 7px;
+      border: 1px solid rgb(209, 198, 198);
+    }
+    .head_tr {
+        &:hover {
+          background-color: #FFF;
+          cursor: default;
+        }
+    }
+    tr {
+      &:hover {
+        background-color: #EEE;
+        cursor: pointer;
+      }
+    }
+    td {
+      padding: 8px;
+      border: 1px solid rgb(209, 198, 198);
+    }
+}

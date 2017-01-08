@@ -53,11 +53,52 @@
   <div class="dashboard-content-box">
     <div class="box-header">
       <i class="material-icons">&#xE916;</i>
+      <div style="padding: 10px">
+            <%= "Einladungen" %>
+      </div>
     </div>
-    <div class="box-content">
-      I'm alive!!!! <br>
-      The time is now: <%= Time.now %>
-      Test
+    <div style="padding: 25px">
+      <% if @invites.first() == nil %>
+        Sie haben keine Termineinladungen
+      <% else %>
+        <table class="dashboard_table">
+            <tr class="head_tr">
+              <th>Von</th>
+              <th>Bis</th>
+              <th>Title</th>
+              <th>Ort</th>
+              <th>Ersteller des Termins</th>
+              <th>Ihre Teilnahme?</th>
+            </tr>
+
+          <% @invites.each do |invite|
+              @event = Event.find(invite.event_id)
+          %>
+            <tr class="unreadffff" data-eventid="<%= @event.id %>">
+                <td><%= @event.start_time.strftime("%H:%M - %d.%m.%y") %></td>
+                <td><%= @event.end_time.strftime("%H:%M - %d.%m.%y") %></td>
+                <td><%= @event.title %></td>
+                <td><%= @event.location %></td>
+                <td><%
+                    user = User.find(@event.creator_id)
+                    name = user.first_name + " " + user.last_name
+                %><%= name %></td>
+                <td>
+                    <% if @event.deleted != 0 %>
+                        Termin wurde entfernt!
+                    <% elsif invite.recipient_status == 0 %>
+                        Vielleicht
+                    <% elsif invite.recipient_status == 1 %>
+                        Ja
+                    <% elsif invite.recipient_status == 2 %>
+                        Nein
+                    <% end %>
+                </td>
+              </tr>
+          <% end %>
+
+        </table>
+      <% end %>
     </div>
   </div>
 

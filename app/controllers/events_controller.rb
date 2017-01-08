@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.by_user_id(current_user.id)
+    @events = Event.by_user_id_no_deleted(current_user.id)
   end
 
   # GET /events/1
@@ -13,6 +13,7 @@ class EventsController < ApplicationController
       @event = Event.find(params[:id])
 
       @is_show_mode = !(@event.creator_id == current_user.id);
+      @is_deleted = @event.deleted != 0
 
       if (@is_show_mode)
           @invites = Invite.by_recipient_id_and_event_id(current_user.id, @event.id)
@@ -40,6 +41,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.creator_id = current_user.id
+    @event.deleted = 0
     saved = @event.save
 
     respond_to do |format|
@@ -47,15 +49,17 @@ class EventsController < ApplicationController
         @invited_persons_array = params[:invited_persons].split(";");
         if @invited_persons_array.size() > 0
             @invited_persons_array.each do |person_id|
-                @invite = Invite.new()
-                @invite.event_id = @event.id;
-                @invite.sender_id = current_user.id;
-                @invite.recipient_id = person_id;
-                @invite.sender_comment = "";
-                @invite.recipient_comment = "";
-                @invite.sender_status = 0;
-                @invite.recipient_status = 0;
-                @invite.save();
+                if (person_id != current_user.id) && (Invite.by_recipient_id_and_event_id(person_id, @event.id).first() == nil)
+                    @invite = Invite.new()
+                    @invite.event_id = @event.id;
+                    @invite.sender_id = current_user.id;
+                    @invite.recipient_id = person_id;
+                    @invite.sender_comment = "";
+                    @invite.recipient_comment = "";
+                    @invite.sender_status = 0;
+                    @invite.recipient_status = 0;
+                    @invite.save();
+                end
             end
         end
 
@@ -78,15 +82,17 @@ class EventsController < ApplicationController
               @invited_persons_array = params[:invited_persons].split(";");
               if @invited_persons_array.size() > 0
                   @invited_persons_array.each do |person_id|
-                      @invite = Invite.new()
-                      @invite.event_id = @event.id;
-                      @invite.sender_id = current_user.id;
-                      @invite.recipient_id = person_id;
-                      @invite.sender_comment = "";
-                      @invite.recipient_comment = "";
-                      @invite.sender_status = 0;
-                      @invite.recipient_status = 0;
-                      @invite.save();
+                      if (person_id != current_user.id) && (Invite.by_recipient_id_and_event_id(person_id, @event.id).first() == nil)
+                          @invite = Invite.new()
+                          @invite.event_id = @event.id;
+                          @invite.sender_id = current_user.id;
+                          @invite.recipient_id = person_id;
+                          @invite.sender_comment = "";
+                          @invite.recipient_comment = "";
+                          @invite.sender_status = 0;
+                          @invite.recipient_status = 0;
+                          @invite.save();
+                      end
                   end
               end
 
@@ -116,7 +122,8 @@ class EventsController < ApplicationController
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy
-    @event.destroy
+    @event.deleted = 1
+    @event.save();
     respond_to do |format|
       format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
       format.json { head :no_content }

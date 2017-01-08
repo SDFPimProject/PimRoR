@@ -30,5 +30,8 @@ class WelcomeController < ApplicationController
       end
     end
 
+    @invites = Invite.by_recipient_id(current_user.id).order('id');
+
+
   end
 end

@@ -1,3 +1,8 @@
+<%
+if @is_deleted
+    @is_show_mode = true
+end
+%>
 
     <%= form_for(@event) do |f| %>
       <% if @event.errors.any? %>
@@ -34,7 +39,7 @@
         <%= f.datetime_select :end_time, disabled: @is_show_mode %>
       </div>
 
-          <% if @is_show_mode %>
+          <% if @is_show_mode && !@is_deleted %>
           <hr />
               <div class="field" style="margin-top: 45px;">
                 Kommentar<br>
@@ -43,7 +48,7 @@
               <div class="field">
                 Möchten Sie an dem Event Teilnehmen?<br>
                 <select name="recipient_status">
-                    <option value="0">Ich weiß es nicht</option>
+                    <option value="0">Vielleicht</option>
                     <option value="1"<% if (@invite.recipient_status == 1) %>
                         <%= ' selected="selected" ' %>
                         <% end %>>Ja</option>
@@ -59,7 +64,7 @@
               </div>
           <% end %>
 
-        <% if !@is_show_mode  %>
+        <% if !@is_show_mode && !@is_deleted  %>
             <div class="invited_persons">
                 <div class="field">
                     <p>Personen einladen:</p>
@@ -86,18 +91,24 @@
                             <tr>
                               <th>Eingeladene Person</th>
                               <th>Möchte Teilnehmen?</th>
-                              <th>Kommentar</th>
+                              <th width="45%">Kommentar</th>
                             </tr>
                           </thead>
 
                           <tbody>
                             <% @invites.each do |invite| %>
                               <tr>
-                                <td><%= invite.recipient_id %></td>
+                                <td><% user = User.find(invite.recipient_id)
+                                    name = user.first_name + " " + user.last_name
+                                 %><%= name %></td>
                                 <td>
-                                    <%=
-                                        invite.recipient_status
-                                    %>
+                                    <% if invite.recipient_status == 0 %>
+                                        Vielleicht
+                                    <% elsif invite.recipient_status == 1 %>
+                                        Ja
+                                    <% elsif invite.recipient_status == 2 %>
+                                        Nein
+                                    <% end %>
                                 </td>
                                 <td><%= invite.recipient_comment %></td>
                               </tr>
