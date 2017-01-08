@@ -14,7 +14,6 @@ class EventsController < ApplicationController
 
       @is_show_mode = !(@event.creator_id == current_user.id);
       @is_deleted = @event.deleted != 0
-
       if (@is_show_mode)
           @invites = Invite.by_recipient_id_and_event_id(current_user.id, @event.id)
           @invite = @invites.first()
