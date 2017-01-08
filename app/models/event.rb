@@ -2,7 +2,7 @@ class Event < ActiveRecord::Base
 
 
 
-    validates :start_time, date: { after_or_equal_to: Proc.new { Date.today }, message: ' kann nicht in der Vergangenheit liegen.' }
+    validates :start_time, date: { after_or_equal_to: Date.today , message: ' kann nicht in der Vergangenheit liegen.' }
     validates :end_time, date: { after_or_equal_to: :start_time, message: ' muss nach start time liegen.' }
 
     scope :by_user_id, -> (user_id) do
