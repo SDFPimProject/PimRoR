@@ -15,6 +15,12 @@ $(document).on('click', '.dashboard-messages tr', function (e) {
 
 });
 
+$(document).on('click', '.dashboard_table tr', function (e) {
+    e.preventDefault();
+    var event_id = $(this).data('eventid');
+    window.location.href = "/events/" + event_id;
+});
+
 
 //Functions
 $('#calendar_go_to_date').datepicker();

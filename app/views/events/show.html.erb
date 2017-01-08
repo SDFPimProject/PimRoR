@@ -1,7 +1,9 @@
 <div class="edit_event_wrapper">
     <h1>
         <%= t('views.event') %>
-        <% if @is_show_mode %>
+        <% if @is_deleted %>
+            wurde entfernt
+        <% elsif @is_show_mode %>
             <%= t('views.show') %>
         <% else %>
             <%= t('views.edit') %>

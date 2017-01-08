@@ -20,4 +20,8 @@ validates :recipient_id, :presence => true
       where("sender_id = ? AND event_id = ?", sender_id, event_id)
     end
 
+    scope :by_recipient_id, -> (recipient_id) do
+      where("recipient_id = ?", recipient_id)
+    end
+
 end
