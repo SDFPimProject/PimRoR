@@ -37,6 +37,7 @@ de:
         restrict_dependent_destroy:
           has_one: "Cannot delete record because a dependent %{record} exists"
           has_many: "Cannot delete record because dependent %{record} exist"
+     
     models:
       user: "Benutzer"
     attributes:
@@ -53,6 +54,19 @@ de:
         country_name: "Land"
         locality: "Stadt"
         zip_code: "Postleitzahl"
+  models:
+    team:
+      update: "Team erfolgreich aktuallisiert."
+      destroy: 'Team erfolgreich gelöscht.' 
+      create: 'Team erfolgreich erstellt.'
+    project:
+      update: "Projekt erfolgreich aktuallisiert."
+      destroy: 'Projekt erfolgreich gelöscht.' 
+      create: 'Projekt erfolgreich erstellt.'
+    user:
+      update: "Benutzer erfolgreich aktuallisiert."
+      create: 'Benutzer erfolgreich erstellt.'
+
   views:
     member: "Teilnehmer"
     no_results: "Keine Ergebnisse"
@@ -67,10 +81,12 @@ de:
     offline: "Offline"
     write_message: "Nachricht..."
     error:
-      save_prohibited: "speichern nicht erlaubt"
+      save_prohibited: "Speichern nicht erlaubt."
+      one: "1 Fehler"
+      other: "%{count} Fehler"
     edit_event: "Event bearbeiten"
     back_to_calendar: "zurück zum Kalender"
-    are_you_sure: "are_you_sure"
+    are_you_sure: "Bist du sicher?"
     remove: "Entfernen"
     postbox: "Briefkasten"
     start_page: "Startseite"

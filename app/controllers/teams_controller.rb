@@ -54,7 +54,7 @@ class TeamsController < ApplicationController
 
     respond_to do |format|
       if @team.save
-        format.html { redirect_to @team, notice: 'Team was successfully created.' }
+        format.html { redirect_to @team, notice: t('models.team.create') }
         format.json { render :show, status: :created, location: @team }
       else
         format.html { render :new }
@@ -67,7 +67,7 @@ class TeamsController < ApplicationController
   # PATCH/PUT /teams/1.json
   def update
     if @team.update(team_params)
-      flash[:notice] = "Team erfolgreich aktuallisiert."
+      flash[:success] = t('models.team.update') 
       redirect_to team_path
     else
       @users = User.where.not(id: @team.users).order('last_name').page(params[:userPage])
@@ -81,7 +81,7 @@ class TeamsController < ApplicationController
   def destroy
     @team.destroy
     respond_to do |format|
-      format.html { redirect_to teams_url, notice: 'Team was successfully destroyed.' }
+      format.html { redirect_to teams_url, notice: t('models.team.destroy') }
       format.json { head :no_content }
     end
   end

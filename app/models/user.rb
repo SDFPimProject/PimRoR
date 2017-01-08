@@ -17,19 +17,17 @@ class User < ActiveRecord::Base
   ROLES = %i[admin moderator author banned]
 
   validates :password, length: {minimum: 8, maximum: 120}, on: :update , allow_blank: true
-  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX,
-    message: "Wrong Email format" }, on: :update , allow_blank: true
+  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, on: :update , allow_blank: true
   validates :first_name, length: { minimum: 2, maximum: 50 }, presence: true,  on: :update
   validates :last_name, length: { minimum: 2, maximum: 50 }, presence: true,  on: :update
 
   validates :password, presence: true, length: {minimum: 8, maximum: 120}, on: :create
-  validates :email, confirmation: true, format: { with: VALID_EMAIL_REGEX,
-    message: "Wrong Email format" }, on: :create
+  validates :email, confirmation: true, format: { with: VALID_EMAIL_REGEX }, on: :create
   validates :email_confirmation, presence: true, on: :create
   validates :first_name, length: { minimum: 2, maximum: 50 }, presence: true,  on: :create
   validates :last_name, length: { minimum: 2, maximum: 50 }, presence: true,  on: :create
 
-  validates :birthday, date: { before_or_equal_to: Time.now, message: 'Geburtsdatum muss in der Vergangenheit liegen.' }
+  validates :birthday, date: { before_or_equal_to: Time.now }
   validates :street_and_nr, format: { with: VALID_ADRESS_REGEX }
   validates :state, length: { minimum: 2, maximum: 50 }
   validates :country_name, length: { minimum: 2, maximum: 50 }
