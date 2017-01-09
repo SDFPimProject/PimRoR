@@ -67,7 +67,7 @@ class TeamsController < ApplicationController
   # PATCH/PUT /teams/1.json
   def update
     if @team.update(team_params)
-      flash[:success] = t('models.team.update') 
+      flash[:notice] = t('models.team.update') 
       redirect_to team_path
     else
       @users = User.where.not(id: @team.users).order('last_name').page(params[:userPage])
