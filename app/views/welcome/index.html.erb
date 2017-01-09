@@ -89,8 +89,8 @@
               <th><%= t('views.appointments.till') %></th>
               <th><%= t('views.appointments.app_title')%></th>
               <th><%= t('views.appointments.place') %></th>
-              <th>Ersteller des Termins</th>
-              <th>Ihre Teilnahme?</th>
+              <th><%= t('views.appointments.owner_app') %></th>
+              <th><%= t('views.appointments.your_participation') %></th>
             </tr>
 
           <% @invites.each do |invite|
@@ -107,13 +107,13 @@
                 %><%= name %></td>
                 <td>
                     <% if @event.deleted != 0 %>
-                        Termin wurde entfernt!
+                       <%= t('views.appointments.app_deleted') %>
                     <% elsif invite.recipient_status == 0 %>
-                        Vielleicht
+                       <%= t('views.appointments.maybe') %>
                     <% elsif invite.recipient_status == 1 %>
-                        Ja
+                        <%= t('views.appointments.yes') %>
                     <% elsif invite.recipient_status == 2 %>
-                        Nein
+                        <%= t('views.appointments.no') %>
                     <% end %>
                 </td>
               </tr>
