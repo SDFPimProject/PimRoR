@@ -76,19 +76,19 @@
     <div class="box-header">
       <i class="material-icons">&#xE916;</i>
       <div style="padding: 10px">
-            <%= "Einladungen" %>
+            <%= t('views.appointments.title') %>
       </div>
     </div>
     <div style="padding: 25px">
       <% if @invites.first() == nil %>
-        Sie haben keine Termineinladungen
+       <%= t('views.appointments.no_new') %>
       <% else %>
         <table class="dashboard_table">
             <tr class="head_tr">
-              <th>Von</th>
-              <th>Bis</th>
-              <th>Title</th>
-              <th>Ort</th>
+              <th><%= t('views.appointments.from') %></th>
+              <th><%= t('views.appointments.till') %></th>
+              <th><%= t('views.appointments.app_title')%></th>
+              <th><%= t('views.appointments.place') %></th>
               <th>Ersteller des Termins</th>
               <th>Ihre Teilnahme?</th>
             </tr>

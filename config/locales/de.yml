@@ -133,6 +133,7 @@ de:
     teams: "Teams"
     team_name: "Teamname"
     new: "neues"
+    newer: "neuer"
     resend_confirmation_instructions: "Bestätigung neu senden"
     welcome: "Willkommen"
     confirm_account_link: "Bestätigen Sie ihre E-mail mit dem unten stehenden Link"
@@ -172,3 +173,10 @@ de:
     subscribe: "abonnieren"
     unsubscribe: "deabonnieren"
     scalendar: "'s Kalender"
+    appointments:
+      title: "Einladungen"
+      no_new: "Sie haben keine Termineinladungen"
+      from: "Von"
+      till: "Bis"
+      app_title: "Titel"
+      place: "Ort"
