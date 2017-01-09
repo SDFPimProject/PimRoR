@@ -19,11 +19,8 @@ class EventsController < ApplicationController
           @invite = @invites.first()
           if (@invite == nil)
               respond_to do |format|
-<<<<<<< 3cc3031209f34a94debff37e2fb1b3b7ee3abbd0
-                format.html { redirect_to events_url, notice: 'Sie sind nicht berechtigt dieses Event anzuschauen!' }
-=======
                 format.html { redirect_to events_url, notice:  t('events.not_allowed_view')}
->>>>>>> locales in controllers
+
                 format.json { head :no_content }
               end
           end
