@@ -5,7 +5,7 @@ class SubscribeCalendarController < ApplicationController
     require 'will_paginate/array'
     @subs=current_user.subscribtions.all.page(params[:page])
     
-    @users=User.all.reject { |user| @subs.exists?(calendar_id: user.id) } #dont load users, whose calendar are already in subscribtion
+    @users=User.all.order('last_name').reject { |user| @subs.exists?(calendar_id: user.id) } #dont load users, whose calendar are already in subscribtion
 
     @users.delete(current_user)
     @users= @users.paginate(page: params[:page], per_page: 15)
