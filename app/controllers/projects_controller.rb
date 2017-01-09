@@ -71,7 +71,7 @@ class ProjectsController < ApplicationController
       redirect_to project_path
     else
       @users = User.where.not(id: @project.users).order('last_name').page(params[:userPage])
-      @team_users = @project.users_projects.joins(:user).order('users.last_name').page(params[:projectUserPage])
+      @project_users = @project.users_projects.joins(:user).order('users.last_name').page(params[:projectUserPage])
       render :action => 'edit'
     end
   end
