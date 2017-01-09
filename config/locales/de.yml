@@ -90,6 +90,13 @@ de:
    hey: "Hey, "
    welcome: "! Willkommen bei PIMSuite+."
 
+  subscribe_calendar:
+   sucessfull_subscribed: "Kalender erfolgreich abonniert."
+   already_subscribed: "Kalender bereits abonniert."
+   subscribtion_deleted: "Kalender nicht mehr abonniert"
+   not_subscribed: "Kalender nicht abonniert"
+   
+
 
   views:
     member: "Teilnehmer"

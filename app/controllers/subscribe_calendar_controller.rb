@@ -17,10 +17,10 @@ class SubscribeCalendarController < ApplicationController
 
     if(!@user.subscribtions.exists?(calendar_id: @selectedUser.id))
       @sub= @user.subscribtions.create(calendar_id: @selectedUser.id, name:@selectedUser.first_name + ' '+ @selectedUser.last_name)
-      flash[:notice] = "Kalender erfolgreich abonniert."
+      flash[:notice] = t('subscribe_calendar.sucessfull_subscribed')
       redirect_to :action => 'index'
     else
-      flash[:notice] = "Kalender bereits abonniert."
+      flash[:notice] = t('subscribe_calendar.already_subscribed') 
       redirect_to :action => 'index'
     end
   end
@@ -39,10 +39,10 @@ class SubscribeCalendarController < ApplicationController
     if(@user.subscribtions.exists?(calendar_id: params[:id]))
       @sub= @user.subscribtions.where("calendar_id = (?)", params[:id])
       @user.subscribtions.destroy(@sub)
-      flash[:notice] ="Kalender nicht mehr abonniert"
+      flash[:notice] = t('subscribe_calendar.subscribtion_deleted')
       redirect_to :action => 'index'
     else
-      flash[:notice] ="Kalender nicht abonniert"
+      flash[:notice] = t('subscribe_calendar.not_subscribed')
       redirect_to :action => 'index'
     end
   end
