@@ -6,7 +6,7 @@
     </div>
     <div class="box-content row full-width-table">
       <div class="box-content-column">
-        <div class="box-header"><%= t('views.member') %></div>
+        <div class="box-header"><%= t('views.project') %><%= t('views.member') %></div>
         <%= will_paginate @project_users, :param_name => 'projectUserPage' %>
         <table class="member-table">
           <% @project_users.each do |a| %>

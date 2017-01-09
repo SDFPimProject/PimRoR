@@ -1,4 +1,5 @@
 <div class="content-wrapper">
+  <div id="notice"><%= notice %></div>
   <div class="content-box">
     <div class="row">
       <div class="box-header">
@@ -15,14 +16,19 @@
         <% end %>
       </div>
     </div>
-    <div class="box-content"><p id="notice"><%= notice %></p></div>
     <div class="box-content"> <%= t('views.team') %> <%= t('views.member') %></div>
     <%= will_paginate @team_users, :param_name => 'teamUserPage' %>
     <table class="member-table">
+      <tr>
+        <td><b><%= t('views.name') %></b></td>
+        <td><b><%= t('views.role') %></b></td>
+      </tr>
       <% @team_users.each do |user| %>
           <tr>
             <td>
               <%= user.first_name + " " + user.last_name %>
+            </td>
+            <td>
               <%= user.users_teams.where('team_id = ?', @team.id)[0].user_team_role %>
             </td>
           </tr>

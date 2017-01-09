@@ -1,5 +1,16 @@
 <%= form_for(@project) do |f| %>
     <div class="box-content">
+      <% if @project.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= t('views.error_count', count: @project.errors.count) %> <%= t('views.error.save_prohibited') %></h2>
+
+            <ul>
+              <% @project.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+      <% end %>
       <table style="width: 100%; padding: 20px">
         <tr>
           <td>
@@ -17,16 +28,5 @@
           </td>
         </tr>
       </table>
-      <% if @project.errors.any? %>
-          <div id="error_explanation">
-            <h2><%= t('views.error_count', count: @project.errors.count) %> <%= t('views.error.save_prohibited') %></h2>
-
-            <ul>
-              <% @project.errors.full_messages.each do |message| %>
-                  <li><%= message %></li>
-              <% end %>
-            </ul>
-          </div>
-      <% end %>
     </div>
 <% end %>

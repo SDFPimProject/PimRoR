@@ -10,7 +10,7 @@
 .content-box {
   background-color: $primary-color;
   box-shadow: $box-shadow;
-  margin: 0 15px 0 0;
+  margin: 0 5px 10px 0;
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -74,14 +74,6 @@
   }
 }
 
-#error_explanation {
-  color: red;
-  ul {
-    color: red;
-    margin: 0 0 30px 0;
-  }
-}
-
 .debug_dump {
   background-color: $primary-color;
 }
@@ -109,5 +101,17 @@
   flex-basis: 0;
   justify-content: center;
   justify-self: center;
+}
+
+#notice:empty {
+  display: none;
+}
+
+#notice{
+  background-color: $primary-color;
+  box-shadow: $box-shadow;
+  padding: 20px;
+  margin-bottom: 5px;
+  margin-right: 5px;
 }
 
