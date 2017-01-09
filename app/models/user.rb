@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 
   has_many :users_projects
   has_many :projects, through: :users_projects
+  has_many :subscribtions
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

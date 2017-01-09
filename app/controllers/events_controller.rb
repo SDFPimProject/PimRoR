@@ -14,13 +14,12 @@ class EventsController < ApplicationController
 
       @is_show_mode = !(@event.creator_id == current_user.id);
       @is_deleted = @event.deleted != 0
-
       if (@is_show_mode)
           @invites = Invite.by_recipient_id_and_event_id(current_user.id, @event.id)
           @invite = @invites.first()
           if (@invite == nil)
               respond_to do |format|
-                format.html { redirect_to events_url, notice: 'Sie sind nicht berechtigt diesen Event anzuschauen!' }
+                format.html { redirect_to events_url, notice: 'Sie sind nicht berechtigt dieses Event anzuschauen!' }
                 format.json { head :no_content }
               end
           end
@@ -29,7 +28,7 @@ class EventsController < ApplicationController
       end
 
   end
-
+  
   # GET /events/new
   def new
     @is_show_mode = false;
@@ -113,7 +112,7 @@ class EventsController < ApplicationController
         end
 
         respond_to do |format|
-            format.html { redirect_to @event, notice: 'Ihr Kommentar wurde gepseichert'}
+            format.html { redirect_to @event, notice: 'Ihr Kommentar wurde gespeichert'}
             format.json { render :show, status: :ok, location: @event }
         end
     end
