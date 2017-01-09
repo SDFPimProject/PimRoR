@@ -50,7 +50,7 @@ class MessagesController < ApplicationController
 
       render json: { ok: true}
     else
-      render json: {ok: false, text: "Permission denied!"}
+      render json: {ok: false, text: t('messages.permission_denied')}
     end
   end
 

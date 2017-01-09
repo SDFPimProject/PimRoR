@@ -19,7 +19,11 @@ class EventsController < ApplicationController
           @invite = @invites.first()
           if (@invite == nil)
               respond_to do |format|
+<<<<<<< 3cc3031209f34a94debff37e2fb1b3b7ee3abbd0
                 format.html { redirect_to events_url, notice: 'Sie sind nicht berechtigt dieses Event anzuschauen!' }
+=======
+                format.html { redirect_to events_url, notice:  t('events.not_allowed_view')}
+>>>>>>> locales in controllers
                 format.json { head :no_content }
               end
           end
@@ -62,7 +66,7 @@ class EventsController < ApplicationController
             end
         end
 
-        format.html { redirect_to @event, notice: 'Event was successfully created.'}
+        format.html { redirect_to @event, notice: t('events.created_successfull')}
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new }
@@ -95,7 +99,7 @@ class EventsController < ApplicationController
                   end
               end
 
-            format.html { redirect_to @event, notice: 'Event was successfully updated.' }
+            format.html { redirect_to @event, notice: t('events.updated_successfull') }
             format.json { render :show, status: :ok, location: @event }
           else
             format.html { render :edit }
@@ -112,7 +116,7 @@ class EventsController < ApplicationController
         end
 
         respond_to do |format|
-            format.html { redirect_to @event, notice: 'Ihr Kommentar wurde gespeichert'}
+            format.html { redirect_to @event, notice: t('events.commentary_saved')}
             format.json { render :show, status: :ok, location: @event }
         end
     end
@@ -124,7 +128,7 @@ class EventsController < ApplicationController
     @event.deleted = 1
     @event.save();
     respond_to do |format|
-      format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
+      format.html { redirect_to events_url, notice: t('events.deleted') }
       format.json { head :no_content }
     end
   end
