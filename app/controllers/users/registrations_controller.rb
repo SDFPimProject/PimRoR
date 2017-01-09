@@ -36,12 +36,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if  account_update_params[:password].blank?
       @user.update_without_password(account_update_params)
       set_flash_message :notice, :updated
-      redirect_to after_update_path_for(@user)
+      render "edit"
     elsif  @user.update(account_update_params)
       set_flash_message :notice, :updated
       # Sign in the user bypassing validation in case his password changed
       sign_in @user, :bypass => true
-      redirect_to after_update_path_for(@user)
+      render "edit"
     else
       render "edit"
     end

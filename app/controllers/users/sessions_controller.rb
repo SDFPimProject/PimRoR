@@ -3,7 +3,7 @@ class Users::SessionsController < Devise::SessionsController
   after_filter :after_logout, :only => :destroy
 
   def after_login
-    flash[:success] = "Hey, " + current_user.first_name + "! Willkommen bei PIMSuite+."
+    flash[:success] = t('session.hey') + current_user.first_name + t('session.welcome')
   end
 
   def after_logout

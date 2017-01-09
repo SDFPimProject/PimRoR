@@ -26,9 +26,9 @@ class WelcomeController < ApplicationController
 
     if unread > 0
       if unread == 1
-        flash[:info] = "Du hast " + unread.to_s + " ungelesene Nachricht!"
+        flash[:info] = t('welcome.you_have') + unread.to_s + t('welcome.unread_message')
       else
-        flash[:info] = "Du hast " + unread.to_s + " ungelsene Nachrichte!"
+        flash[:info] = t('welcome.you_have') + unread.to_s + t('welcome.unread_messages')
       end
     end
 

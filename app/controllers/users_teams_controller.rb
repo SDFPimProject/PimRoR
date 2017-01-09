@@ -3,7 +3,7 @@ class UsersTeamsController < ApplicationController
   def update
     @users_team = UsersTeam.find(params[:id])
     if @users_team.update(users_team_params)
-      flash[:notice] = " Role aktuallisiert " 
+      flash[:notice] = t('models.user_projects.role_updated')
     end
     redirect_to edit_team_path(Team.find(@users_team.team_id))
   end

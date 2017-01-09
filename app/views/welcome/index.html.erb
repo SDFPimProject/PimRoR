@@ -3,15 +3,6 @@
 <div class="dashboard">
   <div class="dashboard-content-box">
     <div class="box-header">
-      <i class="material-icons md-48">&#xE88A;</i>
-    </div>
-    <div class="box-content">
-      <h1>Hello World</h1>
-    </div>
-  </div>
-
-  <div class="dashboard-content-box">
-    <div class="box-header">
       <i class="material-icons">&#xE0B7;</i>
       <%= link_to '/conversations' do %>
       <div style="padding: 10px">
@@ -76,21 +67,21 @@
     <div class="box-header">
       <i class="material-icons">&#xE916;</i>
       <div style="padding: 10px">
-            <%= "Einladungen" %>
+            <%= t('views.appointments.title') %>
       </div>
     </div>
     <div style="padding: 25px">
       <% if @invites.first() == nil %>
-        Sie haben keine Termineinladungen
+       <%= t('views.appointments.no_new') %>
       <% else %>
         <table class="dashboard_table">
             <tr class="head_tr">
-              <th>Von</th>
-              <th>Bis</th>
-              <th>Title</th>
-              <th>Ort</th>
-              <th>Ersteller des Termins</th>
-              <th>Ihre Teilnahme?</th>
+              <th><%= t('views.appointments.from') %></th>
+              <th><%= t('views.appointments.till') %></th>
+              <th><%= t('views.appointments.app_title')%></th>
+              <th><%= t('views.appointments.place') %></th>
+              <th><%= t('views.appointments.owner_app') %></th>
+              <th><%= t('views.appointments.your_participation') %></th>
             </tr>
 
           <% @invites.each do |invite|
@@ -107,13 +98,13 @@
                 %><%= name %></td>
                 <td>
                     <% if @event.deleted != 0 %>
-                        Termin wurde entfernt!
+                       <%= t('views.appointments.app_deleted') %>
                     <% elsif invite.recipient_status == 0 %>
-                        Vielleicht
+                       <%= t('views.appointments.maybe') %>
                     <% elsif invite.recipient_status == 1 %>
-                        Ja
+                        <%= t('views.appointments.yes') %>
                     <% elsif invite.recipient_status == 2 %>
-                        Nein
+                        <%= t('views.appointments.no') %>
                     <% end %>
                 </td>
               </tr>

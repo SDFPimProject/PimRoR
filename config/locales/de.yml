@@ -23,6 +23,11 @@ de:
   events:
       index:
         title: "Mein Kalender"
+      not_allowed_view: "Sie sind nicht berechtigt diesen Termin anzusehen!"
+      created_successfull: "Termin wurde erfolgreich erstellt."
+      updated_successfull: "Termin wurde erfolgreich aktualisiert."
+      commentary_saved: 'Ihr Kommentar wurde gespeichert.'
+      deleted: "Der Termin wurde gelöscht."
   date:
     order:
       - "day"
@@ -30,10 +35,13 @@ de:
       - "year"
     month_names: [~, Januar, Februar, März, April, Mai, Juni, Juli, August, September, Oktober, November, Dezember]
 
+  messages:
+    permission_denied: "Sie Verfügen nicht über die Rechte für diese Aktion."
+
   activerecord:
     errors:
       messages:
-        record_invalid: "Validation failed: %{errors}"
+        record_invalid: "Prüfung fehlgeschlagen: %{errors}"
         restrict_dependent_destroy:
           has_one: "Cannot delete record because a dependent %{record} exists"
           has_many: "Cannot delete record because dependent %{record} exist"
@@ -66,12 +74,35 @@ de:
     user:
       update: "Benutzer erfolgreich aktuallisiert."
       create: 'Benutzer erfolgreich erstellt.'
+    user_project:
+      role_updated: "Rolle aktualisiert."
+  
+  welcome:
+    you_have: "Du hast "
+    unread_message: " ungelesene Nachricht!"
+    unread_messages: " ungelesene Nachrichten!"
+  
+  session:
+   hey: "Hey, "
+   welcome: "! Willkommen bei PIMSuite+."   
+   
+  online:
+   hey: "Hey, "
+   welcome: "! Willkommen bei PIMSuite+."
+
+  subscribe_calendar:
+   sucessfull_subscribed: "Kalender erfolgreich abonniert."
+   already_subscribed: "Kalender bereits abonniert."
+   subscribtion_deleted: "Kalender nicht mehr abonniert"
+   not_subscribed: "Kalender nicht abonniert"
+   
+
 
   views:
     member: "Teilnehmer"
     no_results: "Keine Ergebnisse"
     message:
-      last_conversations: "Letzte Unterrhaltungen"
+      last_conversations: "Letzte Unterhaltungen"
       vip: "Möchtest du ... schreiben?"
       conversations: "Unterhaltungen"
       overview: "Übersicht"
@@ -109,15 +140,16 @@ de:
     teams: "Teams"
     team_name: "Teamname"
     new: "neues"
+    newer: "neuer"
     resend_confirmation_instructions: "Bestätigung neu senden"
     welcome: "Willkommen"
     confirm_account_link: "Bestätigen Sie ihre E-mail mit dem unten stehenden Link"
     confirm_account: "Account bestätigen"
     hi: "Hallo"
     passowrd_noitification: "Dies ist eine Benachrichtigung, dass sich ihr Passwort geändert hat."
-    requeste_password_change: "Es wurde eine Änderungen ihres Passworts angefordert. Um ein neues Passwort zu erstellen, klicken sie den folgenden Link."
+    requeste_password_change: "Es wurde eine Änderungen Ihres Passworts angefordert. Um ein neues Passwort zu erstellen, klicken Sie den folgenden Link."
     change_password: "Passwort ändern"
-    ignore_passort_change: "Wenn Sie die Änderungen des Passwort nicht angefordert haben, können Sie diese Email ignorieren. Ihr Passwort ändert sich erst durch klicken auf Link."
+    ignore_passort_change: "Wenn Sie die Änderungen des Passworts nicht angefordert haben, können Sie diese Email ignorieren. Ihr Passwort ändert sich erst durch klicken auf den Link."
     locked_account: "Ihr Account wurde wegen zu vielen fehlgeschlagenen Anmeldeversuchen gesperrt."
     link_unlock_account: "Klicken Sie auf den folgenden Link um ihren Account wieder freizuschalten"
     unlock_account: "Account entsperren"
@@ -134,7 +166,7 @@ de:
     role: "Rolle"
     successfull_updated: "Erfolgreich aktualisiert"
     remember_login: "Angemeldet bleiben"
-    waiting_for_confirmation: "Warte auf bestätigung für"
+    waiting_for_confirmation: "Warte auf Bestätigung für"
     user: "Nutzer"
     confirm_mail: "E-mail bestätigen"
     save: "speichern"
@@ -148,3 +180,16 @@ de:
     subscribe: "abonnieren"
     unsubscribe: "deabonnieren"
     scalendar: "'s Kalender"
+    appointments:
+      title: "Einladungen"
+      no_new: "Sie haben keine Termineinladungen"
+      from: "Von"
+      till: "Bis"
+      app_title: "Titel"
+      place: "Ort"
+      owner_app: "Ersteller des Termins"
+      your_participation: "Ihre Teilnahme?"
+      app_deleted: "Termin wurde entfernt!"
+      maybe: "Vielleicht"
+      yes: "Ja"
+      no: "Nein"
