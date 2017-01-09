@@ -73,6 +73,8 @@ GEM
       warden (~> 1.2.3)
     em-synchrony (1.0.6)
       eventmachine (>= 1.0.0.beta.1)
+    email_validator (1.6.0)
+      activemodel
     encryptor (3.0.0)
     erubis (2.7.0)
     eventmachine (1.2.1)
@@ -244,6 +246,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   date_validator
   devise
+  email_validator
   faye-websocket (= 0.10.0)
   fullcalendar-rails
   jbuilder (~> 2.0)
