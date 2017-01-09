@@ -8,7 +8,7 @@
       <div class="box-content-column">
         <div class="box-header"><%= t('views.team') %><%= t('views.member') %></div>
         <%= will_paginate @team_users, :param_name => 'teamUserPage' %>
-        <table class="team-member">
+        <table class="member-table">
           <% @team_users.each do |a| %>
               <%= form_for(a) do |ff| %>
                   <tr>
@@ -19,9 +19,9 @@
                       <%= ff.collection_select(:user_team_role, UsersTeam::ROLES, :to_s, lambda { |i| i.to_s.humanize }) %>
                     </td>
                     <td>
-                        <%= link_to team_remove_user_path(@team, a.user_id), method: :post do %>
+                      <%= link_to team_remove_user_path(@team, a.user_id), method: :post do %>
                           <div class="button"><i class="material-icons">&#xE14C;</i></div>
-                        <% end %>
+                      <% end %>
                     </td>
                     <td>
                       <div class="input-button">
@@ -32,19 +32,21 @@
               <% end %>
           <% end %>
         </table>
-        <%= will_paginate @team_users, :param_name => 'teamUserPage' %>
       </div>
+      <%= will_paginate @team_users, :param_name => 'teamUserPage' %>
       <div class="box-content-column">
         <div>
           <div class="box-header"><%= Team.human_attribute_name("users") %><%= t('views.add') %> </div>
           <%= will_paginate @users, :param_name => 'userPage' %>
-          <table class="team-member">
-          <% @users.each do |user| %>
+          <table class="member-table">
+            <% @users.each do |user| %>
                 <tr>
                   <td><%= user.first_name + " " + user.last_name %></td>
-                  <td><%= link_to team_add_user_path(@team, user), method: :post do %><div class="button"><i class="material-icons">&#xE145;</i></div><% end %></td>
+                  <td><%= link_to team_add_user_path(@team, user), method: :post do %>
+                        <div class="button"><i class="material-icons">&#xE145;</i></div>
+                    <% end %></td>
                 </tr>
-          <% end %>
+            <% end %>
           </table>
           <%= will_paginate @users, :param_name => 'userPage' %>
         </div>
