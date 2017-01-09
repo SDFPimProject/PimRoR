@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 def createWelcomeMess(conversation, send_from, recieve)
-  message = conversation.messages.create(:body => "Hey " + recieve.first_name + " Willkommen bei PimSuite+, <br /> <br /> ich freue mich dich beim Messanger zu begrüßen zu können. <br /> Du hast Angst das jmd. deine Nachrichten lesen kann? Keine sorge die Kommunikation ist über SSL verschlüsselt und die Nachrichten werden ebenfalls in der DB verschküsselt gespeichert! <br /> <br /> Du glaubst mit nicht? Dann Check den Code: <br /> <a href='https://github.com/SDFPimProject/PimRoR' target='_blank'>https://github.com/SDFPimProject/PimRoR</a> <br/> <br/> Dein PimSuite+ Bot")
+  message = conversation.messages.create(:body => "Hey " + recieve.first_name + " Willkommen bei PimSuite+, <br /> <br /> ich freue mich, dich beim Messanger begrüßen zu können. <br /> Du hast Angst das jmd. deine Nachrichten lesen kann? Keine sorge die Kommunikation ist über SSL verschlüsselt und die Nachrichten werden ebenfalls in der Datenbank verschlküsselt gespeichert! <br /> <br /> Du glaubst mit nicht? Dann Check den Code: <br /> <a href='https://github.com/SDFPimProject/PimRoR' target='_blank'>https://github.com/SDFPimProject/PimRoR</a> <br/> <br/> Dein PimSuite+ Bot <br /> PS: Meine Erbauer haben mir das Sprechen (NOCH) nicht beigebracht, daher ist das Antworten auf dieser Nachricht sinnlos.")
   message.send_from_id = send_from.id
   message.is_send = true
   message.save!
